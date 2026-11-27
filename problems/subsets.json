@@ -1,0 +1,326 @@
+{
+ "id": "subsets",
+ "order": 71,
+ "title": "Subsets",
+ "category": "Backtracking",
+ "difficulty": "Medium",
+ "description": "You are given a list `nums` of distinct integers. Return every possible subset (the power set), including the empty subset. The subsets, and the numbers within each subset, can be in any order, but the same subset must not appear twice.\n\n**Constraints**\n\n- `1 <= len(nums) <= 10`",
+ "function": "subsets",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def subsets(self, nums: List[int]) -> List[List[int]]:\n        pass\n",
+ "compare": "unordered_nested",
+ "hints": [
+  "For each number there are two choices: put it in the subset or leave it out.",
+  "Make those choices one number at a time with a recursive function `dfs(i, current)`.",
+  "At `i == len(nums)`, record a copy of `current`. Otherwise append `nums[i]`, recurse, pop it, and recurse again without it. (You can also start from `[[]]` and, for each number, add it to a copy of every subset so far.)"
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     1,
+     2,
+     3
+    ]
+   },
+   "expected": [
+    [],
+    [
+     1
+    ],
+    [
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2,
+     3
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0
+    ]
+   },
+   "expected": [
+    [],
+    [
+     0
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     5,
+     -1
+    ]
+   },
+   "expected": [
+    [],
+    [
+     5
+    ],
+    [
+     -1
+    ],
+    [
+     5,
+     -1
+    ]
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "expected": [
+    [],
+    [
+     1
+    ],
+    [
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     1,
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     2,
+     3,
+     4
+    ],
+    [
+     1,
+     2,
+     3,
+     4
+    ]
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     9,
+     8,
+     7,
+     6,
+     5
+    ]
+   },
+   "expected": [
+    [],
+    [
+     9
+    ],
+    [
+     8
+    ],
+    [
+     9,
+     8
+    ],
+    [
+     7
+    ],
+    [
+     9,
+     7
+    ],
+    [
+     8,
+     7
+    ],
+    [
+     9,
+     8,
+     7
+    ],
+    [
+     6
+    ],
+    [
+     9,
+     6
+    ],
+    [
+     8,
+     6
+    ],
+    [
+     9,
+     8,
+     6
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     9,
+     7,
+     6
+    ],
+    [
+     8,
+     7,
+     6
+    ],
+    [
+     9,
+     8,
+     7,
+     6
+    ],
+    [
+     5
+    ],
+    [
+     9,
+     5
+    ],
+    [
+     8,
+     5
+    ],
+    [
+     9,
+     8,
+     5
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     9,
+     7,
+     5
+    ],
+    [
+     8,
+     7,
+     5
+    ],
+    [
+     9,
+     8,
+     7,
+     5
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     9,
+     6,
+     5
+    ],
+    [
+     8,
+     6,
+     5
+    ],
+    [
+     9,
+     8,
+     6,
+     5
+    ],
+    [
+     7,
+     6,
+     5
+    ],
+    [
+     9,
+     7,
+     6,
+     5
+    ],
+    [
+     8,
+     7,
+     6,
+     5
+    ],
+    [
+     9,
+     8,
+     7,
+     6,
+     5
+    ]
+   ]
+  }
+ ]
+}

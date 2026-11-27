@@ -1,0 +1,219 @@
+{
+ "id": "surrounded-regions",
+ "order": 86,
+ "title": "Surrounded Regions",
+ "category": "Graphs",
+ "difficulty": "Medium",
+ "description": "You are given an `m x n` board of `\"X\"` and `\"O\"` characters. A region is a group of `\"O\"` cells connected horizontally or vertically. A region is **surrounded** if none of its cells is on the edge of the board.\n\nCapture every surrounded region by changing its `\"O\"`s to `\"X\"`, **in place**. Your function returns nothing. The tests check `board` afterwards.\n\n**Constraints**\n\n- `1 <= m, n <= 200`",
+ "function": "solve",
+ "params": [
+  "board"
+ ],
+ "starter": "class Solution:\n    def solve(self, board: List[List[str]]) -> None:\n        pass\n",
+ "output_from_arg": "board",
+ "hints": [
+  "Rather than finding the surrounded regions, find the ones that are **not** surrounded.",
+  "A region escapes if it touches the edge. Every `\"O\"` connected to an edge `\"O\"` is safe.",
+  "From every edge `\"O\"`, flood-fill and mark the safe cells (for example with `\"T\"`). Then flip every remaining `\"O\"` to `\"X\"` and turn every `\"T\"` back into `\"O\"`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "board": [
+     [
+      "X",
+      "X",
+      "X",
+      "X"
+     ],
+     [
+      "X",
+      "O",
+      "O",
+      "X"
+     ],
+     [
+      "X",
+      "X",
+      "O",
+      "X"
+     ],
+     [
+      "X",
+      "O",
+      "X",
+      "X"
+     ]
+    ]
+   },
+   "expected": [
+    [
+     "X",
+     "X",
+     "X",
+     "X"
+    ],
+    [
+     "X",
+     "X",
+     "X",
+     "X"
+    ],
+    [
+     "X",
+     "X",
+     "X",
+     "X"
+    ],
+    [
+     "X",
+     "O",
+     "X",
+     "X"
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "X"
+     ]
+    ]
+   },
+   "expected": [
+    [
+     "X"
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "O",
+      "O"
+     ],
+     [
+      "O",
+      "O"
+     ]
+    ]
+   },
+   "expected": [
+    [
+     "O",
+     "O"
+    ],
+    [
+     "O",
+     "O"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "X",
+      "O",
+      "X"
+     ],
+     [
+      "X",
+      "O",
+      "X"
+     ],
+     [
+      "X",
+      "X",
+      "X"
+     ]
+    ]
+   },
+   "expected": [
+    [
+     "X",
+     "O",
+     "X"
+    ],
+    [
+     "X",
+     "O",
+     "X"
+    ],
+    [
+     "X",
+     "X",
+     "X"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "X",
+      "X",
+      "X",
+      "X",
+      "X"
+     ],
+     [
+      "X",
+      "O",
+      "X",
+      "O",
+      "X"
+     ],
+     [
+      "X",
+      "X",
+      "O",
+      "X",
+      "X"
+     ],
+     [
+      "X",
+      "O",
+      "X",
+      "O",
+      "O"
+     ]
+    ]
+   },
+   "expected": [
+    [
+     "X",
+     "X",
+     "X",
+     "X",
+     "X"
+    ],
+    [
+     "X",
+     "X",
+     "X",
+     "X",
+     "X"
+    ],
+    [
+     "X",
+     "X",
+     "X",
+     "X",
+     "X"
+    ],
+    [
+     "X",
+     "O",
+     "X",
+     "O",
+     "O"
+    ]
+   ]
+  }
+ ]
+}

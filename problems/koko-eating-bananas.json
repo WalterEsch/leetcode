@@ -1,0 +1,109 @@
+{
+ "id": "koko-eating-bananas",
+ "order": 30,
+ "title": "Koko Eating Bananas",
+ "category": "Binary Search",
+ "difficulty": "Medium",
+ "description": "There are `n` piles of bananas, where `piles[i]` is the size of pile `i`. Koko has `h` hours. Each hour she picks one pile and eats `k` bananas from it. If the pile has fewer than `k`, she eats the whole pile and waits out the rest of that hour.\n\nReturn the smallest whole number `k` that lets her finish every pile within `h` hours.\n\n**Constraints**\n\n- `1 <= len(piles) <= h <= 10^9`\n- `1 <= piles[i] <= 10^9`",
+ "function": "minEatingSpeed",
+ "params": [
+  "piles",
+  "h"
+ ],
+ "starter": "class Solution:\n    def minEatingSpeed(self, piles: List[int], h: int) -> int:\n        pass\n",
+ "hints": [
+  "If speed `k` works, does every faster speed also work? That means you can binary search on `k`.",
+  "The answer lies between `1` and `max(piles)`. For a candidate `k`, total hours is the sum of `ceil(pile / k)`.",
+  "Binary search for the smallest `k` whose total hours is `<= h`. Compute `ceil(p / k)` with integers as `(p + k - 1) // k`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "piles": [
+     3,
+     6,
+     7,
+     11
+    ],
+    "h": 8
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "piles": [
+     30,
+     11,
+     23,
+     4,
+     20
+    ],
+    "h": 5
+   },
+   "expected": 30,
+   "example": true
+  },
+  {
+   "input": {
+    "piles": [
+     30,
+     11,
+     23,
+     4,
+     20
+    ],
+    "h": 6
+   },
+   "expected": 23
+  },
+  {
+   "input": {
+    "piles": [
+     1
+    ],
+    "h": 1
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "piles": [
+     1000000000
+    ],
+    "h": 2
+   },
+   "expected": 500000000
+  },
+  {
+   "input": {
+    "piles": [
+     312884470
+    ],
+    "h": 312884469
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "piles": [
+     2,
+     2
+    ],
+    "h": 4
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "piles": [
+     5,
+     5,
+     5
+    ],
+    "h": 1000
+   },
+   "expected": 1
+  }
+ ]
+}

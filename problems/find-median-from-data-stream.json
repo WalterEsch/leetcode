@@ -1,0 +1,164 @@
+{
+ "id": "find-median-from-data-stream",
+ "order": 70,
+ "title": "Find Median from Data Stream",
+ "category": "Heap / Priority Queue",
+ "difficulty": "Hard",
+ "description": "Design a structure that receives numbers one at a time and can report the median of all numbers so far. The median of an even count of numbers is the average of the two middle values.\n\n- `MedianFinder()` creates an empty structure.\n- `addNum(num)` adds `num`.\n- `findMedian()` returns the current median as a float. It is only called when at least one number has been added.\n\nAnswers within `10^-5` of the expected value are accepted.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class MedianFinder:\n    def __init__(self):\n        pass\n\n    def addNum(self, num: int) -> None:\n        pass\n\n    def findMedian(self) -> float:\n        pass\n",
+ "kind": "design",
+ "class": "MedianFinder",
+ "hints": [
+  "Keeping a sorted list makes `addNum` O(n). Can you keep just enough order to find the middle?",
+  "Split the numbers into a lower half and an upper half. You only ever need the largest of the lower half and the smallest of the upper half.",
+  "Use a max-heap for the lower half (store negatives) and a min-heap for the upper half, and keep their sizes within 1 of each other. The median is the top of the bigger heap, or the average of both tops."
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "MedianFinder",
+     "addNum",
+     "addNum",
+     "findMedian",
+     "addNum",
+     "findMedian"
+    ],
+    "arguments": [
+     [],
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [],
+     [
+      3
+     ],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    1.5,
+    null,
+    2.0
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "MedianFinder",
+     "addNum",
+     "findMedian"
+    ],
+    "arguments": [
+     [],
+     [
+      -7
+     ],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    -7.0
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "MedianFinder",
+     "addNum",
+     "addNum",
+     "addNum",
+     "addNum",
+     "findMedian",
+     "addNum",
+     "findMedian"
+    ],
+    "arguments": [
+     [],
+     [
+      5
+     ],
+     [
+      15
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ],
+     [],
+     [
+      8
+     ],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    4.0,
+    null,
+    5.0
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "MedianFinder",
+     "addNum",
+     "findMedian",
+     "addNum",
+     "findMedian",
+     "addNum",
+     "findMedian",
+     "addNum",
+     "findMedian"
+    ],
+    "arguments": [
+     [],
+     [
+      6
+     ],
+     [],
+     [
+      10
+     ],
+     [],
+     [
+      2
+     ],
+     [],
+     [
+      6
+     ],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    6.0,
+    null,
+    8.0,
+    null,
+    6.0,
+    null,
+    6.0
+   ]
+  }
+ ]
+}

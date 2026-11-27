@@ -1,0 +1,125 @@
+{
+ "id": "counting-bits",
+ "order": 146,
+ "title": "Counting Bits",
+ "category": "Bit Manipulation",
+ "difficulty": "Easy",
+ "description": "Given an integer `n`, return a list `ans` of length `n + 1` where `ans[i]` is the number of `1` bits in the binary representation of `i`.\n\nCan you do it in O(n) time?\n\n**Constraints**\n\n- `0 <= n <= 10^5`",
+ "function": "countBits",
+ "params": [
+  "n"
+ ],
+ "starter": "class Solution:\n    def countBits(self, n: int) -> List[int]:\n        pass\n",
+ "hints": [
+  "Counting bits separately for every number is O(n log n). Can you reuse the answers for smaller numbers?",
+  "`i >> 1` is `i` with its lowest bit removed, and it's smaller than `i`, so its answer is already known.",
+  "`ans[i] = ans[i >> 1] + (i & 1)`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "n": 2
+   },
+   "expected": [
+    0,
+    1,
+    1
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "n": 5
+   },
+   "expected": [
+    0,
+    1,
+    1,
+    2,
+    1,
+    2
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "n": 0
+   },
+   "expected": [
+    0
+   ]
+  },
+  {
+   "input": {
+    "n": 1
+   },
+   "expected": [
+    0,
+    1
+   ]
+  },
+  {
+   "input": {
+    "n": 16
+   },
+   "expected": [
+    0,
+    1,
+    1,
+    2,
+    1,
+    2,
+    2,
+    3,
+    1,
+    2,
+    2,
+    3,
+    2,
+    3,
+    3,
+    4,
+    1
+   ]
+  },
+  {
+   "input": {
+    "n": 31
+   },
+   "expected": [
+    0,
+    1,
+    1,
+    2,
+    1,
+    2,
+    2,
+    3,
+    1,
+    2,
+    2,
+    3,
+    2,
+    3,
+    3,
+    4,
+    1,
+    2,
+    2,
+    3,
+    2,
+    3,
+    3,
+    4,
+    2,
+    3,
+    3,
+    4,
+    3,
+    4,
+    4,
+    5
+   ]
+  }
+ ]
+}

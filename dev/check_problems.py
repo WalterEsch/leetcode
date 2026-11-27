@@ -7,7 +7,7 @@ import json, pathlib, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 REQUIRED = ["id", "order", "title", "category", "difficulty", "description",
-            "function", "params", "starter", "tests", "hints"]
+            "starter", "tests", "hints"]
 
 def run(problem_path, solution_path):
     out = subprocess.run([sys.executable, str(ROOT / "runner.py"), str(problem_path), str(solution_path)],
@@ -18,10 +18,14 @@ failures = 0
 for path in sorted((ROOT / "problems").glob("*.json")):
     p = json.loads(path.read_text(encoding="utf-8"))
     problems = [f for f in REQUIRED if f not in p]
+    if p.get("kind") == "design":
+        problems += [f for f in ("class",) if f not in p]
+    else:
+        problems += [f for f in ("function", "params") if f not in p]
     if p.get("id") != path.stem:
         problems.append("id does not match file name")
     for t in p.get("tests", []):
-        if set(t["input"]) != set(p["params"]):
+        if p.get("kind") != "design" and not p.get("harness") and set(t["input"]) != set(p["params"]):
             problems.append(f"test input keys {sorted(t['input'])} != params")
     starter = ROOT / "dev" / ".starter_tmp.py"
     starter.write_text(p["starter"], encoding="utf-8")

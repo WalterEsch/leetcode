@@ -1,0 +1,72 @@
+{
+ "id": "edit-distance",
+ "order": 119,
+ "title": "Edit Distance",
+ "category": "2-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given two strings `word1` and `word2`. Return the minimum number of operations to turn `word1` into `word2`, where each operation is one of:\n\n- insert a character,\n- delete a character, or\n- replace a character.\n\n**Constraints**\n\n- `0 <= len(word1), len(word2) <= 500`",
+ "function": "minDistance",
+ "params": [
+  "word1",
+  "word2"
+ ],
+ "starter": "class Solution:\n    def minDistance(self, word1: str, word2: str) -> int:\n        pass\n",
+ "hints": [
+  "Compare the strings character by character. If `word1[i] == word2[j]`, no operation is needed for that pair.",
+  "Otherwise you try all three operations, and each one moves to a smaller subproblem: insert `(i, j + 1)`, delete `(i + 1, j)`, replace `(i + 1, j + 1)`.",
+  "`dp(i, j)` is the cost for `word1[i:]` and `word2[j:]`. Base cases: if one string is used up, the cost is the length of what's left of the other. Memoize, or fill a table."
+ ],
+ "tests": [
+  {
+   "input": {
+    "word1": "horse",
+    "word2": "ros"
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "word1": "intention",
+    "word2": "execution"
+   },
+   "expected": 5,
+   "example": true
+  },
+  {
+   "input": {
+    "word1": "",
+    "word2": "abc"
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "word1": "same",
+    "word2": "same"
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "word1": "abc",
+    "word2": ""
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "word1": "kitten",
+    "word2": "sitting"
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "word1": "a",
+    "word2": "b"
+   },
+   "expected": 1
+  }
+ ]
+}

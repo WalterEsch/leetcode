@@ -1,0 +1,79 @@
+{
+ "id": "permutation-in-string",
+ "order": 18,
+ "title": "Permutation in String",
+ "category": "Sliding Window",
+ "difficulty": "Medium",
+ "description": "You are given two strings `s1` and `s2`. Return `True` if some rearrangement of `s1` appears as a contiguous substring of `s2`, and `False` otherwise.\n\n**Constraints**\n\n- `1 <= len(s1), len(s2) <= 10^4`\n- Both contain only lowercase English letters.",
+ "function": "checkInclusion",
+ "params": [
+  "s1",
+  "s2"
+ ],
+ "starter": "class Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        pass\n",
+ "hints": [
+  "A rearrangement of `s1` is a substring of `s2` with exactly the same letter counts as `s1`.",
+  "Look at every window of length `len(s1)` in `s2` and compare letter counts.",
+  "Slide the window one step at a time: add the new letter's count and remove the old one, instead of recounting. Compare two 26-length count arrays (or track how many letters match)."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s1": "ab",
+    "s2": "eidbaooo"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s1": "ab",
+    "s2": "eidboaoo"
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "s1": "abc",
+    "s2": "ab"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s1": "a",
+    "s2": "a"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s1": "adc",
+    "s2": "dcda"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s1": "hello",
+    "s2": "ooolleoooleh"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s1": "aab",
+    "s2": "abab"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s1": "xyz",
+    "s2": "zzyx"
+   },
+   "expected": true
+  }
+ ]
+}

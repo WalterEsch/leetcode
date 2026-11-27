@@ -1,0 +1,98 @@
+{
+ "id": "coin-change",
+ "order": 106,
+ "title": "Coin Change",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given coin denominations `coins` and a total `amount`. You have an unlimited number of each coin. Return the fewest coins needed to make exactly `amount`, or `-1` if it can't be done.\n\n**Constraints**\n\n- `1 <= len(coins) <= 12`\n- `0 <= amount <= 10^4`",
+ "function": "coinChange",
+ "params": [
+  "coins",
+  "amount"
+ ],
+ "starter": "class Solution:\n    def coinChange(self, coins: List[int], amount: int) -> int:\n        pass\n",
+ "hints": [
+  "Always picking the biggest coin doesn't always work (try `coins = [1, 3, 4]`, `amount = 6`).",
+  "Let `dp[a]` be the fewest coins for amount `a`. The last coin used could be any coin `c <= a`.",
+  "`dp[0] = 0`, and `dp[a] = 1 + min(dp[a - c])` over coins `c <= a`. Fill it from 1 up to `amount`, using infinity for amounts that can't be made."
+ ],
+ "tests": [
+  {
+   "input": {
+    "coins": [
+     1,
+     2,
+     5
+    ],
+    "amount": 11
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "coins": [
+     2
+    ],
+    "amount": 3
+   },
+   "expected": -1,
+   "example": true
+  },
+  {
+   "input": {
+    "coins": [
+     1
+    ],
+    "amount": 0
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "coins": [
+     186,
+     419,
+     83,
+     408
+    ],
+    "amount": 6249
+   },
+   "expected": 20
+  },
+  {
+   "input": {
+    "coins": [
+     2,
+     5,
+     10,
+     1
+    ],
+    "amount": 27
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "coins": [
+     3,
+     7
+    ],
+    "amount": 5
+   },
+   "expected": -1
+  },
+  {
+   "input": {
+    "coins": [
+     1,
+     3,
+     4
+    ],
+    "amount": 6
+   },
+   "expected": 2
+  }
+ ]
+}

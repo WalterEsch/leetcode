@@ -1,0 +1,106 @@
+{
+ "id": "binary-tree-maximum-path-sum",
+ "order": 59,
+ "title": "Binary Tree Maximum Path Sum",
+ "category": "Trees",
+ "difficulty": "Hard",
+ "description": "A path in a binary tree is a sequence of nodes where each pair of neighbors is connected by an edge, and no node appears twice. The path does not need to pass through the root, and it must contain at least one node.\n\nGiven the `root` of a binary tree, return the largest possible sum of the values along a path.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- The tree has 1 to 3 * 10^4 nodes.\n- `-1000 <= Node.val <= 1000`",
+ "function": "maxPathSum",
+ "params": [
+  "root"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def maxPathSum(self, root: Optional[TreeNode]) -> int:\n        pass\n",
+ "arg_types": {
+  "root": "tree"
+ },
+ "hints": [
+  "At every node, the best path that turns at that node is `node.val + (best downward path from the left) + (best downward path from the right)`.",
+  "A downward path that would make the sum smaller should be dropped. Use `max(0, ...)` for each side.",
+  "Write a DFS that returns the best single downward path starting at a node (`node.val + max(0, left, right)`), while updating a global best with the path that turns at that node."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3
+    ]
+   },
+   "expected": 6,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     -10,
+     9,
+     20,
+     null,
+     null,
+     15,
+     7
+    ]
+   },
+   "expected": 42,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     -3
+    ]
+   },
+   "expected": -3,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     2,
+     -1
+    ]
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "root": [
+     -2,
+     -1
+    ]
+   },
+   "expected": -1
+  },
+  {
+   "input": {
+    "root": [
+     5,
+     4,
+     8,
+     11,
+     null,
+     13,
+     4,
+     7,
+     2,
+     null,
+     null,
+     null,
+     1
+    ]
+   },
+   "expected": 48
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     -2,
+     3
+    ]
+   },
+   "expected": 4
+  }
+ ]
+}

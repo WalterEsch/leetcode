@@ -1,0 +1,85 @@
+{
+ "id": "coin-change-ii",
+ "order": 114,
+ "title": "Coin Change II",
+ "category": "2-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given an `amount` and coin denominations `coins`, with an unlimited number of each coin. Return the number of different **combinations** of coins that add up to `amount`. Different orders of the same coins count as one combination.\n\n**Constraints**\n\n- `0 <= amount <= 5000`\n- `1 <= len(coins) <= 300`, all distinct.",
+ "function": "change",
+ "params": [
+  "amount",
+  "coins"
+ ],
+ "starter": "class Solution:\n    def change(self, amount: int, coins: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "Counting `1 + 2` and `2 + 1` separately is the classic mistake. How can you make each combination be counted once?",
+  "Process the coins one at a time. With each new coin, count the ways that use it zero or more times on top of the earlier coins.",
+  "Use `dp[a]` = number of ways to make `a`, with `dp[0] = 1`. With the coin loop on the **outside**: for each coin `c`, for `a` from `c` to `amount`, add `dp[a - c]` to `dp[a]`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "amount": 5,
+    "coins": [
+     1,
+     2,
+     5
+    ]
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "amount": 3,
+    "coins": [
+     2
+    ]
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "amount": 10,
+    "coins": [
+     10
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "amount": 0,
+    "coins": [
+     7
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "amount": 100,
+    "coins": [
+     1,
+     5,
+     10,
+     25,
+     50
+    ]
+   },
+   "expected": 292
+  },
+  {
+   "input": {
+    "amount": 7,
+    "coins": [
+     2,
+     4
+    ]
+   },
+   "expected": 0
+  }
+ ]
+}

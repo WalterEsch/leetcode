@@ -1,0 +1,73 @@
+{
+ "id": "distinct-subsequences",
+ "order": 118,
+ "title": "Distinct Subsequences",
+ "category": "2-D Dynamic Programming",
+ "difficulty": "Hard",
+ "description": "You are given two strings `s` and `t`. Return how many different subsequences of `s` are equal to `t`. Two subsequences are different if they use different positions of `s`.\n\n**Constraints**\n\n- `1 <= len(s), len(t) <= 1000`, letters only. The answer fits in a 32-bit integer.",
+ "function": "numDistinct",
+ "params": [
+  "s",
+  "t"
+ ],
+ "starter": "class Solution:\n    def numDistinct(self, s: str, t: str) -> int:\n        pass\n",
+ "hints": [
+  "Walk through both strings. At `s[i]`, you can always skip it. If it equals `t[j]`, you can also use it to match `t[j]`.",
+  "Let `dp(i, j)` be the number of ways to form `t[j:]` from `s[i:]`. If `j == len(t)` there is exactly 1 way; if `i == len(s)` there are 0.",
+  "`dp(i, j) = dp(i + 1, j) + (dp(i + 1, j + 1) if s[i] == t[j] else 0)`. Memoize it, or fill a table from the end."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "rabbbit",
+    "t": "rabbit"
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "babgbag",
+    "t": "bag"
+   },
+   "expected": 5,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "a",
+    "t": "b"
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "aaa",
+    "t": "a"
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "s": "abc",
+    "t": "abcd"
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "s": "aaaaa",
+    "t": "aa"
+   },
+   "expected": 10
+  },
+  {
+   "input": {
+    "s": "ddd",
+    "t": "dd"
+   },
+   "expected": 3
+  }
+ ]
+}

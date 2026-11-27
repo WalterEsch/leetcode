@@ -1,0 +1,147 @@
+{
+ "id": "meeting-rooms-ii",
+ "order": 134,
+ "title": "Meeting Rooms II",
+ "category": "Intervals",
+ "difficulty": "Medium",
+ "description": "You are given a list of meeting time `intervals`, each `[start, end]`. Return the minimum number of conference rooms needed so that every meeting has a room. A room freed at time `t` can be used by a meeting starting at `t`.\n\n**Constraints**\n\n- `1 <= len(intervals) <= 10^4`",
+ "function": "minMeetingRooms",
+ "params": [
+  "intervals"
+ ],
+ "starter": "class Solution:\n    def minMeetingRooms(self, intervals: List[List[int]]) -> int:\n        pass\n",
+ "hints": [
+  "The answer is the largest number of meetings happening at the same moment.",
+  "Sort all the start times and all the end times separately, and sweep through time.",
+  "Walk through the sorted starts. For each start, if the earliest unfinished end is `<=` that start, a room frees up (advance the end pointer); otherwise you need one more room. A min-heap of end times also works."
+ ],
+ "tests": [
+  {
+   "input": {
+    "intervals": [
+     [
+      0,
+      30
+     ],
+     [
+      5,
+      10
+     ],
+     [
+      15,
+      20
+     ]
+    ]
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      7,
+      10
+     ],
+     [
+      2,
+      4
+     ]
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      5
+     ]
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      5
+     ],
+     [
+      5,
+      10
+     ],
+     [
+      10,
+      15
+     ]
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      10
+     ],
+     [
+      2,
+      9
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      4,
+      7
+     ]
+    ]
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      9,
+      10
+     ],
+     [
+      4,
+      9
+     ],
+     [
+      4,
+      17
+     ]
+    ]
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      2,
+      11
+     ],
+     [
+      6,
+      16
+     ],
+     [
+      11,
+      16
+     ]
+    ]
+   },
+   "expected": 2
+  }
+ ]
+}

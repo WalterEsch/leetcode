@@ -1,0 +1,175 @@
+{
+ "id": "search-a-2d-matrix",
+ "order": 29,
+ "title": "Search a 2D Matrix",
+ "category": "Binary Search",
+ "difficulty": "Medium",
+ "description": "You are given an `m x n` integer `matrix` where each row is sorted in increasing order, and the first number of each row is larger than the last number of the row before it. Return `True` if `target` is in the matrix.\n\nYour solution must run in O(log(m * n)) time.\n\n**Constraints**\n\n- `1 <= m, n <= 100`",
+ "function": "searchMatrix",
+ "params": [
+  "matrix",
+  "target"
+ ],
+ "starter": "class Solution:\n    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:\n        pass\n",
+ "hints": [
+  "Because of how the rows are ordered, reading the matrix row by row gives one fully sorted list.",
+  "You could binary search for the right row first, then binary search inside that row.",
+  "Or treat it as one list of length `m * n`: index `i` maps to `matrix[i // n][i % n]`, then run a normal binary search."
+ ],
+ "tests": [
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      3,
+      5,
+      7
+     ],
+     [
+      10,
+      11,
+      16,
+      20
+     ],
+     [
+      23,
+      30,
+      34,
+      60
+     ]
+    ],
+    "target": 3
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      3,
+      5,
+      7
+     ],
+     [
+      10,
+      11,
+      16,
+      20
+     ],
+     [
+      23,
+      30,
+      34,
+      60
+     ]
+    ],
+    "target": 13
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1
+     ]
+    ],
+    "target": 1
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1
+     ]
+    ],
+    "target": 2
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      3
+     ]
+    ],
+    "target": 3
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ],
+    "target": 3
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      3,
+      5,
+      7
+     ],
+     [
+      10,
+      11,
+      16,
+      20
+     ],
+     [
+      23,
+      30,
+      34,
+      60
+     ]
+    ],
+    "target": 60
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      3,
+      5,
+      7
+     ],
+     [
+      10,
+      11,
+      16,
+      20
+     ],
+     [
+      23,
+      30,
+      34,
+      60
+     ]
+    ],
+    "target": 0
+   },
+   "expected": false
+  }
+ ]
+}

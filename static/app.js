@@ -63,8 +63,26 @@ function py(value) {
   return String(value);
 }
 
+// Like py(), but puts each row of a grid on its own line so boards and matrices are readable.
+function pretty(value) {
+  const flat = py(value);
+  if (Array.isArray(value) && value.length > 1 && value.every(Array.isArray) && flat.length > 50) {
+    return "[\n" + value.map((row) => "  " + py(row)).join(",\n") + "\n]";
+  }
+  return flat;
+}
+
 function formatInput(input) {
-  return Object.entries(input).map(([k, v]) => `${k} = ${py(v)}`).join("\n");
+  return Object.entries(input).map(([k, v]) => `${k} = ${short(pretty(v))}`).join("\n");
+}
+
+function indent(text) {
+  return text.split("\n").map((l) => "  " + l).join("\n");
+}
+
+// Very large test inputs would flood the screen, so cut them down for display.
+function short(text, limit = 600) {
+  return text.length <= limit ? text : `${text.slice(0, limit)} ... (${text.length - limit} more characters)`;
 }
 
 // ---------------------------------------------------------------- sidebar
@@ -117,7 +135,7 @@ async function openProblem(id) {
   $("examples").innerHTML = problem.examples.map((t, i) => `
     <div class="example">
       <strong>Example ${i + 1}</strong>
-      <pre>Input:  ${escapeHtml(formatInput(t.input).replace(/\n/g, ", "))}\nOutput: ${escapeHtml(py(t.expected))}</pre>
+      <pre>Input:\n${escapeHtml(indent(formatInput(t.input)))}\nOutput:\n${escapeHtml(indent(short(pretty(t.expected))))}</pre>
     </div>`).join("");
 
   renderHints();
@@ -321,10 +339,10 @@ function renderResults(report) {
     if (open) openedFirstFailure = true;
     const rows = [
       `<div class="label">Input</div><pre>${escapeHtml(formatInput(r.input))}</pre>`,
-      `<div class="label">Expected</div><pre>${escapeHtml(py(r.expected))}</pre>`,
+      `<div class="label">Expected</div><pre>${escapeHtml(short(pretty(r.expected)))}</pre>`,
     ];
     if (r.error) rows.push(`<div class="label">Error</div><pre class="error-box">${escapeHtml(r.error)}</pre>`);
-    else rows.push(`<div class="label">Your output</div><pre>${escapeHtml(py(r.actual))}</pre>`);
+    else rows.push(`<div class="label">Your output</div><pre>${escapeHtml(short(pretty(r.actual)))}</pre>`);
     if (r.stdout) rows.push(`<div class="label">Printed</div><pre>${escapeHtml(r.stdout)}</pre>`);
     parts.push(`
       <details class="test"${open ? " open" : ""}>

@@ -1,0 +1,152 @@
+{
+ "id": "reconstruct-itinerary",
+ "order": 94,
+ "title": "Reconstruct Itinerary",
+ "category": "Advanced Graphs",
+ "difficulty": "Hard",
+ "description": "You are given a list of airline `tickets`, where `tickets[i] = [from, to]`. All of them belong to someone who started at `\"JFK\"`. Rebuild their itinerary: a list of airports, starting with `\"JFK\"`, that uses **every ticket exactly once**.\n\nIf several itineraries work, return the one that comes first in lexical (dictionary) order when compared as a list of strings. At least one valid itinerary exists.\n\n**Constraints**\n\n- `1 <= len(tickets) <= 300`",
+ "function": "findItinerary",
+ "params": [
+  "tickets"
+ ],
+ "starter": "class Solution:\n    def findItinerary(self, tickets: List[List[str]]) -> List[str]:\n        pass\n",
+ "hints": [
+  "Always taking the alphabetically smallest destination can lead to a dead end with tickets unused (see example 3).",
+  "You need a path that uses every edge exactly once: an Eulerian path. Hierholzer's algorithm builds one.",
+  "Sort each airport's destinations. DFS: while the airport has unused tickets, take the smallest and recurse. After an airport has no tickets left, append it to the result. Reverse the result at the end."
+ ],
+ "tests": [
+  {
+   "input": {
+    "tickets": [
+     [
+      "MUC",
+      "LHR"
+     ],
+     [
+      "JFK",
+      "MUC"
+     ],
+     [
+      "SFO",
+      "SJC"
+     ],
+     [
+      "LHR",
+      "SFO"
+     ]
+    ]
+   },
+   "expected": [
+    "JFK",
+    "MUC",
+    "LHR",
+    "SFO",
+    "SJC"
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "tickets": [
+     [
+      "JFK",
+      "SFO"
+     ],
+     [
+      "JFK",
+      "ATL"
+     ],
+     [
+      "SFO",
+      "ATL"
+     ],
+     [
+      "ATL",
+      "JFK"
+     ],
+     [
+      "ATL",
+      "SFO"
+     ]
+    ]
+   },
+   "expected": [
+    "JFK",
+    "ATL",
+    "JFK",
+    "SFO",
+    "ATL",
+    "SFO"
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "tickets": [
+     [
+      "JFK",
+      "KUL"
+     ],
+     [
+      "JFK",
+      "NRT"
+     ],
+     [
+      "NRT",
+      "JFK"
+     ]
+    ]
+   },
+   "expected": [
+    "JFK",
+    "NRT",
+    "JFK",
+    "KUL"
+   ]
+  },
+  {
+   "input": {
+    "tickets": [
+     [
+      "JFK",
+      "AAA"
+     ]
+    ]
+   },
+   "expected": [
+    "JFK",
+    "AAA"
+   ]
+  },
+  {
+   "input": {
+    "tickets": [
+     [
+      "JFK",
+      "ATL"
+     ],
+     [
+      "ATL",
+      "JFK"
+     ],
+     [
+      "JFK",
+      "BOS"
+     ],
+     [
+      "BOS",
+      "JFK"
+     ]
+    ]
+   },
+   "expected": [
+    "JFK",
+    "ATL",
+    "JFK",
+    "BOS",
+    "JFK"
+   ]
+  }
+ ]
+}

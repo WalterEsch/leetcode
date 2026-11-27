@@ -1,0 +1,71 @@
+{
+ "id": "decode-ways",
+ "order": 105,
+ "title": "Decode Ways",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "Letters are encoded as numbers: `\"A\" -> \"1\"`, `\"B\" -> \"2\"`, ..., `\"Z\" -> \"26\"`. You are given a string `s` of digits. Return how many ways it can be decoded back into letters.\n\nA piece can't have a leading zero (`\"06\"` is not valid, but `\"6\"` is). If `s` can't be decoded at all, return `0`.\n\n**Constraints**\n\n- `1 <= len(s) <= 100`",
+ "function": "numDecodings",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def numDecodings(self, s: str) -> int:\n        pass\n",
+ "hints": [
+  "The last piece is either the last single digit, or the last two digits.",
+  "Let `dp[i]` be the number of ways to decode `s[:i]`. A single digit adds `dp[i - 1]` if it isn't `'0'`; a two-digit piece adds `dp[i - 2]` if it's between `10` and `26`.",
+  "Start with `dp[0] = 1`, fill the table left to right, and return `dp[len(s)]`. You only need the previous two values."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "12"
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "226"
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "06"
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "10"
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "s": "27"
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "s": "11106"
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "s": "100"
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "s": "2611055971756562"
+   },
+   "expected": 4
+  }
+ ]
+}

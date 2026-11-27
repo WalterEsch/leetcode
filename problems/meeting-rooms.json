@@ -1,0 +1,112 @@
+{
+ "id": "meeting-rooms",
+ "order": 133,
+ "title": "Meeting Rooms",
+ "category": "Intervals",
+ "difficulty": "Easy",
+ "description": "You are given a list of meeting time `intervals`, each `[start, end]`. Return `True` if one person could attend all of them, meaning no two meetings overlap. A meeting ending at time `t` and another starting at `t` do not overlap.\n\n**Constraints**\n\n- `0 <= len(intervals) <= 500`",
+ "function": "canAttendMeetings",
+ "params": [
+  "intervals"
+ ],
+ "starter": "class Solution:\n    def canAttendMeetings(self, intervals: List[List[int]]) -> bool:\n        pass\n",
+ "hints": [
+  "When do two meetings conflict?",
+  "After sorting by start time, only neighbors need to be compared.",
+  "Sort the meetings and return `False` if any meeting starts before the previous one ends."
+ ],
+ "tests": [
+  {
+   "input": {
+    "intervals": [
+     [
+      0,
+      30
+     ],
+     [
+      5,
+      10
+     ],
+     [
+      15,
+      20
+     ]
+    ]
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      7,
+      10
+     ],
+     [
+      2,
+      4
+     ]
+    ]
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": []
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      5
+     ],
+     [
+      5,
+      8
+     ]
+    ]
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      5
+     ],
+     [
+      4,
+      8
+     ]
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      9,
+      10
+     ],
+     [
+      4,
+      9
+     ],
+     [
+      4,
+      17
+     ]
+    ]
+   },
+   "expected": false
+  }
+ ]
+}

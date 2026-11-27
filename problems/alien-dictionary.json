@@ -1,0 +1,106 @@
+{
+ "id": "alien-dictionary",
+ "order": 97,
+ "title": "Alien Dictionary",
+ "category": "Advanced Graphs",
+ "difficulty": "Hard",
+ "description": "An alien language uses the lowercase English letters, but in an unknown order. You are given a list of `words` from its dictionary, sorted in the alien order.\n\nReturn a string with every letter that appears in `words`, each exactly once, in an order consistent with the dictionary. If several orders are possible, any of them is accepted. If no order is possible (the input contradicts itself), return `\"\"`.\n\nNote that a word must come after any of its own prefixes: `[\"abc\", \"ab\"]` is invalid.\n\n**Constraints**\n\n- `1 <= len(words) <= 100`, `1 <= len(words[i]) <= 100`",
+ "function": "alienOrder",
+ "params": [
+  "words"
+ ],
+ "starter": "class Solution:\n    def alienOrder(self, words: List[str]) -> str:\n        pass\n",
+ "compare": "custom",
+ "checker": "\ndef check(inp, actual, expected):\n    if expected == \"\":\n        return actual == \"\"\n    if not isinstance(actual, str):\n        return False\n    letters = set(\"\".join(inp[\"words\"]))\n    if len(actual) != len(letters) or set(actual) != letters:\n        return False\n    pos = {ch: i for i, ch in enumerate(actual)}\n    words = inp[\"words\"]\n    for a, b in zip(words, words[1:]):\n        for x, y in zip(a, b):\n            if x != y:\n                if pos[x] > pos[y]:\n                    return False\n                break\n    return True\n",
+ "hints": [
+  "Comparing two neighboring words tells you about at most one pair of letters: the first position where they differ.",
+  "Collect those \"letter `a` comes before letter `b`\" rules as directed edges, then find an order that respects all of them.",
+  "Build the graph (and return `\"\"` right away if a word is followed by its own proper prefix). Then topologically sort all letters with Kahn's algorithm. If not every letter makes it into the order, there's a cycle, so return `\"\"`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "words": [
+     "wrt",
+     "wrf",
+     "er",
+     "ett",
+     "rftt"
+    ]
+   },
+   "expected": "wertf",
+   "example": true
+  },
+  {
+   "input": {
+    "words": [
+     "z",
+     "x"
+    ]
+   },
+   "expected": "zx",
+   "example": true
+  },
+  {
+   "input": {
+    "words": [
+     "z",
+     "x",
+     "z"
+    ]
+   },
+   "expected": "",
+   "example": true
+  },
+  {
+   "input": {
+    "words": [
+     "abc",
+     "ab"
+    ]
+   },
+   "expected": ""
+  },
+  {
+   "input": {
+    "words": [
+     "z",
+     "z"
+    ]
+   },
+   "expected": "z"
+  },
+  {
+   "input": {
+    "words": [
+     "ab",
+     "adc"
+    ]
+   },
+   "expected": "abcd"
+  },
+  {
+   "input": {
+    "words": [
+     "baa",
+     "abcd",
+     "abca",
+     "cab",
+     "cad"
+    ]
+   },
+   "expected": "bdac"
+  },
+  {
+   "input": {
+    "words": [
+     "a",
+     "b",
+     "ca",
+     "cc"
+    ]
+   },
+   "expected": "abc"
+  }
+ ]
+}

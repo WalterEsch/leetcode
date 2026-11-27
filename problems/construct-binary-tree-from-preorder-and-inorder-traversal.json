@@ -1,0 +1,152 @@
+{
+ "id": "construct-binary-tree-from-preorder-and-inorder-traversal",
+ "order": 58,
+ "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+ "category": "Trees",
+ "difficulty": "Medium",
+ "description": "You are given two lists, `preorder` and `inorder`, which are the preorder and inorder traversals of the same binary tree. All values are distinct. Build the tree and return its root.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- `1 <= len(preorder) == len(inorder) <= 3000`",
+ "function": "buildTree",
+ "params": [
+  "preorder",
+  "inorder"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:\n        pass\n",
+ "return_type": "tree",
+ "hints": [
+  "The first value in `preorder` is always the root.",
+  "Find the root in `inorder`. Everything to its left is the left subtree, and everything to its right is the right subtree. The sizes tell you how to split `preorder` too.",
+  "Recurse on the two halves. To make it O(n), store each value's index in `inorder` in a dictionary, and walk through `preorder` with a shared index instead of slicing."
+ ],
+ "tests": [
+  {
+   "input": {
+    "preorder": [
+     3,
+     9,
+     20,
+     15,
+     7
+    ],
+    "inorder": [
+     9,
+     3,
+     15,
+     20,
+     7
+    ]
+   },
+   "expected": [
+    3,
+    9,
+    20,
+    null,
+    null,
+    15,
+    7
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "preorder": [
+     -1
+    ],
+    "inorder": [
+     -1
+    ]
+   },
+   "expected": [
+    -1
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "preorder": [
+     1,
+     2
+    ],
+    "inorder": [
+     2,
+     1
+    ]
+   },
+   "expected": [
+    1,
+    2
+   ]
+  },
+  {
+   "input": {
+    "preorder": [
+     1,
+     2
+    ],
+    "inorder": [
+     1,
+     2
+    ]
+   },
+   "expected": [
+    1,
+    null,
+    2
+   ]
+  },
+  {
+   "input": {
+    "preorder": [
+     1,
+     2,
+     4,
+     5,
+     3,
+     6,
+     7
+    ],
+    "inorder": [
+     4,
+     2,
+     5,
+     1,
+     6,
+     3,
+     7
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "input": {
+    "preorder": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "inorder": [
+     4,
+     3,
+     2,
+     1
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    null,
+    3,
+    null,
+    4
+   ]
+  }
+ ]
+}

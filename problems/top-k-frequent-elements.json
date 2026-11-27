@@ -1,0 +1,125 @@
+{
+ "id": "top-k-frequent-elements",
+ "order": 5,
+ "title": "Top K Frequent Elements",
+ "category": "Arrays & Hashing",
+ "difficulty": "Medium",
+ "description": "You are given a list of integers `nums` and an integer `k`. Return the `k` values that appear most often in `nums`. The answer can be in any order.\n\nThe tests guarantee that the answer is unique.\n\n**Constraints**\n\n- `1 <= len(nums) <= 10^5`\n- `1 <= k <=` number of distinct values in `nums`\n- Try for better than O(n log n).",
+ "function": "topKFrequent",
+ "params": [
+  "nums",
+  "k"
+ ],
+ "starter": "class Solution:\n    def topKFrequent(self, nums: List[int], k: int) -> List[int]:\n        pass\n",
+ "compare": "unordered",
+ "hints": [
+  "Start by counting how often each value appears.",
+  "Sorting the counts works but is O(n log n). A heap of size `k` gets you O(n log k).",
+  "Bucket sort gives O(n): make a list of buckets where bucket `i` holds the values that appear exactly `i` times, then read buckets from the highest count down until you have `k` values."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     1,
+     1,
+     1,
+     2,
+     2,
+     3
+    ],
+    "k": 2
+   },
+   "expected": [
+    1,
+    2
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     7
+    ],
+    "k": 1
+   },
+   "expected": [
+    7
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     4,
+     4,
+     4,
+     5,
+     5,
+     6,
+     6,
+     6,
+     6
+    ],
+    "k": 1
+   },
+   "expected": [
+    6
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     -1,
+     -1,
+     2,
+     2,
+     2,
+     3
+    ],
+    "k": 2
+   },
+   "expected": [
+    2,
+    -1
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     2,
+     3
+    ],
+    "k": 3
+   },
+   "expected": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     5,
+     3,
+     5,
+     3,
+     5,
+     9,
+     9,
+     9,
+     9,
+     1
+    ],
+    "k": 3
+   },
+   "expected": [
+    9,
+    5,
+    3
+   ]
+  }
+ ]
+}

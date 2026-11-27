@@ -1,0 +1,124 @@
+{
+ "id": "task-scheduler",
+ "order": 68,
+ "title": "Task Scheduler",
+ "category": "Heap / Priority Queue",
+ "difficulty": "Medium",
+ "description": "You are given a list of CPU `tasks`, each an uppercase letter, and a cooldown `n`. Each time unit, the CPU either runs one task or stays idle. Two runs of the **same** task must be separated by at least `n` time units.\n\nTasks can run in any order. Return the minimum number of time units needed to finish all tasks.\n\n**Constraints**\n\n- `1 <= len(tasks) <= 10^4`\n- `0 <= n <= 100`",
+ "function": "leastInterval",
+ "params": [
+  "tasks",
+  "n"
+ ],
+ "starter": "class Solution:\n    def leastInterval(self, tasks: List[str], n: int) -> int:\n        pass\n",
+ "hints": [
+  "The most frequent task sets the pace: its runs must be at least `n` apart.",
+  "Simulate greedily: at each step run the available task with the most remaining copies, using a max-heap, and a queue for tasks waiting out their cooldown.",
+  "There is also a formula. With `f` the highest count and `c` the number of tasks with that count, the answer is `max(len(tasks), (f - 1) * (n + 1) + c)`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "tasks": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    "n": 2
+   },
+   "expected": 8,
+   "example": true
+  },
+  {
+   "input": {
+    "tasks": [
+     "A",
+     "C",
+     "A",
+     "B",
+     "D",
+     "B"
+    ],
+    "n": 1
+   },
+   "expected": 6,
+   "example": true
+  },
+  {
+   "input": {
+    "tasks": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    "n": 3
+   },
+   "expected": 10
+  },
+  {
+   "input": {
+    "tasks": [
+     "A"
+    ],
+    "n": 5
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "tasks": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    "n": 0
+   },
+   "expected": 6
+  },
+  {
+   "input": {
+    "tasks": [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "C",
+     "D",
+     "E",
+     "F",
+     "G"
+    ],
+    "n": 2
+   },
+   "expected": 16
+  },
+  {
+   "input": {
+    "tasks": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "A",
+     "B",
+     "C",
+     "D"
+    ],
+    "n": 2
+   },
+   "expected": 8
+  }
+ ]
+}

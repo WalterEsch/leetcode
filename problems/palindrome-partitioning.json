@@ -1,0 +1,156 @@
+{
+ "id": "palindrome-partitioning",
+ "order": 77,
+ "title": "Palindrome Partitioning",
+ "category": "Backtracking",
+ "difficulty": "Medium",
+ "description": "You are given a string `s`. Split it into pieces so that every piece is a palindrome. Return every possible way of doing this. Each way is a list of pieces in order. The ways themselves can be in any order.\n\n**Constraints**\n\n- `1 <= len(s) <= 16`, lowercase letters only.",
+ "function": "partition",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def partition(self, s: str) -> List[List[str]]:\n        pass\n",
+ "compare": "unordered",
+ "hints": [
+  "Choose the first piece, then partition whatever is left. That is a smaller version of the same problem.",
+  "The first piece must be a palindrome, so try every prefix `s[i:j]` that is one.",
+  "`dfs(i, path)`: if `i == len(s)`, record `path`. Otherwise, for every `j > i` where `s[i:j]` is a palindrome, append it, call `dfs(j)`, then pop it."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "aab"
+   },
+   "expected": [
+    [
+     "a",
+     "a",
+     "b"
+    ],
+    [
+     "aa",
+     "b"
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "s": "a"
+   },
+   "expected": [
+    [
+     "a"
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "s": "racecar"
+   },
+   "expected": [
+    [
+     "r",
+     "a",
+     "c",
+     "e",
+     "c",
+     "a",
+     "r"
+    ],
+    [
+     "r",
+     "a",
+     "cec",
+     "a",
+     "r"
+    ],
+    [
+     "r",
+     "aceca",
+     "r"
+    ],
+    [
+     "racecar"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "s": "abba"
+   },
+   "expected": [
+    [
+     "a",
+     "b",
+     "b",
+     "a"
+    ],
+    [
+     "a",
+     "bb",
+     "a"
+    ],
+    [
+     "abba"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "s": "aaaa"
+   },
+   "expected": [
+    [
+     "a",
+     "a",
+     "a",
+     "a"
+    ],
+    [
+     "a",
+     "a",
+     "aa"
+    ],
+    [
+     "a",
+     "aa",
+     "a"
+    ],
+    [
+     "a",
+     "aaa"
+    ],
+    [
+     "aa",
+     "a",
+     "a"
+    ],
+    [
+     "aa",
+     "aa"
+    ],
+    [
+     "aaa",
+     "a"
+    ],
+    [
+     "aaaa"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "s": "abc"
+   },
+   "expected": [
+    [
+     "a",
+     "b",
+     "c"
+    ]
+   ]
+  }
+ ]
+}

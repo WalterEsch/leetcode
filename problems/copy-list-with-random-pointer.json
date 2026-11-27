@@ -1,0 +1,191 @@
+{
+ "id": "copy-list-with-random-pointer",
+ "order": 40,
+ "title": "Copy List with Random Pointer",
+ "category": "Linked List",
+ "difficulty": "Medium",
+ "description": "Each node of a linked list has a `next` pointer and a `random` pointer. `random` can point to any node in the list, or be `None`. Return a **deep copy** of the list: brand new nodes with the same values, whose `next` and `random` pointers point to the matching new nodes. No pointer in the copy may point to a node of the original list.\n\nThe `Node` class is already defined:\n\n```\nclass Node:\n    def __init__(self, x, next=None, random=None):\n        self.val = int(x)\n        self.next = next\n        self.random = random\n```\n\nTests show the list as `[val, random_index]` pairs, where `random_index` is the position of the node that `random` points to, or `None`.\n\n**Constraints**\n\n- The list has 0 to 1000 nodes.",
+ "function": "copyRandomList",
+ "params": [
+  "head"
+ ],
+ "starter": "# Definition for a Node (already provided):\n# class Node:\n#     def __init__(self, x, next=None, random=None):\n#         self.val = int(x)\n#         self.next = next\n#         self.random = random\n\nclass Solution:\n    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':\n        pass\n",
+ "harness": "\ndef call(problem, ns, inp):\n    Node = ns[\"Node\"]\n    nodes = [Node(v) for v, _ in inp[\"head\"]]\n    for i, (_, r) in enumerate(inp[\"head\"]):\n        if i + 1 < len(nodes):\n            nodes[i].next = nodes[i + 1]\n        nodes[i].random = nodes[r] if r is not None else None\n    original = {id(n) for n in nodes}\n    copy_head = ns[\"Solution\"]().copyRandomList(nodes[0] if nodes else None)\n    out, index, node = [], {}, copy_head\n    while node is not None:\n        if id(node) in original:\n            raise ValueError(\"Your copy contains a node from the original list. Every node must be new.\")\n        if len(out) > 5000:\n            raise ValueError(\"Your copied list seems to have a cycle\")\n        index[id(node)] = len(out)\n        out.append(node)\n        node = node.next\n    result = []\n    for n in out:\n        if n.random is not None and id(n.random) not in index:\n            raise ValueError(\"A random pointer in your copy points outside the copied list\")\n        result.append([n.val, index[id(n.random)] if n.random is not None else None])\n    return result\n",
+ "prelude": "\nclass Node:\n    def __init__(self, x, next=None, random=None):\n        self.val = int(x)\n        self.next = next\n        self.random = random\n",
+ "hints": [
+  "The hard part is the `random` pointer: when you copy a node, its `random` target may not have been copied yet.",
+  "Make two passes. First create a copy of every node and remember which copy belongs to which original, in a dictionary.",
+  "In the second pass, set `copy.next = old_to_new[node.next]` and `copy.random = old_to_new[node.random]` (mapping `None` to `None`)."
+ ],
+ "tests": [
+  {
+   "input": {
+    "head": [
+     [
+      7,
+      null
+     ],
+     [
+      13,
+      0
+     ],
+     [
+      11,
+      4
+     ],
+     [
+      10,
+      2
+     ],
+     [
+      1,
+      0
+     ]
+    ]
+   },
+   "expected": [
+    [
+     7,
+     null
+    ],
+    [
+     13,
+     0
+    ],
+    [
+     11,
+     4
+    ],
+    [
+     10,
+     2
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "head": [
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      1
+     ]
+    ]
+   },
+   "expected": [
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "head": [
+     [
+      3,
+      null
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      null
+     ]
+    ]
+   },
+   "expected": [
+    [
+     3,
+     null
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "head": []
+   },
+   "expected": []
+  },
+  {
+   "input": {
+    "head": [
+     [
+      5,
+      0
+     ]
+    ]
+   },
+   "expected": [
+    [
+     5,
+     0
+    ]
+   ]
+  },
+  {
+   "input": {
+    "head": [
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      3,
+      null
+     ],
+     [
+      4,
+      0
+     ]
+    ]
+   },
+   "expected": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     4,
+     0
+    ]
+   ]
+  }
+ ]
+}

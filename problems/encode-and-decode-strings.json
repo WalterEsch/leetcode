@@ -1,0 +1,129 @@
+{
+ "id": "encode-and-decode-strings",
+ "order": 6,
+ "title": "Encode and Decode Strings",
+ "category": "Arrays & Hashing",
+ "difficulty": "Medium",
+ "description": "Design two methods. `encode` turns a list of strings into a single string, and `decode` turns that single string back into the original list.\n\nThe strings can contain **any** characters, including commas, digits, `#` and other characters you might be tempted to use as a separator.\n\nEach test calls `encode(strs)`, passes the result to `decode`, and checks that you get `strs` back.\n\n**Constraints**\n\n- `0 <= len(strs) <= 200`\n- `0 <= len(strs[i]) <= 200`",
+ "starter": "class Solution:\n    def encode(self, strs: List[str]) -> str:\n        pass\n\n    def decode(self, s: str) -> List[str]:\n        pass\n",
+ "function": "encode",
+ "params": [
+  "strs"
+ ],
+ "harness": "\ndef call(problem, ns, inp):\n    encoded = ns[\"Solution\"]().encode(inp[\"strs\"])\n    if not isinstance(encoded, str):\n        raise TypeError(f\"encode() must return a str, but it returned {type(encoded).__name__}\")\n    return ns[\"Solution\"]().decode(encoded)\n",
+ "hints": [
+  "Joining with a separator like `,` breaks if a string contains that separator. How can `decode` know where each string ends without relying on its content?",
+  "Write each string's length in front of it, so the decoder knows exactly how many characters to read.",
+  "Encode each string as `str(len(s)) + '#' + s`. To decode, read digits up to the `#`, then take that many characters, and repeat."
+ ],
+ "tests": [
+  {
+   "input": {
+    "strs": [
+     "neet",
+     "code",
+     "love",
+     "you"
+    ]
+   },
+   "expected": [
+    "neet",
+    "code",
+    "love",
+    "you"
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "strs": [
+     "we",
+     "say",
+     ":",
+     "yes"
+    ]
+   },
+   "expected": [
+    "we",
+    "say",
+    ":",
+    "yes"
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "strs": []
+   },
+   "expected": []
+  },
+  {
+   "input": {
+    "strs": [
+     ""
+    ]
+   },
+   "expected": [
+    ""
+   ]
+  },
+  {
+   "input": {
+    "strs": [
+     "",
+     "",
+     ""
+    ]
+   },
+   "expected": [
+    "",
+    "",
+    ""
+   ]
+  },
+  {
+   "input": {
+    "strs": [
+     "4#abc",
+     "#",
+     "12#",
+     "a,b,c"
+    ]
+   },
+   "expected": [
+    "4#abc",
+    "#",
+    "12#",
+    "a,b,c"
+   ]
+  },
+  {
+   "input": {
+    "strs": [
+     "hello world",
+     "  ",
+     "\\n",
+     "tab\tchar"
+    ]
+   },
+   "expected": [
+    "hello world",
+    "  ",
+    "\\n",
+    "tab\tchar"
+   ]
+  },
+  {
+   "input": {
+    "strs": [
+     "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+     "y"
+    ]
+   },
+   "expected": [
+    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "y"
+   ]
+  }
+ ]
+}

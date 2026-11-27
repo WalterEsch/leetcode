@@ -1,0 +1,131 @@
+{
+ "id": "median-of-two-sorted-arrays",
+ "order": 34,
+ "title": "Median of Two Sorted Arrays",
+ "category": "Binary Search",
+ "difficulty": "Hard",
+ "description": "You are given two sorted lists `nums1` and `nums2`. Return the median of all the numbers in both lists combined, as a float.\n\nAim for O(log(m + n)) time.\n\n**Constraints**\n\n- `0 <= len(nums1), len(nums2) <= 1000`\n- `1 <= len(nums1) + len(nums2)`",
+ "function": "findMedianSortedArrays",
+ "params": [
+  "nums1",
+  "nums2"
+ ],
+ "starter": "class Solution:\n    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:\n        pass\n",
+ "hints": [
+  "Merging both lists is O(m + n). For O(log), think about partitioning both lists so that the left halves together hold half of the numbers.",
+  "Binary search on how many elements to take from the shorter list. The rest of the left half comes from the other list.",
+  "A partition is right when the largest value on the left side of each list is `<=` the smallest value on the right side of the other list. Then the median comes from those four boundary values."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums1": [
+     1,
+     3
+    ],
+    "nums2": [
+     2
+    ]
+   },
+   "expected": 2.0,
+   "example": true
+  },
+  {
+   "input": {
+    "nums1": [
+     1,
+     2
+    ],
+    "nums2": [
+     3,
+     4
+    ]
+   },
+   "expected": 2.5,
+   "example": true
+  },
+  {
+   "input": {
+    "nums1": [],
+    "nums2": [
+     1
+    ]
+   },
+   "expected": 1.0
+  },
+  {
+   "input": {
+    "nums1": [
+     2
+    ],
+    "nums2": []
+   },
+   "expected": 2.0
+  },
+  {
+   "input": {
+    "nums1": [
+     0,
+     0
+    ],
+    "nums2": [
+     0,
+     0
+    ]
+   },
+   "expected": 0.0
+  },
+  {
+   "input": {
+    "nums1": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "nums2": [
+     6,
+     7
+    ]
+   },
+   "expected": 4.0
+  },
+  {
+   "input": {
+    "nums1": [
+     -5,
+     3,
+     6,
+     12,
+     15
+    ],
+    "nums2": [
+     -12,
+     -10,
+     -6,
+     -3,
+     4,
+     10
+    ]
+   },
+   "expected": 3.0
+  },
+  {
+   "input": {
+    "nums1": [
+     1,
+     3,
+     8
+    ],
+    "nums2": [
+     7,
+     9,
+     10,
+     11
+    ]
+   },
+   "expected": 8.0
+  }
+ ]
+}

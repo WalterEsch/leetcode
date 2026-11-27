@@ -1,0 +1,157 @@
+{
+ "id": "k-closest-points-to-origin",
+ "order": 66,
+ "title": "K Closest Points to Origin",
+ "category": "Heap / Priority Queue",
+ "difficulty": "Medium",
+ "description": "You are given a list of `points` on a plane, where `points[i] = [x, y]`, and an integer `k`. Return the `k` points closest to the origin `(0, 0)`, using ordinary straight-line distance. The answer can be in any order.\n\nThe tests guarantee the answer is unique.\n\n**Constraints**\n\n- `1 <= k <= len(points) <= 10^4`",
+ "function": "kClosest",
+ "params": [
+  "points",
+  "k"
+ ],
+ "starter": "class Solution:\n    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:\n        pass\n",
+ "compare": "unordered",
+ "hints": [
+  "You don't need the square root. Comparing `x*x + y*y` gives the same order.",
+  "Sorting all points by distance is O(n log n). A heap of size `k` makes it O(n log k).",
+  "Keep a max-heap of the `k` closest points so far (push `(-dist, x, y)`), popping the farthest whenever it grows past `k`. Or simply use `heapq.nsmallest(k, points, key=...)`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "points": [
+     [
+      1,
+      3
+     ],
+     [
+      -2,
+      2
+     ]
+    ],
+    "k": 1
+   },
+   "expected": [
+    [
+     -2,
+     2
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "points": [
+     [
+      3,
+      3
+     ],
+     [
+      5,
+      -1
+     ],
+     [
+      -2,
+      4
+     ]
+    ],
+    "k": 2
+   },
+   "expected": [
+    [
+     3,
+     3
+    ],
+    [
+     -2,
+     4
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "points": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    "k": 2
+   },
+   "expected": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ]
+  },
+  {
+   "input": {
+    "points": [
+     [
+      1,
+      1
+     ]
+    ],
+    "k": 1
+   },
+   "expected": [
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "input": {
+    "points": [
+     [
+      2,
+      2
+     ],
+     [
+      -1,
+      0
+     ],
+     [
+      0,
+      -3
+     ],
+     [
+      5,
+      5
+     ],
+     [
+      1,
+      1
+     ]
+    ],
+    "k": 3
+   },
+   "expected": [
+    [
+     -1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ]
+  }
+ ]
+}

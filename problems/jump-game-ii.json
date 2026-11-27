@@ -1,0 +1,93 @@
+{
+ "id": "jump-game-ii",
+ "order": 124,
+ "title": "Jump Game II",
+ "category": "Greedy",
+ "difficulty": "Medium",
+ "description": "You start at index `0` of a list `nums`. From index `i` you can jump forward by up to `nums[i]` positions. Return the **minimum number of jumps** needed to reach the last index. The tests guarantee that it is reachable.\n\n**Constraints**\n\n- `1 <= len(nums) <= 10^4`",
+ "function": "jump",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def jump(self, nums: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "Think of it as a breadth-first search: all indices reachable with `k` jumps form one level.",
+  "Each level is a contiguous range of indices. The next level reaches up to the furthest `i + nums[i]` from the current range.",
+  "Keep `end` (the end of the current level) and `far` (the furthest reach). Scan `i` from 0 to `n - 2`, updating `far`; when `i == end`, add a jump and set `end = far`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     2,
+     3,
+     1,
+     1,
+     4
+    ]
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     3,
+     0,
+     1,
+     4
+    ]
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     2
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     1,
+     1,
+     1
+    ]
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "nums": [
+     5,
+     9,
+     3,
+     2,
+     1,
+     0,
+     2,
+     3,
+     3,
+     1,
+     0,
+     0
+    ]
+   },
+   "expected": 3
+  }
+ ]
+}

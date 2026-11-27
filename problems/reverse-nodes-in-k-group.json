@@ -1,0 +1,152 @@
+{
+ "id": "reverse-nodes-in-k-group",
+ "order": 45,
+ "title": "Reverse Nodes in k-Group",
+ "category": "Linked List",
+ "difficulty": "Hard",
+ "description": "You are given the head of a linked list and a positive integer `k`. Reverse the nodes of the list `k` at a time, and return the new head. If the number of nodes left at the end is less than `k`, leave them in their original order.\n\nChange the links between nodes, not the values inside them.\n\nTests show linked lists as Python lists, so `[1, 2, 3]` means `1 -> 2 -> 3`, and `[]` means `None`.\n\n**Constraints**\n\n- The list has `n` nodes, `1 <= k <= n <= 5000`.",
+ "function": "reverseKGroup",
+ "params": [
+  "head",
+  "k"
+ ],
+ "starter": "# Definition for a singly linked list node (already provided):\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\n\nclass Solution:\n    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:\n        pass\n",
+ "arg_types": {
+  "head": "linked_list"
+ },
+ "return_type": "linked_list",
+ "hints": [
+  "Handle one group at a time. Before reversing a group, check that it really has `k` nodes.",
+  "To reconnect a reversed group, you need the node just before the group and the node just after it.",
+  "Use a dummy node. For each group: find the `k`th node, remember `group_next = kth.next`, reverse the group so it points to `group_next`, then link the previous group's tail to `kth` and move on."
+ ],
+ "tests": [
+  {
+   "input": {
+    "head": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "k": 2
+   },
+   "expected": [
+    2,
+    1,
+    4,
+    3,
+    5
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "head": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "k": 3
+   },
+   "expected": [
+    3,
+    2,
+    1,
+    4,
+    5
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "head": [
+     1
+    ],
+    "k": 1
+   },
+   "expected": [
+    1
+   ]
+  },
+  {
+   "input": {
+    "head": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "k": 4
+   },
+   "expected": [
+    4,
+    3,
+    2,
+    1
+   ]
+  },
+  {
+   "input": {
+    "head": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "k": 3
+   },
+   "expected": [
+    3,
+    2,
+    1,
+    6,
+    5,
+    4
+   ]
+  },
+  {
+   "input": {
+    "head": [
+     1,
+     2,
+     3
+    ],
+    "k": 1
+   },
+   "expected": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "input": {
+    "head": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "k": 2
+   },
+   "expected": [
+    2,
+    1,
+    4,
+    3,
+    6,
+    5,
+    7
+   ]
+  }
+ ]
+}

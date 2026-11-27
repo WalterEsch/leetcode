@@ -1,0 +1,108 @@
+{
+ "id": "word-ladder",
+ "order": 92,
+ "title": "Word Ladder",
+ "category": "Graphs",
+ "difficulty": "Hard",
+ "description": "You are given two words, `beginWord` and `endWord`, and a list `wordList`. A transformation sequence goes from `beginWord` to `endWord` by changing one letter at a time, where every word after `beginWord` must be in `wordList`.\n\nReturn the number of words in the **shortest** such sequence (counting both ends), or `0` if there is none.\n\n**Constraints**\n\n- `1 <= len(beginWord) <= 10`, and all words have the same length.\n- `1 <= len(wordList) <= 5000`, lowercase letters, all distinct.",
+ "function": "ladderLength",
+ "params": [
+  "beginWord",
+  "endWord",
+  "wordList"
+ ],
+ "starter": "class Solution:\n    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:\n        pass\n",
+ "hints": [
+  "Treat each word as a node, connected to words that differ by one letter. You want the shortest path.",
+  "Breadth-first search finds shortest paths in unweighted graphs.",
+  "BFS from `beginWord`. To find neighbors quickly, try replacing each position with every letter `a` to `z` and check a set of remaining words (or group words by patterns like `h*t`). Remove words from the set once visited."
+ ],
+ "tests": [
+  {
+   "input": {
+    "beginWord": "hit",
+    "endWord": "cog",
+    "wordList": [
+     "hot",
+     "dot",
+     "dog",
+     "lot",
+     "log",
+     "cog"
+    ]
+   },
+   "expected": 5,
+   "example": true
+  },
+  {
+   "input": {
+    "beginWord": "hit",
+    "endWord": "cog",
+    "wordList": [
+     "hot",
+     "dot",
+     "dog",
+     "lot",
+     "log"
+    ]
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "beginWord": "a",
+    "endWord": "c",
+    "wordList": [
+     "a",
+     "b",
+     "c"
+    ]
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "beginWord": "hot",
+    "endWord": "dog",
+    "wordList": [
+     "hot",
+     "dog"
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "beginWord": "red",
+    "endWord": "tax",
+    "wordList": [
+     "ted",
+     "tex",
+     "red",
+     "tax",
+     "tad",
+     "den",
+     "rex",
+     "pee"
+    ]
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "beginWord": "lost",
+    "endWord": "cost",
+    "wordList": [
+     "most",
+     "fist",
+     "lost",
+     "cost",
+     "fish"
+    ]
+   },
+   "expected": 2
+  }
+ ]
+}

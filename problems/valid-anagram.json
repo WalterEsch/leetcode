@@ -1,0 +1,79 @@
+{
+ "id": "valid-anagram",
+ "order": 2,
+ "title": "Valid Anagram",
+ "category": "Arrays & Hashing",
+ "difficulty": "Easy",
+ "description": "You are given two strings `s` and `t`. Return `True` if `t` is an anagram of `s`, meaning it uses exactly the same letters the same number of times (possibly in a different order). Otherwise return `False`.\n\n**Constraints**\n\n- `1 <= len(s), len(t) <= 5 * 10^4`\n- Both strings contain only lowercase English letters.",
+ "function": "isAnagram",
+ "params": [
+  "s",
+  "t"
+ ],
+ "starter": "class Solution:\n    def isAnagram(self, s: str, t: str) -> bool:\n        pass\n",
+ "hints": [
+  "If the strings have different lengths, can they be anagrams?",
+  "Count how many times each letter appears in each string and compare the counts.",
+  "A dictionary (or `collections.Counter`) of letter counts works in O(n). Sorting both strings and comparing also works in O(n log n)."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "anagram",
+    "t": "nagaram"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "rat",
+    "t": "car"
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "a",
+    "t": "ab"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "ab",
+    "t": "ba"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "aacc",
+    "t": "ccac"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "listen",
+    "t": "silent"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "x",
+    "t": "x"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "abcd",
+    "t": "abce"
+   },
+   "expected": false
+  }
+ ]
+}

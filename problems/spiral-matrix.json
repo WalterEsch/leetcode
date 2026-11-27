@@ -1,0 +1,172 @@
+{
+ "id": "spiral-matrix",
+ "order": 137,
+ "title": "Spiral Matrix",
+ "category": "Math & Geometry",
+ "difficulty": "Medium",
+ "description": "You are given an `m x n` `matrix`. Return all of its elements in spiral order: across the top row left to right, down the right column, back along the bottom row, up the left column, then continue inward.\n\n**Constraints**\n\n- `1 <= m, n <= 10`",
+ "function": "spiralOrder",
+ "params": [
+  "matrix"
+ ],
+ "starter": "class Solution:\n    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:\n        pass\n",
+ "hints": [
+  "Keep four boundaries: `top`, `bottom`, `left` and `right`.",
+  "Walk the top row, then move `top` down. Walk the right column, then move `right` left. And so on for the bottom row and left column.",
+  "Before walking the bottom row or the left column, check that the boundaries haven't crossed. Otherwise single rows or columns get added twice."
+ ],
+ "tests": [
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      4,
+      5,
+      6
+     ],
+     [
+      7,
+      8,
+      9
+     ]
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    3,
+    6,
+    9,
+    8,
+    7,
+    4,
+    5
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      5,
+      6,
+      7,
+      8
+     ],
+     [
+      9,
+      10,
+      11,
+      12
+     ]
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    3,
+    4,
+    8,
+    12,
+    11,
+    10,
+    9,
+    5,
+    6,
+    7
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      7
+     ]
+    ]
+   },
+   "expected": [
+    7
+   ]
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      2,
+      3
+     ]
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "input": {
+    "matrix": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      8
+     ]
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    4,
+    6,
+    8,
+    7,
+    5,
+    3
+   ]
+  }
+ ]
+}

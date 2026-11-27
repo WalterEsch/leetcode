@@ -1,0 +1,111 @@
+{
+ "id": "hand-of-straights",
+ "order": 126,
+ "title": "Hand of Straights",
+ "category": "Greedy",
+ "difficulty": "Medium",
+ "description": "You are given a list `hand` of card values and an integer `groupSize`. Return `True` if the cards can be rearranged into groups of exactly `groupSize` cards, where each group is a run of consecutive values (like `3, 4, 5`).\n\n**Constraints**\n\n- `1 <= len(hand) <= 10^4`\n- `1 <= groupSize <= len(hand)`",
+ "function": "isNStraightHand",
+ "params": [
+  "hand",
+  "groupSize"
+ ],
+ "starter": "class Solution:\n    def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:\n        pass\n",
+ "hints": [
+  "If `len(hand)` isn't divisible by `groupSize`, the answer is `False`.",
+  "The smallest remaining card has to start a group. There's no other group it could belong to.",
+  "Count the cards. Repeatedly take the smallest value with a non-zero count and try to remove one each of `x, x + 1, ..., x + groupSize - 1`; if any is missing, return `False`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "hand": [
+     1,
+     2,
+     3,
+     6,
+     2,
+     3,
+     4,
+     7,
+     8
+    ],
+    "groupSize": 3
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "hand": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "groupSize": 4
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "hand": [
+     5
+    ],
+    "groupSize": 1
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "hand": [
+     1,
+     1,
+     2,
+     2,
+     3,
+     3
+    ],
+    "groupSize": 3
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "hand": [
+     1,
+     2,
+     4,
+     5
+    ],
+    "groupSize": 2
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "hand": [
+     1,
+     1,
+     2,
+     3
+    ],
+    "groupSize": 2
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "hand": [
+     8,
+     10,
+     12
+    ],
+    "groupSize": 3
+   },
+   "expected": false
+  }
+ ]
+}

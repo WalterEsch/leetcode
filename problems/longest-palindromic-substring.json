@@ -1,0 +1,72 @@
+{
+ "id": "longest-palindromic-substring",
+ "order": 103,
+ "title": "Longest Palindromic Substring",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given a string `s`. Return its longest substring that reads the same forwards and backwards. If there are several of the same maximum length, any of them is accepted.\n\n**Constraints**\n\n- `1 <= len(s) <= 1000`, letters and digits only.",
+ "function": "longestPalindrome",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def longestPalindrome(self, s: str) -> str:\n        pass\n",
+ "compare": "custom",
+ "checker": "\ndef check(inp, actual, expected):\n    return (isinstance(actual, str) and len(actual) == len(expected)\n            and actual == actual[::-1] and actual in inp[\"s\"])\n",
+ "hints": [
+  "Every palindrome mirrors around its center. A center is either a single character (odd length) or the gap between two characters (even length).",
+  "There are `2n - 1` possible centers. From each, expand outward while the characters on both sides match.",
+  "For each `i`, expand from `(i, i)` and from `(i, i + 1)`, and keep the longest palindrome found. This is O(n^2) time and O(1) space."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "babad"
+   },
+   "expected": "bab",
+   "example": true
+  },
+  {
+   "input": {
+    "s": "cbbd"
+   },
+   "expected": "bb",
+   "example": true
+  },
+  {
+   "input": {
+    "s": "a"
+   },
+   "expected": "a"
+  },
+  {
+   "input": {
+    "s": "ac"
+   },
+   "expected": "a"
+  },
+  {
+   "input": {
+    "s": "forgeeksskeegfor"
+   },
+   "expected": "geeksskeeg"
+  },
+  {
+   "input": {
+    "s": "abacdfgdcaba"
+   },
+   "expected": "aba"
+  },
+  {
+   "input": {
+    "s": "aaaa"
+   },
+   "expected": "aaaa"
+  },
+  {
+   "input": {
+    "s": "racecar"
+   },
+   "expected": "racecar"
+  }
+ ]
+}

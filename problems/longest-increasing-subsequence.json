@@ -1,0 +1,114 @@
+{
+ "id": "longest-increasing-subsequence",
+ "order": 109,
+ "title": "Longest Increasing Subsequence",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given a list of integers `nums`. Return the length of the longest **strictly increasing** subsequence. A subsequence keeps the original order but may skip elements.\n\n**Constraints**\n\n- `1 <= len(nums) <= 2500`",
+ "function": "lengthOfLIS",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def lengthOfLIS(self, nums: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "Let `dp[i]` be the length of the longest increasing subsequence that **ends** at index `i`.",
+  "`dp[i] = 1 + max(dp[j])` over all `j < i` with `nums[j] < nums[i]` (or just 1). The answer is the max of `dp`. That's O(n^2).",
+  "For O(n log n), keep a list `tails` where `tails[k]` is the smallest possible tail of an increasing subsequence of length `k + 1`. For each number, replace the first tail `>=` it using `bisect_left`, or append it."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     10,
+     9,
+     2,
+     5,
+     3,
+     7,
+     101,
+     18
+    ]
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     1,
+     0,
+     3,
+     2,
+     3
+    ]
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "nums": [
+     4,
+     10,
+     4,
+     3,
+     8,
+     9
+    ]
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "nums": [
+     5,
+     4,
+     3,
+     2,
+     1
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     3,
+     6,
+     7,
+     9,
+     4,
+     10,
+     5,
+     6
+    ]
+   },
+   "expected": 6
+  }
+ ]
+}

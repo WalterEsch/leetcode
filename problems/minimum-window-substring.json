@@ -1,0 +1,79 @@
+{
+ "id": "minimum-window-substring",
+ "order": 19,
+ "title": "Minimum Window Substring",
+ "category": "Sliding Window",
+ "difficulty": "Hard",
+ "description": "You are given two strings `s` and `t`. Return the shortest substring of `s` that contains every character of `t`, including repeats (if `t` has two `\"a\"`s, the window needs at least two). If there is no such substring, return `\"\"`.\n\nThe tests guarantee the shortest window is unique.\n\n**Constraints**\n\n- `1 <= len(s), len(t) <= 10^5`\n- `s` and `t` contain uppercase and lowercase English letters.",
+ "function": "minWindow",
+ "params": [
+  "s",
+  "t"
+ ],
+ "starter": "class Solution:\n    def minWindow(self, s: str, t: str) -> str:\n        pass\n",
+ "hints": [
+  "Use a window over `s`. Grow it on the right until it contains everything in `t`.",
+  "Once the window is valid, shrink it from the left as much as possible while it stays valid, recording the smallest valid window.",
+  "Keep counts of what `t` needs and a number `have` of characters whose required count is satisfied. The window is valid when `have` equals the number of distinct characters in `t`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "ADOBECODEBANC",
+    "t": "ABC"
+   },
+   "expected": "BANC",
+   "example": true
+  },
+  {
+   "input": {
+    "s": "a",
+    "t": "a"
+   },
+   "expected": "a",
+   "example": true
+  },
+  {
+   "input": {
+    "s": "a",
+    "t": "aa"
+   },
+   "expected": ""
+  },
+  {
+   "input": {
+    "s": "ab",
+    "t": "b"
+   },
+   "expected": "b"
+  },
+  {
+   "input": {
+    "s": "aaflslflsldkalskaaa",
+    "t": "aaa"
+   },
+   "expected": "aaa"
+  },
+  {
+   "input": {
+    "s": "cabwefgewcwaefgcf",
+    "t": "cae"
+   },
+   "expected": "cwae"
+  },
+  {
+   "input": {
+    "s": "abc",
+    "t": "d"
+   },
+   "expected": ""
+  },
+  {
+   "input": {
+    "s": "bba",
+    "t": "ab"
+   },
+   "expected": "ba"
+  }
+ ]
+}

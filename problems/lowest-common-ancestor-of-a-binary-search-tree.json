@@ -1,0 +1,140 @@
+{
+ "id": "lowest-common-ancestor-of-a-binary-search-tree",
+ "order": 52,
+ "title": "Lowest Common Ancestor of a Binary Search Tree",
+ "category": "Trees",
+ "difficulty": "Medium",
+ "description": "You are given the `root` of a binary search tree and two of its nodes, `p` and `q`. Return their lowest common ancestor: the deepest node that has both `p` and `q` as descendants. A node counts as a descendant of itself.\n\nIn the tests, `p` and `q` are shown by their values, and the expected output is the value of the node you return. Your function receives the actual `TreeNode` objects.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- The tree has 2 to 10^5 nodes with distinct values. `p != q`, and both are in the tree.",
+ "function": "lowestCommonAncestor",
+ "params": [
+  "root",
+  "p",
+  "q"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:\n        pass\n",
+ "harness": "\ndef call(problem, ns, inp):\n    root = build_tree(inp[\"root\"])\n    def find(n, v):\n        while n and n.val != v:\n            n = n.left if v < n.val else n.right\n        return n\n    ans = ns[\"Solution\"]().lowestCommonAncestor(root, find(root, inp[\"p\"]), find(root, inp[\"q\"]))\n    return ans.val if ans is not None else None\n",
+ "arg_types": {
+  "root": "tree"
+ },
+ "hints": [
+  "In a BST, everything smaller than a node is on its left and everything larger is on its right.",
+  "If `p` and `q` are both smaller than the current node, the answer is in the left subtree. If both are larger, it's in the right subtree.",
+  "Walk down from the root. The first node where `p` and `q` split (one on each side, or one of them equals the node) is the answer."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     6,
+     2,
+     8,
+     0,
+     4,
+     7,
+     9,
+     null,
+     null,
+     3,
+     5
+    ],
+    "p": 2,
+    "q": 8
+   },
+   "expected": 6,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     6,
+     2,
+     8,
+     0,
+     4,
+     7,
+     9,
+     null,
+     null,
+     3,
+     5
+    ],
+    "p": 2,
+    "q": 4
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     2,
+     1
+    ],
+    "p": 2,
+    "q": 1
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     6,
+     2,
+     8,
+     0,
+     4,
+     7,
+     9,
+     null,
+     null,
+     3,
+     5
+    ],
+    "p": 3,
+    "q": 5
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "root": [
+     6,
+     2,
+     8,
+     0,
+     4,
+     7,
+     9,
+     null,
+     null,
+     3,
+     5
+    ],
+    "p": 0,
+    "q": 5
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "root": [
+     6,
+     2,
+     8,
+     0,
+     4,
+     7,
+     9,
+     null,
+     null,
+     3,
+     5
+    ],
+    "p": 7,
+    "q": 9
+   },
+   "expected": 8
+  }
+ ]
+}

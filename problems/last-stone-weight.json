@@ -1,0 +1,83 @@
+{
+ "id": "last-stone-weight",
+ "order": 65,
+ "title": "Last Stone Weight",
+ "category": "Heap / Priority Queue",
+ "difficulty": "Easy",
+ "description": "You have a list of stone weights, `stones`. Each turn, take the two heaviest stones, `x <= y`, and smash them together. If `x == y`, both are destroyed. Otherwise `x` is destroyed and `y` becomes `y - x`.\n\nRepeat until at most one stone is left. Return its weight, or `0` if none are left.\n\n**Constraints**\n\n- `1 <= len(stones) <= 30`\n- `1 <= stones[i] <= 1000`",
+ "function": "lastStoneWeight",
+ "params": [
+  "stones"
+ ],
+ "starter": "class Solution:\n    def lastStoneWeight(self, stones: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "Each turn you need the two largest values, and then you may add a new value back.",
+  "A max-heap does exactly that. Python's `heapq` is a min-heap, so store negative weights.",
+  "Push `-w` for every stone. While the heap has 2 or more items, pop two, and if they differ push back the negative of their difference. Return `-heap[0]` if anything is left, else `0`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "stones": [
+     2,
+     7,
+     4,
+     1,
+     8,
+     1
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "stones": [
+     1
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "stones": [
+     2,
+     2
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "stones": [
+     3,
+     7,
+     2
+    ]
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "stones": [
+     10,
+     4,
+     2,
+     10
+    ]
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "stones": [
+     1,
+     1,
+     1
+    ]
+   },
+   "expected": 1
+  }
+ ]
+}

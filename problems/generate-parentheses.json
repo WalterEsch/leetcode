@@ -1,0 +1,122 @@
+{
+ "id": "generate-parentheses",
+ "order": 24,
+ "title": "Generate Parentheses",
+ "category": "Stack",
+ "difficulty": "Medium",
+ "description": "Given an integer `n`, return every string made of `n` pairs of parentheses that is well formed (every `(` is closed by a later `)`). The strings can be in any order.\n\n**Constraints**\n\n- `1 <= n <= 8`",
+ "function": "generateParenthesis",
+ "params": [
+  "n"
+ ],
+ "starter": "class Solution:\n    def generateParenthesis(self, n: int) -> List[str]:\n        pass\n",
+ "compare": "unordered",
+ "hints": [
+  "Build each string one character at a time. When is it allowed to add `(`? When is it allowed to add `)`?",
+  "You can add `(` while fewer than `n` have been used. You can add `)` only while there are more `(` than `)` so far.",
+  "Write a recursive (backtracking) function that tracks the counts of open and closed parentheses, and records the string when its length reaches `2 * n`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "n": 3
+   },
+   "expected": [
+    "((()))",
+    "(()())",
+    "(())()",
+    "()(())",
+    "()()()"
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "n": 1
+   },
+   "expected": [
+    "()"
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "n": 2
+   },
+   "expected": [
+    "(())",
+    "()()"
+   ]
+  },
+  {
+   "input": {
+    "n": 4
+   },
+   "expected": [
+    "(((())))",
+    "((()()))",
+    "((())())",
+    "((()))()",
+    "(()(()))",
+    "(()()())",
+    "(()())()",
+    "(())(())",
+    "(())()()",
+    "()((()))",
+    "()(()())",
+    "()(())()",
+    "()()(())",
+    "()()()()"
+   ]
+  },
+  {
+   "input": {
+    "n": 5
+   },
+   "expected": [
+    "((((()))))",
+    "(((()())))",
+    "(((())()))",
+    "(((()))())",
+    "(((())))()",
+    "((()(())))",
+    "((()()()))",
+    "((()())())",
+    "((()()))()",
+    "((())(()))",
+    "((())()())",
+    "((())())()",
+    "((()))(())",
+    "((()))()()",
+    "(()((())))",
+    "(()(()()))",
+    "(()(())())",
+    "(()(()))()",
+    "(()()(()))",
+    "(()()()())",
+    "(()()())()",
+    "(()())(())",
+    "(()())()()",
+    "(())((()))",
+    "(())(()())",
+    "(())(())()",
+    "(())()(())",
+    "(())()()()",
+    "()(((())))",
+    "()((()()))",
+    "()((())())",
+    "()((()))()",
+    "()(()(()))",
+    "()(()()())",
+    "()(()())()",
+    "()(())(())",
+    "()(())()()",
+    "()()((()))",
+    "()()(()())",
+    "()()(())()",
+    "()()()(())",
+    "()()()()()"
+   ]
+  }
+ ]
+}

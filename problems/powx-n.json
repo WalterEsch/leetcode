@@ -1,0 +1,73 @@
+{
+ "id": "powx-n",
+ "order": 141,
+ "title": "Pow(x, n)",
+ "category": "Math & Geometry",
+ "difficulty": "Medium",
+ "description": "Compute `x` raised to the power `n`, where `x` is a float and `n` is an integer that may be negative. Don't use `**` or `pow`. Aim for O(log n) multiplications.\n\nAnswers within `10^-5` (relative) of the expected value are accepted.\n\n**Constraints**\n\n- `-100.0 < x < 100.0`\n- `-2^31 <= n <= 2^31 - 1`, and `x` is not 0 when `n` is negative.",
+ "function": "myPow",
+ "params": [
+  "x",
+  "n"
+ ],
+ "starter": "class Solution:\n    def myPow(self, x: float, n: int) -> float:\n        pass\n",
+ "hints": [
+  "Multiplying `x` by itself `n` times is too slow for `n` around 2 billion.",
+  "`x^n = (x^(n/2))^2` when `n` is even, and `x * x^(n-1)` when it's odd. Each step halves the problem.",
+  "Handle negative `n` with `1 / myPow(x, -n)`. Then use repeated squaring: while `n > 0`, multiply the result by `x` if `n` is odd, square `x`, and halve `n`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "x": 2.0,
+    "n": 10
+   },
+   "expected": 1024.0,
+   "example": true
+  },
+  {
+   "input": {
+    "x": 2.1,
+    "n": 3
+   },
+   "expected": 9.261000000000001,
+   "example": true
+  },
+  {
+   "input": {
+    "x": 2.0,
+    "n": -2
+   },
+   "expected": 0.25,
+   "example": true
+  },
+  {
+   "input": {
+    "x": 1.0,
+    "n": 2147483647
+   },
+   "expected": 1.0
+  },
+  {
+   "input": {
+    "x": 0.5,
+    "n": 0
+   },
+   "expected": 1.0
+  },
+  {
+   "input": {
+    "x": -2.0,
+    "n": 3
+   },
+   "expected": -8.0
+  },
+  {
+   "input": {
+    "x": 1.00001,
+    "n": 123456
+   },
+   "expected": 3.4368447520907104
+  }
+ ]
+}

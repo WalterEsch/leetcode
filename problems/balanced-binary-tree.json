@@ -1,0 +1,111 @@
+{
+ "id": "balanced-binary-tree",
+ "order": 49,
+ "title": "Balanced Binary Tree",
+ "category": "Trees",
+ "difficulty": "Easy",
+ "description": "You are given the `root` of a binary tree. Return `True` if it is height-balanced: at **every** node, the heights of the left and right subtrees differ by at most 1.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- The tree has 0 to 5000 nodes.",
+ "function": "isBalanced",
+ "params": [
+  "root"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def isBalanced(self, root: Optional[TreeNode]) -> bool:\n        pass\n",
+ "arg_types": {
+  "root": "tree"
+ },
+ "hints": [
+  "Checking the heights at the root is not enough. Every node has to be balanced.",
+  "Computing heights separately for every node repeats a lot of work (O(n^2)). Can one pass compute heights and check balance together?",
+  "Write a recursive function that returns a subtree's height, or `-1` if that subtree is unbalanced. Pass the `-1` straight up as soon as you see it."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     3,
+     9,
+     20,
+     null,
+     null,
+     15,
+     7
+    ]
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     2,
+     3,
+     3,
+     null,
+     null,
+     4,
+     4
+    ]
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "root": []
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     2,
+     3,
+     null,
+     null,
+     3,
+     4,
+     null,
+     null,
+     4
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     null,
+     2,
+     null,
+     3
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "root": [
+     1
+    ]
+   },
+   "expected": true
+  }
+ ]
+}

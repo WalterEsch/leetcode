@@ -1,154 +1,154 @@
 {
-  "id": "group-anagrams",
-  "order": 4,
-  "title": "Group Anagrams",
-  "category": "Arrays & Hashing",
-  "difficulty": "Medium",
-  "description": "You are given a list of lowercase strings `strs`. Put the strings into groups so that each group holds words that are anagrams of each other (they use exactly the same letters, the same number of times). Return the list of groups.\n\nThe groups, and the words inside each group, can be in any order.\n\n**Constraints**\n\n- `1 <= len(strs) <= 10^4`\n- `0 <= len(strs[i]) <= 100`\n- Strings contain only lowercase English letters.",
-  "function": "groupAnagrams",
-  "params": [
-    "strs"
-  ],
-  "compare": "unordered_nested",
-  "starter": "class Solution:\n    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:\n        pass\n",
-  "tests": [
-    {
-      "input": {
-        "strs": [
-          "eat",
-          "tea",
-          "tan",
-          "ate",
-          "nat",
-          "bat"
-        ]
-      },
-      "expected": [
-        [
-          "bat"
-        ],
-        [
-          "nat",
-          "tan"
-        ],
-        [
-          "ate",
-          "eat",
-          "tea"
-        ]
-      ],
-      "example": true
-    },
-    {
-      "input": {
-        "strs": [
-          ""
-        ]
-      },
-      "expected": [
-        [
-          ""
-        ]
-      ],
-      "example": true
-    },
-    {
-      "input": {
-        "strs": [
-          "a"
-        ]
-      },
-      "expected": [
-        [
-          "a"
-        ]
-      ],
-      "example": true
-    },
-    {
-      "input": {
-        "strs": [
-          "abc",
-          "bca",
-          "cab",
-          "xyz",
-          "zyx",
-          "q"
-        ]
-      },
-      "expected": [
-        [
-          "abc",
-          "bca",
-          "cab"
-        ],
-        [
-          "xyz",
-          "zyx"
-        ],
-        [
-          "q"
-        ]
-      ]
-    },
-    {
-      "input": {
-        "strs": [
-          "ab",
-          "ba",
-          "ab"
-        ]
-      },
-      "expected": [
-        [
-          "ab",
-          "ba",
-          "ab"
-        ]
-      ]
-    },
-    {
-      "input": {
-        "strs": [
-          "",
-          "",
-          "b"
-        ]
-      },
-      "expected": [
-        [
-          "",
-          ""
-        ],
-        [
-          "b"
-        ]
-      ]
-    },
-    {
-      "input": {
-        "strs": [
-          "aab",
-          "abb",
-          "bab",
-          "baa"
-        ]
-      },
-      "expected": [
-        [
-          "aab",
-          "baa"
-        ],
-        [
-          "abb",
-          "bab"
-        ]
-      ]
-    }
-  ],
-  "hints": [
-    "Two words are anagrams when they contain the same letters. What could you compute from a word that is identical for all of its anagrams?",
-    "Sorting a word's letters gives the same result for every anagram (`\"tea\"` and `\"eat\"` both become `\"aet\"`). Use that as a dictionary key.",
-    "For an O(n * k) solution, use a tuple of 26 letter counts as the key instead of the sorted word. Group with `collections.defaultdict(list)` and return its values."
-  ]
+ "id": "group-anagrams",
+ "order": 4,
+ "title": "Group Anagrams",
+ "category": "Arrays & Hashing",
+ "difficulty": "Medium",
+ "description": "You are given a list of lowercase strings `strs`. Put the strings into groups so that each group holds words that are anagrams of each other (they use exactly the same letters, the same number of times). Return the list of groups.\n\nThe groups, and the words inside each group, can be in any order.\n\n**Constraints**\n\n- `1 <= len(strs) <= 10^4`\n- `0 <= len(strs[i]) <= 100`\n- Strings contain only lowercase English letters.",
+ "function": "groupAnagrams",
+ "params": [
+  "strs"
+ ],
+ "starter": "class Solution:\n    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:\n        pass\n",
+ "compare": "unordered_nested",
+ "hints": [
+  "Two words are anagrams when they contain the same letters. What could you compute from a word that is identical for all of its anagrams?",
+  "Sorting a word's letters gives the same result for every anagram (`\"tea\"` and `\"eat\"` both become `\"aet\"`). Use that as a dictionary key.",
+  "For an O(n * k) solution, use a tuple of 26 letter counts as the key instead of the sorted word. Group with `collections.defaultdict(list)` and return its values."
+ ],
+ "tests": [
+  {
+   "input": {
+    "strs": [
+     "eat",
+     "tea",
+     "tan",
+     "ate",
+     "nat",
+     "bat"
+    ]
+   },
+   "expected": [
+    [
+     "eat",
+     "tea",
+     "ate"
+    ],
+    [
+     "tan",
+     "nat"
+    ],
+    [
+     "bat"
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "strs": [
+     ""
+    ]
+   },
+   "expected": [
+    [
+     ""
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "strs": [
+     "a"
+    ]
+   },
+   "expected": [
+    [
+     "a"
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "strs": [
+     "abc",
+     "bca",
+     "cab",
+     "xyz",
+     "zyx",
+     "q"
+    ]
+   },
+   "expected": [
+    [
+     "abc",
+     "bca",
+     "cab"
+    ],
+    [
+     "xyz",
+     "zyx"
+    ],
+    [
+     "q"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "strs": [
+     "ab",
+     "ba",
+     "ab"
+    ]
+   },
+   "expected": [
+    [
+     "ab",
+     "ba",
+     "ab"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "strs": [
+     "",
+     "",
+     "b"
+    ]
+   },
+   "expected": [
+    [
+     "",
+     ""
+    ],
+    [
+     "b"
+    ]
+   ]
+  },
+  {
+   "input": {
+    "strs": [
+     "aab",
+     "abb",
+     "bab",
+     "baa"
+    ]
+   },
+   "expected": [
+    [
+     "aab",
+     "baa"
+    ],
+    [
+     "abb",
+     "bab"
+    ]
+   ]
+  }
+ ]
 }

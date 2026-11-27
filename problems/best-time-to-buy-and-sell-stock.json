@@ -1,0 +1,101 @@
+{
+ "id": "best-time-to-buy-and-sell-stock",
+ "order": 15,
+ "title": "Best Time to Buy and Sell Stock",
+ "category": "Sliding Window",
+ "difficulty": "Easy",
+ "description": "You are given a list `prices` where `prices[i]` is a stock's price on day `i`. You may buy once and sell once, on a later day. Return the largest profit you can make, or `0` if no profit is possible.\n\n**Constraints**\n\n- `1 <= len(prices) <= 10^5`\n- `0 <= prices[i] <= 10^4`",
+ "function": "maxProfit",
+ "params": [
+  "prices"
+ ],
+ "starter": "class Solution:\n    def maxProfit(self, prices: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "For each day you might sell on, what is the best day to have bought?",
+  "The best buy day is simply the lowest price seen so far.",
+  "Track the minimum price so far in one pass, and at each day update the best profit with `price - min_price`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "prices": [
+     7,
+     1,
+     5,
+     3,
+     6,
+     4
+    ]
+   },
+   "expected": 5,
+   "example": true
+  },
+  {
+   "input": {
+    "prices": [
+     7,
+     6,
+     4,
+     3,
+     1
+    ]
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "prices": [
+     1
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "prices": [
+     2,
+     4,
+     1
+    ]
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "prices": [
+     3,
+     2,
+     6,
+     5,
+     0,
+     3
+    ]
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "prices": [
+     1,
+     2
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "prices": [
+     2,
+     1,
+     2,
+     1,
+     0,
+     1,
+     2
+    ]
+   },
+   "expected": 2
+  }
+ ]
+}

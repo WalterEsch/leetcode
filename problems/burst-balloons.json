@@ -1,0 +1,80 @@
+{
+ "id": "burst-balloons",
+ "order": 120,
+ "title": "Burst Balloons",
+ "category": "2-D Dynamic Programming",
+ "difficulty": "Hard",
+ "description": "You have `n` balloons in a row, and balloon `i` has the number `nums[i]`. Bursting balloon `i` earns `nums[left] * nums[i] * nums[right]` coins, where `left` and `right` are its current neighbors. A missing neighbor (past either end) counts as `1`. After a burst, its neighbors become adjacent.\n\nBurst all the balloons and return the most coins you can collect.\n\n**Constraints**\n\n- `1 <= n <= 300`\n- `0 <= nums[i] <= 100`",
+ "function": "maxCoins",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def maxCoins(self, nums: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "Choosing which balloon to burst **first** is hard, because the neighbors keep changing. What about choosing which balloon to burst **last**?",
+  "If balloon `k` is the last one burst between boundaries `l` and `r`, its neighbors at that moment are exactly `l` and `r`. The two sides are then independent subproblems.",
+  "Pad `nums` with a `1` at each end. `dp(l, r) = max over l < k < r of nums[l] * nums[k] * nums[r] + dp(l, k) + dp(k, r)`. The answer is `dp(0, n + 1)`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     3,
+     1,
+     5,
+     8
+    ]
+   },
+   "expected": 167,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     5
+    ]
+   },
+   "expected": 10,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     7
+    ]
+   },
+   "expected": 7
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     0
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     3,
+     4
+    ]
+   },
+   "expected": 36
+  },
+  {
+   "input": {
+    "nums": [
+     9,
+     76,
+     64,
+     21
+    ]
+   },
+   "expected": 116718
+  }
+ ]
+}

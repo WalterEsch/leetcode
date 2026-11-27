@@ -1,0 +1,9 @@
+class Solution:
+    def merge(self, intervals):
+        res = []
+        for s, e in sorted(intervals):
+            if res and s <= res[-1][1]:
+                res[-1][1] = max(res[-1][1], e)
+            else:
+                res.append([s, e])
+        return res

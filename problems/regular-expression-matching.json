@@ -1,0 +1,87 @@
+{
+ "id": "regular-expression-matching",
+ "order": 121,
+ "title": "Regular Expression Matching",
+ "category": "2-D Dynamic Programming",
+ "difficulty": "Hard",
+ "description": "Implement pattern matching with two special characters:\n\n- `.` matches any single character.\n- `*` matches zero or more of the character just before it.\n\nGiven a string `s` and a pattern `p`, return `True` if the pattern matches the **whole** string.\n\n**Constraints**\n\n- `1 <= len(s) <= 20`, `1 <= len(p) <= 20`\n- `s` has lowercase letters; `p` has lowercase letters, `.` and `*`. Every `*` follows a valid character.",
+ "function": "isMatch",
+ "params": [
+  "s",
+  "p"
+ ],
+ "starter": "class Solution:\n    def isMatch(self, s: str, p: str) -> bool:\n        pass\n",
+ "hints": [
+  "Match from the left. Check whether the first characters match (`p[j] == s[i]` or `p[j] == '.'`), and look ahead to see whether `p[j + 1]` is `*`.",
+  "If the next pattern character is `*`, there are two options: use the `x*` zero times (skip 2 pattern characters), or, if the first characters match, use it once more (advance in `s` only).",
+  "Write `dp(i, j)` for whether `s[i:]` matches `p[j:]`, using the two cases above, and memoize it. The base case: `j == len(p)` matches only if `i == len(s)`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "aa",
+    "p": "a"
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "aa",
+    "p": "a*"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "ab",
+    "p": ".*"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "aab",
+    "p": "c*a*b"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "mississippi",
+    "p": "mis*is*p*."
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "ab",
+    "p": ".*c"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "aaa",
+    "p": "a*a"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "a",
+    "p": "ab*"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "abcd",
+    "p": "d*"
+   },
+   "expected": false
+  }
+ ]
+}

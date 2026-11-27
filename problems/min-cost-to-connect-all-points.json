@@ -1,0 +1,117 @@
+{
+ "id": "min-cost-to-connect-all-points",
+ "order": 95,
+ "title": "Min Cost to Connect All Points",
+ "category": "Advanced Graphs",
+ "difficulty": "Medium",
+ "description": "You are given a list of `points`, where `points[i] = [x, y]`. Connecting two points costs their Manhattan distance, `|x1 - x2| + |y1 - y2|`.\n\nReturn the minimum total cost to connect all the points, so that there is exactly one path between any two points.\n\n**Constraints**\n\n- `1 <= len(points) <= 1000`, all points distinct.",
+ "function": "minCostConnectPoints",
+ "params": [
+  "points"
+ ],
+ "starter": "class Solution:\n    def minCostConnectPoints(self, points: List[List[int]]) -> int:\n        pass\n",
+ "hints": [
+  "You want a minimum spanning tree of a complete graph whose edge weights are Manhattan distances.",
+  "Prim's algorithm grows the tree one point at a time, always adding the cheapest edge from the tree to a point outside it.",
+  "Since the graph is dense, a simple O(n^2) Prim works well: keep `dist[i]`, the cheapest edge from the tree to point `i`. Repeatedly pick the unvisited point with the smallest `dist`, add its cost, and update the others."
+ ],
+ "tests": [
+  {
+   "input": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      3,
+      10
+     ],
+     [
+      5,
+      2
+     ],
+     [
+      7,
+      0
+     ]
+    ]
+   },
+   "expected": 20,
+   "example": true
+  },
+  {
+   "input": {
+    "points": [
+     [
+      3,
+      12
+     ],
+     [
+      -2,
+      5
+     ],
+     [
+      -4,
+      1
+     ]
+    ]
+   },
+   "expected": 18,
+   "example": true
+  },
+  {
+   "input": {
+    "points": [
+     [
+      0,
+      0
+     ]
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      -1,
+      1
+     ]
+    ]
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "points": [
+     [
+      -1000000,
+      -1000000
+     ],
+     [
+      1000000,
+      1000000
+     ]
+    ]
+   },
+   "expected": 4000000
+  }
+ ]
+}

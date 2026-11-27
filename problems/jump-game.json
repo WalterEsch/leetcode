@@ -1,0 +1,98 @@
+{
+ "id": "jump-game",
+ "order": 123,
+ "title": "Jump Game",
+ "category": "Greedy",
+ "difficulty": "Medium",
+ "description": "You start at index `0` of a list `nums`. From index `i` you can jump forward by **up to** `nums[i]` positions. Return `True` if you can reach the last index.\n\n**Constraints**\n\n- `1 <= len(nums) <= 10^4`\n- `0 <= nums[i] <= 10^5`",
+ "function": "canJump",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def canJump(self, nums: List[int]) -> bool:\n        pass\n",
+ "hints": [
+  "Instead of trying every jump, keep track of how far you could possibly reach.",
+  "Scan left to right with `reach` = the furthest index reachable so far. If you ever reach an index `i > reach`, you're stuck.",
+  "For each `i` up to `reach`, update `reach = max(reach, i + nums[i])`. Return `True` once `reach >= len(nums) - 1`. (Working backward from the goal also works.)"
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     2,
+     3,
+     1,
+     1,
+     4
+    ]
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     3,
+     2,
+     1,
+     0,
+     4
+    ]
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0
+    ]
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     1
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     0,
+     0
+    ]
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     1,
+     0,
+     1
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "nums": [
+     5,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "expected": true
+  }
+ ]
+}

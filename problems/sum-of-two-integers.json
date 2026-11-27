@@ -1,0 +1,73 @@
+{
+ "id": "sum-of-two-integers",
+ "order": 149,
+ "title": "Sum of Two Integers",
+ "category": "Bit Manipulation",
+ "difficulty": "Medium",
+ "description": "Given two integers `a` and `b`, return their sum **without** using the `+` or `-` operators.\n\nPython integers don't overflow, so to handle negative numbers you will need to simulate 32-bit integers with a mask.\n\n**Constraints**\n\n- `-1000 <= a, b <= 1000`",
+ "function": "getSum",
+ "params": [
+  "a",
+  "b"
+ ],
+ "starter": "class Solution:\n    def getSum(self, a: int, b: int) -> int:\n        pass\n",
+ "hints": [
+  "In binary, `a ^ b` adds the bits without carrying, and `(a & b) << 1` gives the carries.",
+  "Repeat: set `a` to the sum without carries and `b` to the carries, until there are no carries left.",
+  "In Python, keep values to 32 bits with `& 0xFFFFFFFF` at each step. At the end, if the result is above `0x7FFFFFFF`, convert it back to a negative number with `~(a ^ 0xFFFFFFFF)`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "a": 1,
+    "b": 2
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "a": 2,
+    "b": 3
+   },
+   "expected": 5,
+   "example": true
+  },
+  {
+   "input": {
+    "a": -1,
+    "b": 1
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "a": -5,
+    "b": -7
+   },
+   "expected": -12
+  },
+  {
+   "input": {
+    "a": 0,
+    "b": 0
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "a": 1000,
+    "b": -999
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "a": -1000,
+    "b": 1
+   },
+   "expected": -999
+  }
+ ]
+}

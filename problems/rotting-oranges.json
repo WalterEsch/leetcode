@@ -1,0 +1,136 @@
+{
+ "id": "rotting-oranges",
+ "order": 84,
+ "title": "Rotting Oranges",
+ "category": "Graphs",
+ "difficulty": "Medium",
+ "description": "You are given an `m x n` grid where `0` is an empty cell, `1` is a fresh orange and `2` is a rotten orange. Every minute, each fresh orange next to a rotten one (up, down, left or right) becomes rotten.\n\nReturn the number of minutes until no fresh orange is left, or `-1` if that never happens.\n\n**Constraints**\n\n- `1 <= m, n <= 10`",
+ "function": "orangesRotting",
+ "params": [
+  "grid"
+ ],
+ "starter": "class Solution:\n    def orangesRotting(self, grid: List[List[int]]) -> int:\n        pass\n",
+ "hints": [
+  "Rot spreads outward from all rotten oranges at the same time, one step per minute.",
+  "That is a breadth-first search that starts from every rotten orange at once. Each BFS level is one minute.",
+  "Count the fresh oranges and queue all rotten ones. Process the queue level by level, rotting fresh neighbors and decreasing the count. At the end, return the minutes if the count is 0, else `-1`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "grid": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      0,
+      1,
+      1
+     ]
+    ]
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      1,
+      0,
+      1
+     ]
+    ]
+   },
+   "expected": -1,
+   "example": true
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      0,
+      2
+     ]
+    ]
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      0
+     ]
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      1
+     ]
+    ]
+   },
+   "expected": -1
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      2,
+      2
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      2,
+      0
+     ]
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    ]
+   },
+   "expected": 5
+  }
+ ]
+}

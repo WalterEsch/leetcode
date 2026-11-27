@@ -1,0 +1,177 @@
+{
+ "id": "3sum",
+ "order": 12,
+ "title": "3Sum",
+ "category": "Two Pointers",
+ "difficulty": "Medium",
+ "description": "You are given a list of integers `nums`. Return every **distinct** triplet `[a, b, c]` of values taken from three different positions such that `a + b + c == 0`.\n\nThe answer must not contain the same triplet twice. The triplets, and the numbers inside each triplet, can be in any order.\n\n**Constraints**\n\n- `3 <= len(nums) <= 3000`\n- `-10^5 <= nums[i] <= 10^5`",
+ "function": "threeSum",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def threeSum(self, nums: List[int]) -> List[List[int]]:\n        pass\n",
+ "compare": "unordered_nested",
+ "hints": [
+  "Sort the list first. That makes skipping duplicates and searching easier.",
+  "Fix the first number `nums[i]`, then the problem becomes Two Sum II on the rest of the sorted list with target `-nums[i]`.",
+  "Use two pointers for the inner search. Skip `i` when `nums[i] == nums[i - 1]`, and after finding a triplet, move `l` past repeated values to avoid duplicates."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     -1,
+     0,
+     1,
+     2,
+     -1,
+     -4
+    ]
+   },
+   "expected": [
+    [
+     -1,
+     -1,
+     2
+    ],
+    [
+     -1,
+     0,
+     1
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     1,
+     1
+    ]
+   },
+   "expected": [],
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     0,
+     0
+    ]
+   },
+   "expected": [
+    [
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "expected": [
+    [
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     -2,
+     0,
+     1,
+     1,
+     2
+    ]
+   },
+   "expected": [
+    [
+     -2,
+     0,
+     2
+    ],
+    [
+     -2,
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     3,
+     -2,
+     1,
+     0
+    ]
+   },
+   "expected": []
+  },
+  {
+   "input": {
+    "nums": [
+     -4,
+     -2,
+     -2,
+     -2,
+     0,
+     1,
+     2,
+     2,
+     2,
+     3,
+     3,
+     4,
+     4,
+     6,
+     6
+    ]
+   },
+   "expected": [
+    [
+     -4,
+     -2,
+     6
+    ],
+    [
+     -4,
+     0,
+     4
+    ],
+    [
+     -4,
+     1,
+     3
+    ],
+    [
+     -4,
+     2,
+     2
+    ],
+    [
+     -2,
+     -2,
+     4
+    ],
+    [
+     -2,
+     0,
+     2
+    ]
+   ]
+  }
+ ]
+}

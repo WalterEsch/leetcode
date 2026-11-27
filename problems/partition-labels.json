@@ -1,0 +1,75 @@
+{
+ "id": "partition-labels",
+ "order": 128,
+ "title": "Partition Labels",
+ "category": "Greedy",
+ "difficulty": "Medium",
+ "description": "You are given a string `s`. Split it into as many pieces as possible so that each letter appears in at most one piece. Return the sizes of the pieces, in order.\n\n**Constraints**\n\n- `1 <= len(s) <= 500`, lowercase letters only.",
+ "function": "partitionLabels",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def partitionLabels(self, s: str) -> List[int]:\n        pass\n",
+ "hints": [
+  "A piece containing some letter must stretch at least to that letter's last occurrence.",
+  "First record the last index of every letter.",
+  "Scan with a running `end = max(end, last[ch])`. When the index reaches `end`, the current piece is complete: record its size and start a new one."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "ababcbacadefegdehijhklij"
+   },
+   "expected": [
+    9,
+    7,
+    8
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "s": "eccbbbbdec"
+   },
+   "expected": [
+    10
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "s": "a"
+   },
+   "expected": [
+    1
+   ]
+  },
+  {
+   "input": {
+    "s": "abc"
+   },
+   "expected": [
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "input": {
+    "s": "abca"
+   },
+   "expected": [
+    4
+   ]
+  },
+  {
+   "input": {
+    "s": "caedbdedda"
+   },
+   "expected": [
+    1,
+    9
+   ]
+  }
+ ]
+}

@@ -1,0 +1,207 @@
+{
+ "id": "insert-interval",
+ "order": 130,
+ "title": "Insert Interval",
+ "category": "Intervals",
+ "difficulty": "Medium",
+ "description": "You are given a list of non-overlapping `intervals`, each `[start, end]`, sorted by start. Insert `newInterval`, merging any intervals that overlap with it, and return the resulting sorted list of non-overlapping intervals.\n\nIntervals that touch (one ends where the next starts) count as overlapping.\n\n**Constraints**\n\n- `0 <= len(intervals) <= 10^4`",
+ "function": "insert",
+ "params": [
+  "intervals",
+  "newInterval"
+ ],
+ "starter": "class Solution:\n    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:\n        pass\n",
+ "hints": [
+  "The intervals fall into three groups: completely before `newInterval`, overlapping it, and completely after it.",
+  "Every overlapping interval gets absorbed. The merged interval runs from the smallest start to the largest end among them.",
+  "Add the intervals that end before `newInterval` starts, then merge all intervals that overlap into `newInterval` and add it, then add the rest."
+ ],
+ "tests": [
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      3
+     ],
+     [
+      6,
+      9
+     ]
+    ],
+    "newInterval": [
+     2,
+     5
+    ]
+   },
+   "expected": [
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     9
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      10
+     ],
+     [
+      12,
+      16
+     ]
+    ],
+    "newInterval": [
+     4,
+     8
+    ]
+   },
+   "expected": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     12,
+     16
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [],
+    "newInterval": [
+     5,
+     7
+    ]
+   },
+   "expected": [
+    [
+     5,
+     7
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      5
+     ]
+    ],
+    "newInterval": [
+     6,
+     8
+    ]
+   },
+   "expected": [
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     8
+    ]
+   ]
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      3,
+      5
+     ]
+    ],
+    "newInterval": [
+     1,
+     2
+    ]
+   },
+   "expected": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     5
+    ]
+   ]
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      5
+     ]
+    ],
+    "newInterval": [
+     0,
+     0
+    ]
+   },
+   "expected": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     5
+    ]
+   ]
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      2
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    "newInterval": [
+     2,
+     5
+    ]
+   },
+   "expected": [
+    [
+     1,
+     6
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,213 @@
+{
+ "id": "max-area-of-island",
+ "order": 81,
+ "title": "Max Area of Island",
+ "category": "Graphs",
+ "difficulty": "Medium",
+ "description": "You are given an `m x n` grid of `0`s (water) and `1`s (land). An island is a group of `1`s connected horizontally or vertically, and its area is the number of cells in it. Return the largest island area, or `0` if there is no land.\n\n**Constraints**\n\n- `1 <= m, n <= 50`",
+ "function": "maxAreaOfIsland",
+ "params": [
+  "grid"
+ ],
+ "starter": "class Solution:\n    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:\n        pass\n",
+ "hints": [
+  "This is Number of Islands, but you also need the size of each island.",
+  "Make the flood fill return the number of cells it visited.",
+  "`dfs(r, c)` returns 0 for water, out-of-bounds or visited cells; otherwise it marks the cell and returns `1 +` the sum of `dfs` on its four neighbors. Keep the maximum."
+ ],
+ "tests": [
+  {
+   "input": {
+    "grid": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+     ]
+    ]
+   },
+   "expected": 6,
+   "example": true
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    ]
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      1
+     ]
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ]
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      1,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      1
+     ]
+    ]
+   },
+   "expected": 1
+  }
+ ]
+}

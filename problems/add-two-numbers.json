@@ -1,0 +1,139 @@
+{
+ "id": "add-two-numbers",
+ "order": 41,
+ "title": "Add Two Numbers",
+ "category": "Linked List",
+ "difficulty": "Medium",
+ "description": "You are given two non-empty linked lists `l1` and `l2` that represent non-negative integers. The digits are stored in **reverse order**, one digit per node, so `[2, 4, 3]` means 342. Return the sum as a linked list in the same format.\n\nNeither number has leading zeros, except the number 0 itself.\n\nTests show linked lists as Python lists, so `[1, 2, 3]` means `1 -> 2 -> 3`, and `[]` means `None`.\n\n**Constraints**\n\n- Each list has 1 to 100 nodes.",
+ "function": "addTwoNumbers",
+ "params": [
+  "l1",
+  "l2"
+ ],
+ "starter": "# Definition for a singly linked list node (already provided):\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\n\nclass Solution:\n    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:\n        pass\n",
+ "arg_types": {
+  "l1": "linked_list",
+  "l2": "linked_list"
+ },
+ "return_type": "linked_list",
+ "hints": [
+  "Add the digits the way you would by hand, starting from the ones place, which is the head of each list.",
+  "Keep a `carry`. Each new digit is `(a + b + carry) % 10`, and the new carry is `(a + b + carry) // 10`.",
+  "Loop while either list has nodes **or** carry is non-zero, treating a missing node as 0. Build the result after a dummy node."
+ ],
+ "tests": [
+  {
+   "input": {
+    "l1": [
+     2,
+     4,
+     3
+    ],
+    "l2": [
+     5,
+     6,
+     4
+    ]
+   },
+   "expected": [
+    7,
+    0,
+    8
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "l1": [
+     0
+    ],
+    "l2": [
+     0
+    ]
+   },
+   "expected": [
+    0
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "l1": [
+     9,
+     9,
+     9,
+     9,
+     9,
+     9,
+     9
+    ],
+    "l2": [
+     9,
+     9,
+     9,
+     9
+    ]
+   },
+   "expected": [
+    8,
+    9,
+    9,
+    9,
+    0,
+    0,
+    0,
+    1
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "l1": [
+     5
+    ],
+    "l2": [
+     5
+    ]
+   },
+   "expected": [
+    0,
+    1
+   ]
+  },
+  {
+   "input": {
+    "l1": [
+     1,
+     8
+    ],
+    "l2": [
+     0
+    ]
+   },
+   "expected": [
+    1,
+    8
+   ]
+  },
+  {
+   "input": {
+    "l1": [
+     9
+    ],
+    "l2": [
+     1,
+     9,
+     9,
+     9
+    ]
+   },
+   "expected": [
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ ]
+}
