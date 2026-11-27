@@ -17,7 +17,6 @@ import math
 import sys
 import time
 import traceback
-from typing import List, Optional  # noqa: F401  (made available to solutions)
 
 MAX_STDOUT = 4000
 MAX_NODES = 100_000
@@ -107,6 +106,7 @@ def tree_to_values(root):
 
 CONVERT_IN = {
     "linked_list": build_linked_list,
+    "linked_list_list": lambda lists: [build_linked_list(v) for v in lists],
     "tree": build_tree,
 }
 
@@ -124,30 +124,49 @@ def _sort_key(x):
     return json.dumps(x, sort_keys=True)
 
 
-def answers_match(actual, expected, mode):
-    if mode == "float":
-        return isinstance(actual, (int, float)) and math.isclose(
-            actual, expected, rel_tol=1e-5, abs_tol=1e-5)
+def deep_equal(a, b):
+    """Like ==, but floats only need to be close, and tuples count as lists."""
+    if isinstance(a, bool) or isinstance(b, bool):
+        return a is b if isinstance(a, bool) and isinstance(b, bool) else False
+    if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        if isinstance(a, float) or isinstance(b, float):
+            return math.isclose(a, b, rel_tol=1e-5, abs_tol=1e-5)
+        return a == b
+    if isinstance(a, (list, tuple)) and isinstance(b, (list, tuple)):
+        return len(a) == len(b) and all(deep_equal(x, y) for x, y in zip(a, b))
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(deep_equal(a[k], b[k]) for k in a)
+    return a == b
+
+
+def answers_match(actual, expected, mode, test_input=None, checker=None):
+    if mode == "custom":
+        return bool(checker(copy.deepcopy(test_input), actual, expected))
     if mode == "unordered":
-        if not isinstance(actual, list):
+        if not isinstance(actual, (list, tuple)):
             return False
+        actual = [list(x) if isinstance(x, tuple) else x for x in actual]
         return sorted(actual, key=_sort_key) == sorted(expected, key=_sort_key)
     if mode == "unordered_nested":
-        if not isinstance(actual, list) or not all(isinstance(g, list) for g in actual):
+        if not isinstance(actual, (list, tuple)) or not all(isinstance(g, (list, tuple)) for g in actual):
             return False
         norm = lambda groups: sorted((sorted(g, key=_sort_key) for g in groups), key=_sort_key)  # noqa: E731
         return norm(actual) == norm(expected)
-    return actual == expected
+    return deep_equal(actual, expected)
 
 
 def to_jsonable(value):
     """Make a value safe to send to the browser."""
+    if isinstance(value, tuple):
+        value = list(value)
+    if isinstance(value, float) and (math.isinf(value) or math.isnan(value)):
+        return {"__repr__": repr(value)}
     try:
-        json.dumps(value)
+        json.dumps(value, allow_nan=False)
         return value
     except (TypeError, ValueError):
-        if isinstance(value, tuple):
-            return to_jsonable(list(value))
+        if isinstance(value, list):
+            return [to_jsonable(v) for v in value]
         return {"__repr__": repr(value)}
 
 
@@ -166,18 +185,53 @@ def user_traceback(exc):
     return "".join(lines).rstrip()
 
 
-def run(problem, code):
+def base_namespace():
     namespace = {
         "__name__": "solution",
-        "List": List,
-        "Optional": Optional,
         "ListNode": ListNode,
         "TreeNode": TreeNode,
-        "collections": collections,
-        "heapq": heapq,
-        "math": math,
+        "build_linked_list": build_linked_list,
+        "linked_list_to_values": linked_list_to_values,
+        "build_tree": build_tree,
+        "tree_to_values": tree_to_values,
     }
-    exec("from typing import *", namespace)
+    exec("from typing import *\nimport collections, heapq, math, bisect, itertools, functools\n"
+         "from collections import *\nfrom heapq import *\nfrom functools import *", namespace)
+    return namespace
+
+
+def call_function(problem, namespace, test_input):
+    """Default way to run one test: call Solution().<function>(*args)."""
+    params = problem["params"]
+    arg_types = problem.get("arg_types", {})
+    raw_args = [copy.deepcopy(test_input[p]) for p in params]
+    args = [CONVERT_IN[arg_types[p]](a) if p in arg_types else a for p, a in zip(params, raw_args)]
+    result = getattr(namespace["Solution"](), problem["function"])(*args)
+    # Some problems ask you to change an argument in place instead of returning.
+    out_arg = problem.get("output_from_arg")
+    if out_arg:
+        result = args[params.index(out_arg)]
+        conv = arg_types.get(out_arg)
+        return CONVERT_OUT[conv](result) if conv in CONVERT_OUT else result
+    return_type = problem.get("return_type")
+    return CONVERT_OUT[return_type](result) if return_type in CONVERT_OUT else result
+
+
+def call_design(problem, namespace, test_input):
+    """Design problems: build the class, then call methods in order."""
+    ops = test_input["operations"]
+    arguments = copy.deepcopy(test_input["arguments"])
+    obj = namespace[ops[0]](*arguments[0])
+    outputs = [None]
+    for op, op_args in zip(ops[1:], arguments[1:]):
+        outputs.append(getattr(obj, op)(*op_args))
+    return outputs
+
+
+def run(problem, code):
+    namespace = base_namespace()
+    if problem.get("prelude"):
+        exec(problem["prelude"], namespace)
 
     try:
         compiled = compile(code, "solution.py", "exec")
@@ -191,30 +245,42 @@ def run(problem, code):
     except Exception as exc:  # noqa: BLE001
         return {"ok": False, "error": user_traceback(exc)}
 
-    solution_cls = namespace.get("Solution")
-    func_name = problem["function"]
-    if solution_cls is None or not hasattr(solution_cls, func_name):
-        return {"ok": False, "error": f"Could not find class Solution with a method named {func_name}()."}
+    kind = problem.get("kind", "function")
+    if kind == "design":
+        name = problem["class"]
+        if name not in namespace:
+            return {"ok": False, "error": f"Could not find a class named {name}."}
+        caller = call_design
+    else:
+        if "Solution" not in namespace or not hasattr(namespace["Solution"], problem["function"]):
+            return {"ok": False, "error": f"Could not find class Solution with a method named {problem['function']}()."}
+        caller = call_function
 
-    params = problem["params"]
-    arg_types = problem.get("arg_types", {})
-    return_type = problem.get("return_type")
+    # A problem can supply its own way to call your code (for example, to build
+    # a linked list with a cycle) and its own way to check answers.
+    helpers = dict(namespace)
+    if problem.get("harness"):
+        exec(problem["harness"], helpers)
+        caller = helpers["call"]
+    checker = None
+    if problem.get("checker"):
+        exec(problem["checker"], helpers)
+        checker = helpers["check"]
     compare_mode = problem.get("compare", "exact")
 
     results = []
     for index, test in enumerate(problem["tests"]):
-        raw_args = [copy.deepcopy(test["input"][p]) for p in params]
-        args = [CONVERT_IN[arg_types[p]](a) if p in arg_types else a for p, a in zip(params, raw_args)]
         out = io.StringIO()
-        entry = {"index": index, "input": test["input"], "expected": test["expected"]}
+        entry = {"index": index, "input": test["input"], "expected": test.get("expected")}
         start = time.perf_counter()
         try:
             with contextlib.redirect_stdout(out):
-                result = getattr(solution_cls(), func_name)(*args)
-            if return_type in CONVERT_OUT:
-                result = CONVERT_OUT[return_type](result)
+                result = caller(problem, namespace, copy.deepcopy(test["input"]))
             entry["actual"] = to_jsonable(result)
-            entry["passed"] = answers_match(result, test["expected"], compare_mode)
+            entry["passed"] = answers_match(result, test.get("expected"), compare_mode, test["input"], checker)
+        except RecursionError as exc:
+            entry["passed"] = False
+            entry["error"] = user_traceback(exc)[-1500:]
         except Exception as exc:  # noqa: BLE001
             entry["passed"] = False
             entry["error"] = user_traceback(exc)
@@ -233,6 +299,7 @@ def run(problem, code):
 
 
 def main():
+    sys.setrecursionlimit(20000)  # recursive tree and DFS solutions can go deep
     if len(sys.argv) != 3:
         print(__doc__, file=sys.stderr)
         sys.exit(2)

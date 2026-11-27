@@ -1,0 +1,81 @@
+{
+ "id": "interleaving-string",
+ "order": 116,
+ "title": "Interleaving String",
+ "category": "2-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given three strings `s1`, `s2` and `s3`. Return `True` if `s3` can be formed by interleaving `s1` and `s2`: taking all characters of both strings, keeping each string's characters in their original order, and merging them into one string.\n\n**Constraints**\n\n- `0 <= len(s1), len(s2) <= 100`, `0 <= len(s3) <= 200`",
+ "function": "isInterleave",
+ "params": [
+  "s1",
+  "s2",
+  "s3"
+ ],
+ "starter": "class Solution:\n    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:\n        pass\n",
+ "hints": [
+  "If the lengths don't add up, the answer is `False`. Otherwise, each character of `s3` comes from either `s1` or `s2`.",
+  "The state is how many characters you have used from each string: `(i, j)`. Then the next character of `s3` is `s3[i + j]`.",
+  "`dp(i, j)` is `True` if `s1[i] == s3[i + j]` and `dp(i + 1, j)`, or `s2[j] == s3[i + j]` and `dp(i, j + 1)`. Memoize it, or fill a 2-D table."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s1": "aabcc",
+    "s2": "dbbca",
+    "s3": "aadbbcbcac"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s1": "aabcc",
+    "s2": "dbbca",
+    "s3": "aadbbbaccc"
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "s1": "",
+    "s2": "",
+    "s3": ""
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s1": "a",
+    "s2": "",
+    "s3": "c"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s1": "ab",
+    "s2": "cd",
+    "s3": "acbd"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s1": "abc",
+    "s2": "def",
+    "s3": "abcdefg"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s1": "aa",
+    "s2": "ab",
+    "s3": "aaba"
+   },
+   "expected": true
+  }
+ ]
+}

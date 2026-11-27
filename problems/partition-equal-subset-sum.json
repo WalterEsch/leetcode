@@ -1,0 +1,122 @@
+{
+ "id": "partition-equal-subset-sum",
+ "order": 110,
+ "title": "Partition Equal Subset Sum",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given a list of positive integers `nums`. Return `True` if it can be split into two groups with equal sums.\n\n**Constraints**\n\n- `1 <= len(nums) <= 200`\n- `1 <= nums[i] <= 100`",
+ "function": "canPartition",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def canPartition(self, nums: List[int]) -> bool:\n        pass\n",
+ "hints": [
+  "If the total is odd, the answer is `False`. Otherwise you need a subset that adds up to `total / 2`.",
+  "Track every sum that can be made from the numbers seen so far.",
+  "Start with the set `{0}`. For each number `x`, add `s + x` for every reachable sum `s`. Return whether `total // 2` becomes reachable. (A boolean array works the same way.)"
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     1,
+     5,
+     11,
+     5
+    ]
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     2,
+     3,
+     5
+    ]
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     2
+    ]
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     2,
+     5
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "nums": [
+     3,
+     3,
+     3,
+     4,
+     5
+    ]
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "nums": [
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     99,
+     1
+    ]
+   },
+   "expected": false
+  }
+ ]
+}

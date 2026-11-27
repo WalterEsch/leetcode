@@ -1,0 +1,91 @@
+{
+ "id": "kth-smallest-element-in-a-bst",
+ "order": 57,
+ "title": "Kth Smallest Element in a BST",
+ "category": "Trees",
+ "difficulty": "Medium",
+ "description": "You are given the `root` of a binary search tree and an integer `k`. Return the `k`th smallest value in the tree, counting from 1.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- The tree has `n` nodes, `1 <= k <= n <= 10^4`.",
+ "function": "kthSmallest",
+ "params": [
+  "root",
+  "k"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:\n        pass\n",
+ "arg_types": {
+  "root": "tree"
+ },
+ "hints": [
+  "Which traversal of a BST visits the values in sorted order?",
+  "An in-order traversal (left, node, right) produces the values from smallest to largest.",
+  "Do an in-order traversal (iteratively with a stack is neat) and stop as soon as you have visited `k` nodes."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     3,
+     1,
+     4,
+     null,
+     2
+    ],
+    "k": 1
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     5,
+     3,
+     6,
+     2,
+     4,
+     null,
+     null,
+     1
+    ],
+    "k": 3
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1
+    ],
+    "k": 1
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "root": [
+     5,
+     3,
+     6,
+     2,
+     4,
+     null,
+     null,
+     1
+    ],
+    "k": 6
+   },
+   "expected": 6
+  },
+  {
+   "input": {
+    "root": [
+     2,
+     1,
+     3
+    ],
+    "k": 2
+   },
+   "expected": 2
+  }
+ ]
+}

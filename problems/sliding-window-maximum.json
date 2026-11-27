@@ -1,0 +1,145 @@
+{
+ "id": "sliding-window-maximum",
+ "order": 20,
+ "title": "Sliding Window Maximum",
+ "category": "Sliding Window",
+ "difficulty": "Hard",
+ "description": "You are given a list of integers `nums` and a window size `k`. A window of size `k` slides from the left end of the list to the right end, one position at a time. Return a list with the maximum value in each window position.\n\n**Constraints**\n\n- `1 <= len(nums) <= 10^5`\n- `1 <= k <= len(nums)`",
+ "function": "maxSlidingWindow",
+ "params": [
+  "nums",
+  "k"
+ ],
+ "starter": "class Solution:\n    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:\n        pass\n",
+ "hints": [
+  "Taking `max()` of every window is O(n * k). Which elements in a window can never be the maximum of any later window?",
+  "If a newer element is bigger than an older one, the older one can never be a maximum again. Throw it away.",
+  "Keep a deque of indices whose values are decreasing. Pop from the back while the new value is bigger, pop from the front when the index leaves the window, and the front is always the current maximum."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     1,
+     3,
+     -1,
+     -3,
+     5,
+     3,
+     6,
+     7
+    ],
+    "k": 3
+   },
+   "expected": [
+    3,
+    3,
+    5,
+    5,
+    6,
+    7
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1
+    ],
+    "k": 1
+   },
+   "expected": [
+    1
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     -1
+    ],
+    "k": 1
+   },
+   "expected": [
+    1,
+    -1
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     9,
+     11
+    ],
+    "k": 2
+   },
+   "expected": [
+    11
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     4,
+     -2
+    ],
+    "k": 2
+   },
+   "expected": [
+    4
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     7,
+     2,
+     4
+    ],
+    "k": 2
+   },
+   "expected": [
+    7,
+    4
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     3,
+     1,
+     2,
+     0,
+     5
+    ],
+    "k": 3
+   },
+   "expected": [
+    3,
+    3,
+    2,
+    5
+   ]
+  },
+  {
+   "input": {
+    "nums": [
+     5,
+     4,
+     3,
+     2,
+     1
+    ],
+    "k": 2
+   },
+   "expected": [
+    5,
+    4,
+    3,
+    2
+   ]
+  }
+ ]
+}

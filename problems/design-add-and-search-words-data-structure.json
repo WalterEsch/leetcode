@@ -1,0 +1,177 @@
+{
+ "id": "design-add-and-search-words-data-structure",
+ "order": 62,
+ "title": "Design Add and Search Words Data Structure",
+ "category": "Tries",
+ "difficulty": "Medium",
+ "description": "Design a word dictionary that supports searching with wildcards.\n\n- `WordDictionary()` creates an empty dictionary.\n- `addWord(word)` adds `word`.\n- `search(word)` returns `True` if any added word matches `word`, where each `.` in `word` matches any single letter.\n\nWords contain lowercase letters (and `.` in searches). A search word has at most 2 dots.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class WordDictionary:\n    def __init__(self):\n        pass\n\n    def addWord(self, word: str) -> None:\n        pass\n\n    def search(self, word: str) -> bool:\n        pass\n",
+ "kind": "design",
+ "class": "WordDictionary",
+ "hints": [
+  "Store the words in a trie, as in Implement Trie.",
+  "A normal letter follows one child. A `.` could be any child, so you have to try them all.",
+  "Search with a recursive DFS `dfs(i, node)`. For `.`, return `True` if `dfs(i + 1, child)` succeeds for any child. At the end of the word, check the node's end-of-word flag."
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "WordDictionary",
+     "addWord",
+     "addWord",
+     "addWord",
+     "search",
+     "search",
+     "search",
+     "search"
+    ],
+    "arguments": [
+     [],
+     [
+      "bad"
+     ],
+     [
+      "dad"
+     ],
+     [
+      "mad"
+     ],
+     [
+      "pad"
+     ],
+     [
+      "bad"
+     ],
+     [
+      ".ad"
+     ],
+     [
+      "b.."
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    false,
+    true,
+    true,
+    true
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "WordDictionary",
+     "search",
+     "addWord",
+     "search",
+     "search"
+    ],
+    "arguments": [
+     [],
+     [
+      "."
+     ],
+     [
+      "a"
+     ],
+     [
+      "."
+     ],
+     [
+      ".."
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    false,
+    null,
+    true,
+    false
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "WordDictionary",
+     "addWord",
+     "addWord",
+     "search",
+     "search",
+     "search",
+     "search"
+    ],
+    "arguments": [
+     [],
+     [
+      "at"
+     ],
+     [
+      "and"
+     ],
+     [
+      "a"
+     ],
+     [
+      ".at"
+     ],
+     [
+      "an."
+     ],
+     [
+      "a."
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    false,
+    false,
+    true,
+    true
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "WordDictionary",
+     "addWord",
+     "search",
+     "search",
+     "search"
+    ],
+    "arguments": [
+     [],
+     [
+      "hello"
+     ],
+     [
+      "h.ll."
+     ],
+     [
+      "hell"
+     ],
+     [
+      "hello."
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    true,
+    false,
+    false
+   ]
+  }
+ ]
+}

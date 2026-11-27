@@ -1,0 +1,58 @@
+{
+ "id": "climbing-stairs",
+ "order": 99,
+ "title": "Climbing Stairs",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Easy",
+ "description": "You are climbing a staircase with `n` steps. Each move, you climb either 1 or 2 steps. Return the number of distinct ways to reach the top.\n\n**Constraints**\n\n- `1 <= n <= 45`",
+ "function": "climbStairs",
+ "params": [
+  "n"
+ ],
+ "starter": "class Solution:\n    def climbStairs(self, n: int) -> int:\n        pass\n",
+ "hints": [
+  "To land on step `n`, your last move came from step `n - 1` or from step `n - 2`.",
+  "So `ways(n) = ways(n - 1) + ways(n - 2)`. Plain recursion repeats the same work many times. Remember results.",
+  "Iterate from the bottom with two variables, like computing Fibonacci numbers: `a, b = b, a + b`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "n": 2
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "n": 3
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "n": 1
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "n": 5
+   },
+   "expected": 8
+  },
+  {
+   "input": {
+    "n": 10
+   },
+   "expected": 89
+  },
+  {
+   "input": {
+    "n": 45
+   },
+   "expected": 1836311903
+  }
+ ]
+}

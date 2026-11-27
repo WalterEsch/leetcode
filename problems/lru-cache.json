@@ -1,0 +1,228 @@
+{
+ "id": "lru-cache",
+ "order": 43,
+ "title": "LRU Cache",
+ "category": "Linked List",
+ "difficulty": "Medium",
+ "description": "Design a Least Recently Used (LRU) cache with a fixed capacity.\n\n- `LRUCache(capacity)` creates the cache.\n- `get(key)` returns the key's value, or `-1` if it is not present. Reading a key counts as using it.\n- `put(key, value)` inserts or updates the key, which also counts as using it. If this makes the cache hold more than `capacity` keys, remove the key that was used least recently.\n\n`get` and `put` must each run in O(1) average time.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class LRUCache:\n    def __init__(self, capacity: int):\n        pass\n\n    def get(self, key: int) -> int:\n        pass\n\n    def put(self, key: int, value: int) -> None:\n        pass\n",
+ "kind": "design",
+ "class": "LRUCache",
+ "hints": [
+  "You need fast lookup by key (a dictionary) and a way to track usage order that you can update in O(1).",
+  "A doubly linked list lets you move any node to the front, or remove it, in O(1) if you already have a reference to that node.",
+  "Map each key to its node in a doubly linked list ordered from most to least recently used. On `get` or `put`, move the node to the front. When over capacity, remove the node at the back. (`collections.OrderedDict` with `move_to_end` does the same thing.)"
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "LRUCache",
+     "put",
+     "put",
+     "get",
+     "put",
+     "get",
+     "put",
+     "get",
+     "get",
+     "get"
+    ],
+    "arguments": [
+     [
+      2
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      2
+     ],
+     [
+      4,
+      4
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ],
+     [
+      4
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    1,
+    null,
+    -1,
+    null,
+    -1,
+    3,
+    4
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "LRUCache",
+     "put",
+     "get",
+     "put",
+     "get",
+     "get"
+    ],
+    "arguments": [
+     [
+      1
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      2
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    1,
+    null,
+    -1,
+    2
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "LRUCache",
+     "put",
+     "put",
+     "put",
+     "put",
+     "get",
+     "get"
+    ],
+    "arguments": [
+     [
+      2
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      1
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    -1,
+    3
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "LRUCache",
+     "get",
+     "put",
+     "get",
+     "put",
+     "put",
+     "get",
+     "get"
+    ],
+    "arguments": [
+     [
+      2
+     ],
+     [
+      2
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      1
+     ],
+     [
+      1,
+      5
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    -1,
+    null,
+    -1,
+    null,
+    null,
+    2,
+    6
+   ]
+  }
+ ]
+}

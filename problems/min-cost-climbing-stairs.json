@@ -1,0 +1,90 @@
+{
+ "id": "min-cost-climbing-stairs",
+ "order": 100,
+ "title": "Min Cost Climbing Stairs",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Easy",
+ "description": "You are given a list `cost` where `cost[i]` is the price of stepping on stair `i`. After paying for a stair you can climb 1 or 2 stairs. You can start on stair `0` or stair `1`.\n\nReturn the minimum cost to get past the last stair (the \"top\" is just beyond the end of the list).\n\n**Constraints**\n\n- `2 <= len(cost) <= 1000`\n- `0 <= cost[i] <= 999`",
+ "function": "minCostClimbingStairs",
+ "params": [
+  "cost"
+ ],
+ "starter": "class Solution:\n    def minCostClimbingStairs(self, cost: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "Let `best[i]` be the cheapest cost to stand on stair `i` (before paying for it).",
+  "`best[i] = min(best[i - 1] + cost[i - 1], best[i - 2] + cost[i - 2])`, with `best[0] = best[1] = 0`.",
+  "The answer is `best[len(cost)]`. You only ever need the previous two values, so two variables are enough."
+ ],
+ "tests": [
+  {
+   "input": {
+    "cost": [
+     10,
+     15,
+     20
+    ]
+   },
+   "expected": 15,
+   "example": true
+  },
+  {
+   "input": {
+    "cost": [
+     1,
+     100,
+     1,
+     1,
+     1,
+     100,
+     1,
+     1,
+     100,
+     1
+    ]
+   },
+   "expected": 6,
+   "example": true
+  },
+  {
+   "input": {
+    "cost": [
+     0,
+     0
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "cost": [
+     5,
+     1
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "cost": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "expected": 6
+  },
+  {
+   "input": {
+    "cost": [
+     0,
+     2,
+     2,
+     1
+    ]
+   },
+   "expected": 2
+  }
+ ]
+}

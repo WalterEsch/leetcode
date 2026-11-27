@@ -1,0 +1,127 @@
+{
+ "id": "two-sum-ii-input-array-is-sorted",
+ "order": 11,
+ "title": "Two Sum II - Input Array Is Sorted",
+ "category": "Two Pointers",
+ "difficulty": "Medium",
+ "description": "You are given a list of integers `numbers` sorted in non-decreasing order, and an integer `target`. Find the two numbers that add up to `target` and return their positions as `[index1, index2]`, **counting from 1**, with `index1 < index2`.\n\nThere is exactly one answer, and you may not use the same element twice. Use only O(1) extra space.\n\n**Constraints**\n\n- `2 <= len(numbers) <= 3 * 10^4`\n- `-1000 <= numbers[i], target <= 1000`",
+ "function": "twoSum",
+ "params": [
+  "numbers",
+  "target"
+ ],
+ "starter": "class Solution:\n    def twoSum(self, numbers: List[int], target: int) -> List[int]:\n        pass\n",
+ "hints": [
+  "The list is sorted. How can you use that instead of a dictionary?",
+  "Start with one pointer at each end. If their sum is too small, what should move? If it is too big?",
+  "While `l < r`: if `numbers[l] + numbers[r]` is less than `target`, move `l` right; if greater, move `r` left; otherwise return `[l + 1, r + 1]`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "numbers": [
+     2,
+     7,
+     11,
+     15
+    ],
+    "target": 9
+   },
+   "expected": [
+    1,
+    2
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "numbers": [
+     2,
+     3,
+     4
+    ],
+    "target": 6
+   },
+   "expected": [
+    1,
+    3
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "numbers": [
+     -1,
+     0
+    ],
+    "target": -1
+   },
+   "expected": [
+    1,
+    2
+   ]
+  },
+  {
+   "input": {
+    "numbers": [
+     1,
+     2,
+     3,
+     4,
+     4,
+     9,
+     56,
+     90
+    ],
+    "target": 8
+   },
+   "expected": [
+    4,
+    5
+   ]
+  },
+  {
+   "input": {
+    "numbers": [
+     5,
+     25,
+     75
+    ],
+    "target": 100
+   },
+   "expected": [
+    2,
+    3
+   ]
+  },
+  {
+   "input": {
+    "numbers": [
+     -5,
+     -3,
+     0,
+     2,
+     9
+    ],
+    "target": 6
+   },
+   "expected": [
+    2,
+    5
+   ]
+  },
+  {
+   "input": {
+    "numbers": [
+     1,
+     1
+    ],
+    "target": 2
+   },
+   "expected": [
+    1,
+    2
+   ]
+  }
+ ]
+}

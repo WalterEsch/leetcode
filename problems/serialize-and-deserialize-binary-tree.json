@@ -1,0 +1,163 @@
+{
+ "id": "serialize-and-deserialize-binary-tree",
+ "order": 60,
+ "title": "Serialize and Deserialize Binary Tree",
+ "category": "Trees",
+ "difficulty": "Hard",
+ "description": "Design a `Codec` class with two methods:\n\n- `serialize(root)` turns a binary tree into a string.\n- `deserialize(data)` turns that string back into the same tree.\n\nYou can choose any string format. Each test serializes a tree, deserializes the result, and checks that you get back an identical tree.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- The tree has 0 to 10^4 nodes, with values from -1000 to 1000.",
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Codec:\n    def serialize(self, root: Optional[TreeNode]) -> str:\n        pass\n\n    def deserialize(self, data: str) -> Optional[TreeNode]:\n        pass\n",
+ "harness": "\ndef call(problem, ns, inp):\n    data = ns[\"Codec\"]().serialize(build_tree(inp[\"root\"]))\n    if not isinstance(data, str):\n        raise TypeError(f\"serialize() must return a str, but it returned {type(data).__name__}\")\n    return tree_to_values(ns[\"Codec\"]().deserialize(data))\n",
+ "kind": "design",
+ "class": "Codec",
+ "hints": [
+  "A traversal alone loses information about where children are missing. How could you record missing children?",
+  "Write a marker such as `N` for every `None` child. A preorder traversal with those markers describes the tree exactly.",
+  "Serialize with a preorder DFS that writes values and `N` separated by commas. To deserialize, split on commas and rebuild with a recursive function that reads the next token: `N` means `None`, otherwise make a node and build its left, then right child."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3,
+     null,
+     null,
+     4,
+     5
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    3,
+    null,
+    null,
+    4,
+    5
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "root": []
+   },
+   "expected": [],
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1
+    ]
+   },
+   "expected": [
+    1
+   ]
+  },
+  {
+   "input": {
+    "root": [
+     -1,
+     0,
+     1000,
+     -1000
+    ]
+   },
+   "expected": [
+    -1,
+    0,
+    1000,
+    -1000
+   ]
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     null,
+     2,
+     null,
+     3,
+     null,
+     4
+    ]
+   },
+   "expected": [
+    1,
+    null,
+    2,
+    null,
+    3,
+    null,
+    4
+   ]
+  },
+  {
+   "input": {
+    "root": [
+     5,
+     4,
+     7,
+     3,
+     null,
+     2,
+     null,
+     -1,
+     null,
+     9
+    ]
+   },
+   "expected": [
+    5,
+    4,
+    7,
+    3,
+    null,
+    2,
+    null,
+    -1,
+    null,
+    9
+   ]
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+   ]
+  }
+ ]
+}

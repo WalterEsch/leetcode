@@ -1,0 +1,133 @@
+{
+ "id": "invert-binary-tree",
+ "order": 46,
+ "title": "Invert Binary Tree",
+ "category": "Trees",
+ "difficulty": "Easy",
+ "description": "You are given the `root` of a binary tree. Mirror it, so that every node's left and right children are swapped, and return the root.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- The tree has 0 to 100 nodes.",
+ "function": "invertTree",
+ "params": [
+  "root"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:\n        pass\n",
+ "arg_types": {
+  "root": "tree"
+ },
+ "return_type": "tree",
+ "hints": [
+  "Swapping the root's two children is a start. What else needs to happen?",
+  "Every subtree also has to be mirrored. That is the same problem on a smaller tree.",
+  "Recursively: if `root` is `None` return `None`; otherwise swap `root.left` and `root.right`, invert both children, and return `root`. A BFS with a queue works too."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     4,
+     2,
+     7,
+     1,
+     3,
+     6,
+     9
+    ]
+   },
+   "expected": [
+    4,
+    7,
+    2,
+    9,
+    6,
+    3,
+    1
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     2,
+     1,
+     3
+    ]
+   },
+   "expected": [
+    2,
+    3,
+    1
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "root": []
+   },
+   "expected": [],
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1
+    ]
+   },
+   "expected": [
+    1
+   ]
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2
+    ]
+   },
+   "expected": [
+    1,
+    null,
+    2
+   ]
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     null,
+     3,
+     null,
+     4
+    ]
+   },
+   "expected": [
+    1,
+    null,
+    2,
+    null,
+    3,
+    null,
+    4
+   ]
+  },
+  {
+   "input": {
+    "root": [
+     5,
+     3,
+     8,
+     null,
+     4,
+     7
+    ]
+   },
+   "expected": [
+    5,
+    8,
+    3,
+    null,
+    7,
+    4
+   ]
+  }
+ ]
+}

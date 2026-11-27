@@ -1,0 +1,189 @@
+{
+ "id": "word-search-ii",
+ "order": 63,
+ "title": "Word Search II",
+ "category": "Tries",
+ "difficulty": "Hard",
+ "description": "You are given an `m x n` grid of letters `board` and a list of `words`. Return every word from `words` that can be spelled on the board.\n\nA word is spelled by moving between horizontally or vertically adjacent cells, and the same cell can't be used twice in one word. Return the words in any order.\n\n**Constraints**\n\n- `1 <= m, n <= 12`\n- `1 <= len(words) <= 3 * 10^4`, words are distinct, each 1 to 10 lowercase letters.",
+ "function": "findWords",
+ "params": [
+  "board",
+  "words"
+ ],
+ "starter": "class Solution:\n    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:\n        pass\n",
+ "compare": "unordered",
+ "hints": [
+  "Running a separate Word Search for every word repeats a lot of work when words share prefixes.",
+  "Put all the words into a trie. Then one DFS from each cell can follow the trie and find every word along that path at once.",
+  "DFS from every cell while walking down the trie; stop as soon as the current letters are not a prefix of any word. Mark cells as visited during the DFS, and remove found words from the trie (or a result set) to avoid duplicates."
+ ],
+ "tests": [
+  {
+   "input": {
+    "board": [
+     [
+      "o",
+      "a",
+      "a",
+      "n"
+     ],
+     [
+      "e",
+      "t",
+      "a",
+      "e"
+     ],
+     [
+      "i",
+      "h",
+      "k",
+      "r"
+     ],
+     [
+      "i",
+      "f",
+      "l",
+      "v"
+     ]
+    ],
+    "words": [
+     "oath",
+     "pea",
+     "eat",
+     "rain"
+    ]
+   },
+   "expected": [
+    "oath",
+    "eat"
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "a",
+      "b"
+     ],
+     [
+      "c",
+      "d"
+     ]
+    ],
+    "words": [
+     "abcb"
+    ]
+   },
+   "expected": [],
+   "example": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "a"
+     ]
+    ],
+    "words": [
+     "a",
+     "aa"
+    ]
+   },
+   "expected": [
+    "a"
+   ]
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "a",
+      "b"
+     ],
+     [
+      "c",
+      "d"
+     ]
+    ],
+    "words": [
+     "ab",
+     "abdc",
+     "acdb",
+     "ad",
+     "ba",
+     "dcab"
+    ]
+   },
+   "expected": [
+    "ab",
+    "abdc",
+    "acdb",
+    "ba",
+    "dcab"
+   ]
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "a",
+      "a"
+     ]
+    ],
+    "words": [
+     "aaa",
+     "aa"
+    ]
+   },
+   "expected": [
+    "aa"
+   ]
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "o",
+      "a",
+      "b",
+      "n"
+     ],
+     [
+      "o",
+      "t",
+      "a",
+      "e"
+     ],
+     [
+      "a",
+      "h",
+      "k",
+      "r"
+     ],
+     [
+      "a",
+      "f",
+      "l",
+      "v"
+     ]
+    ],
+    "words": [
+     "oa",
+     "oaa",
+     "oath",
+     "bake",
+     "kar",
+     "flv",
+     "hkra"
+    ]
+   },
+   "expected": [
+    "oa",
+    "oaa",
+    "oath",
+    "flv"
+   ]
+  }
+ ]
+}

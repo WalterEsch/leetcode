@@ -1,0 +1,73 @@
+{
+ "id": "multiply-strings",
+ "order": 142,
+ "title": "Multiply Strings",
+ "category": "Math & Geometry",
+ "difficulty": "Medium",
+ "description": "You are given two non-negative integers, `num1` and `num2`, as strings. Return their product, also as a string.\n\nDon't convert the whole inputs to integers directly. Work with the digits, as you would on paper.\n\n**Constraints**\n\n- `1 <= len(num1), len(num2) <= 200`, no leading zeros except for `\"0\"`.",
+ "function": "multiply",
+ "params": [
+  "num1",
+  "num2"
+ ],
+ "starter": "class Solution:\n    def multiply(self, num1: str, num2: str) -> str:\n        pass\n",
+ "hints": [
+  "In long multiplication, digit `i` of `num1` times digit `j` of `num2` lands in a predictable position of the answer.",
+  "Counting positions from the right, the product of those digits belongs at position `i + j` (if `i` and `j` are also counted from the right).",
+  "Make a list of `len(num1) + len(num2)` zeros, add every digit product into its position, then carry from right to left. Strip leading zeros, returning `\"0\"` if nothing is left."
+ ],
+ "tests": [
+  {
+   "input": {
+    "num1": "2",
+    "num2": "3"
+   },
+   "expected": "6",
+   "example": true
+  },
+  {
+   "input": {
+    "num1": "123",
+    "num2": "456"
+   },
+   "expected": "56088",
+   "example": true
+  },
+  {
+   "input": {
+    "num1": "0",
+    "num2": "52"
+   },
+   "expected": "0",
+   "example": true
+  },
+  {
+   "input": {
+    "num1": "9",
+    "num2": "99"
+   },
+   "expected": "891"
+  },
+  {
+   "input": {
+    "num1": "999",
+    "num2": "999"
+   },
+   "expected": "998001"
+  },
+  {
+   "input": {
+    "num1": "123456789",
+    "num2": "987654321"
+   },
+   "expected": "121932631112635269"
+  },
+  {
+   "input": {
+    "num1": "111111111111111111111111111111111111111111111111111111111111",
+    "num2": "999999999999999999999999999999999999999999999999999999999999"
+   },
+   "expected": "111111111111111111111111111111111111111111111111111111111110888888888888888888888888888888888888888888888888888888888889"
+  }
+ ]
+}

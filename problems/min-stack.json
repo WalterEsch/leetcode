@@ -1,0 +1,221 @@
+{
+ "id": "min-stack",
+ "order": 22,
+ "title": "Min Stack",
+ "category": "Stack",
+ "difficulty": "Medium",
+ "description": "Design a stack that also reports its smallest element. Every method must run in O(1) time.\n\n- `MinStack()` creates an empty stack.\n- `push(val)` puts `val` on top.\n- `pop()` removes the top element.\n- `top()` returns the top element.\n- `getMin()` returns the smallest element in the stack.\n\n`pop`, `top` and `getMin` are only called on a non-empty stack.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class MinStack:\n    def __init__(self):\n        pass\n\n    def push(self, val: int) -> None:\n        pass\n\n    def pop(self) -> None:\n        pass\n\n    def top(self) -> int:\n        pass\n\n    def getMin(self) -> int:\n        pass\n",
+ "kind": "design",
+ "class": "MinStack",
+ "hints": [
+  "Keeping just one `min` variable fails after a `pop()` removes the minimum. What else do you need to remember?",
+  "Store, with every element, the minimum of the stack at the moment it was pushed.",
+  "Keep a second stack (or push pairs `(val, current_min)`). `getMin()` reads the top pair's min, and popping restores the previous min automatically."
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "MinStack",
+     "push",
+     "push",
+     "push",
+     "getMin",
+     "pop",
+     "top",
+     "getMin"
+    ],
+    "arguments": [
+     [],
+     [
+      -2
+     ],
+     [
+      0
+     ],
+     [
+      -3
+     ],
+     [],
+     [],
+     [],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    -3,
+    null,
+    0,
+    -2
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "MinStack",
+     "push",
+     "getMin",
+     "top"
+    ],
+    "arguments": [
+     [],
+     [
+      5
+     ],
+     [],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    5,
+    5
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "MinStack",
+     "push",
+     "push",
+     "push",
+     "getMin",
+     "pop",
+     "getMin",
+     "pop",
+     "getMin"
+    ],
+    "arguments": [
+     [],
+     [
+      2
+     ],
+     [
+      2
+     ],
+     [
+      1
+     ],
+     [],
+     [],
+     [],
+     [],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    1,
+    null,
+    2,
+    null,
+    2
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "MinStack",
+     "push",
+     "push",
+     "getMin",
+     "pop",
+     "getMin",
+     "push",
+     "getMin",
+     "top"
+    ],
+    "arguments": [
+     [],
+     [
+      3
+     ],
+     [
+      5
+     ],
+     [],
+     [],
+     [],
+     [
+      -1
+     ],
+     [],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    3,
+    null,
+    3,
+    null,
+    -1,
+    -1
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "MinStack",
+     "push",
+     "push",
+     "push",
+     "push",
+     "getMin",
+     "pop",
+     "getMin",
+     "pop",
+     "getMin",
+     "top"
+    ],
+    "arguments": [
+     [],
+     [
+      0
+     ],
+     [
+      1
+     ],
+     [
+      0
+     ],
+     [
+      -5
+     ],
+     [],
+     [],
+     [],
+     [],
+     [],
+     []
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    -5,
+    null,
+    0,
+    null,
+    0,
+    1
+   ]
+  }
+ ]
+}

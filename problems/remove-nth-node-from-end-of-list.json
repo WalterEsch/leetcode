@@ -1,0 +1,109 @@
+{
+ "id": "remove-nth-node-from-end-of-list",
+ "order": 39,
+ "title": "Remove Nth Node From End of List",
+ "category": "Linked List",
+ "difficulty": "Medium",
+ "description": "You are given the head of a linked list and an integer `n`. Remove the `n`th node counting from the end of the list (`n = 1` is the last node), and return the head of the changed list.\n\nTry to do it in one pass.\n\nTests show linked lists as Python lists, so `[1, 2, 3]` means `1 -> 2 -> 3`, and `[]` means `None`.\n\n**Constraints**\n\n- The list has `sz` nodes, `1 <= sz <= 30`, and `1 <= n <= sz`.",
+ "function": "removeNthFromEnd",
+ "params": [
+  "head",
+  "n"
+ ],
+ "starter": "# Definition for a singly linked list node (already provided):\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\n\nclass Solution:\n    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:\n        pass\n",
+ "arg_types": {
+  "head": "linked_list"
+ },
+ "return_type": "linked_list",
+ "hints": [
+  "Two passes work: count the length, then walk to the node before the one to remove.",
+  "For one pass, start a second pointer `n` steps behind the first. When the first reaches the end, where is the second?",
+  "Start both pointers at a dummy node placed before `head`. Move `fast` ahead `n + 1` steps, then move both until `fast` is `None`. Now `slow.next` is the node to remove."
+ ],
+ "tests": [
+  {
+   "input": {
+    "head": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "n": 2
+   },
+   "expected": [
+    1,
+    2,
+    3,
+    5
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "head": [
+     1
+    ],
+    "n": 1
+   },
+   "expected": [],
+   "example": true
+  },
+  {
+   "input": {
+    "head": [
+     1,
+     2
+    ],
+    "n": 1
+   },
+   "expected": [
+    1
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "head": [
+     1,
+     2
+    ],
+    "n": 2
+   },
+   "expected": [
+    2
+   ]
+  },
+  {
+   "input": {
+    "head": [
+     1,
+     2,
+     3
+    ],
+    "n": 3
+   },
+   "expected": [
+    2,
+    3
+   ]
+  },
+  {
+   "input": {
+    "head": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "n": 1
+   },
+   "expected": [
+    5,
+    6,
+    7
+   ]
+  }
+ ]
+}

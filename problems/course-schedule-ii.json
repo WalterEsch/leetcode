@@ -1,0 +1,165 @@
+{
+ "id": "course-schedule-ii",
+ "order": 88,
+ "title": "Course Schedule II",
+ "category": "Graphs",
+ "difficulty": "Medium",
+ "description": "There are `numCourses` courses, labeled `0` to `numCourses - 1`. Each entry `[a, b]` in `prerequisites` means you must take course `b` before course `a`.\n\nReturn an order in which you can take every course. If several orders work, any of them is accepted. If it is impossible, return an empty list.\n\n**Constraints**\n\n- `1 <= numCourses <= 2000`",
+ "function": "findOrder",
+ "params": [
+  "numCourses",
+  "prerequisites"
+ ],
+ "starter": "class Solution:\n    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:\n        pass\n",
+ "compare": "custom",
+ "checker": "\ndef check(inp, actual, expected):\n    if not expected:\n        return actual == []\n    n = inp[\"numCourses\"]\n    if sorted(actual) != list(range(n)):\n        return False\n    pos = {c: i for i, c in enumerate(actual)}\n    return all(pos[b] < pos[a] for a, b in inp[\"prerequisites\"])\n",
+ "hints": [
+  "This is Course Schedule, but you have to output the order as well (a topological sort).",
+  "In Kahn's algorithm, the order in which courses become free to take is a valid order.",
+  "Count each course's prerequisites (in-degree). Start a queue with the courses that have none. Pop a course, add it to the order, and decrease its dependents' counts, queueing any that hit 0. If the order has fewer than `numCourses` courses, return `[]`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "numCourses": 2,
+    "prerequisites": [
+     [
+      1,
+      0
+     ]
+    ]
+   },
+   "expected": [
+    0,
+    1
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "numCourses": 4,
+    "prerequisites": [
+     [
+      1,
+      0
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      3,
+      2
+     ]
+    ]
+   },
+   "expected": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "numCourses": 1,
+    "prerequisites": []
+   },
+   "expected": [
+    0
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "numCourses": 2,
+    "prerequisites": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ]
+   },
+   "expected": []
+  },
+  {
+   "input": {
+    "numCourses": 3,
+    "prerequisites": []
+   },
+   "expected": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "input": {
+    "numCourses": 6,
+    "prerequisites": [
+     [
+      5,
+      4
+     ],
+     [
+      4,
+      3
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ]
+   },
+   "expected": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "input": {
+    "numCourses": 4,
+    "prerequisites": [
+     [
+      1,
+      0
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      3,
+      0
+     ]
+    ]
+   },
+   "expected": []
+  }
+ ]
+}

@@ -1,0 +1,178 @@
+{
+ "id": "kth-largest-element-in-a-stream",
+ "order": 64,
+ "title": "Kth Largest Element in a Stream",
+ "category": "Heap / Priority Queue",
+ "difficulty": "Easy",
+ "description": "Design a class that keeps track of the `k`th largest number in a stream of numbers.\n\n- `KthLargest(k, nums)` starts with integer `k` and an initial list of numbers `nums`.\n- `add(val)` adds `val` to the stream and returns the `k`th largest number seen so far (counting duplicates).\n\nThere are always at least `k` numbers when `add` returns.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class KthLargest:\n    def __init__(self, k: int, nums: List[int]):\n        pass\n\n    def add(self, val: int) -> int:\n        pass\n",
+ "kind": "design",
+ "class": "KthLargest",
+ "hints": [
+  "You only ever care about the `k` largest numbers. Everything smaller can be thrown away.",
+  "Keep the `k` largest numbers in a structure that gives you the smallest of them quickly.",
+  "Use a min-heap of size `k` (`heapq`). On `add`, push the value, pop if the heap has more than `k` items, and return `heap[0]`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "KthLargest",
+     "add",
+     "add",
+     "add",
+     "add",
+     "add"
+    ],
+    "arguments": [
+     [
+      3,
+      [
+       4,
+       5,
+       8,
+       2
+      ]
+     ],
+     [
+      3
+     ],
+     [
+      5
+     ],
+     [
+      10
+     ],
+     [
+      9
+     ],
+     [
+      4
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    4,
+    5,
+    5,
+    8,
+    8
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "KthLargest",
+     "add",
+     "add",
+     "add",
+     "add"
+    ],
+    "arguments": [
+     [
+      4,
+      [
+       7,
+       7,
+       7,
+       7,
+       8,
+       3
+      ]
+     ],
+     [
+      2
+     ],
+     [
+      10
+     ],
+     [
+      9
+     ],
+     [
+      9
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    7,
+    7,
+    7,
+    8
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "KthLargest",
+     "add",
+     "add",
+     "add"
+    ],
+    "arguments": [
+     [
+      1,
+      []
+     ],
+     [
+      -3
+     ],
+     [
+      -2
+     ],
+     [
+      -4
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    -3,
+    -2,
+    -2
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "KthLargest",
+     "add",
+     "add",
+     "add",
+     "add"
+    ],
+    "arguments": [
+     [
+      2,
+      [
+       0
+      ]
+     ],
+     [
+      -1
+     ],
+     [
+      1
+     ],
+     [
+      -2
+     ],
+     [
+      3
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    -1,
+    0,
+    0,
+    1
+   ]
+  }
+ ]
+}

@@ -1,0 +1,95 @@
+{
+ "id": "target-sum",
+ "order": 115,
+ "title": "Target Sum",
+ "category": "2-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given a list of non-negative integers `nums` and an integer `target`. Put a `+` or `-` in front of every number, and add them all up. Return the number of different sign choices that give exactly `target`.\n\n**Constraints**\n\n- `1 <= len(nums) <= 20`\n- `0 <= nums[i] <= 1000`, `sum(nums) <= 1000`",
+ "function": "findTargetSumWays",
+ "params": [
+  "nums",
+  "target"
+ ],
+ "starter": "class Solution:\n    def findTargetSumWays(self, nums: List[int], target: int) -> int:\n        pass\n",
+ "hints": [
+  "Trying all `2^n` sign choices works for small `n`. Many partial choices reach the same running total, though.",
+  "Track how many ways each running total can be reached after the first `i` numbers.",
+  "Keep a dictionary `{sum: ways}` starting at `{0: 1}`. For each number `x`, build a new dictionary where every `s` contributes its ways to both `s + x` and `s - x`. Return the ways for `target`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "target": 3
+   },
+   "expected": 5,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1
+    ],
+    "target": 1
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1
+    ],
+    "target": 2
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     0,
+     1
+    ],
+    "target": 1
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     3,
+     5
+    ],
+    "target": 0
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "nums": [
+     7,
+     9,
+     3,
+     8,
+     0,
+     2,
+     4,
+     8,
+     3,
+     9
+    ],
+    "target": 0
+   },
+   "expected": 0
+  }
+ ]
+}

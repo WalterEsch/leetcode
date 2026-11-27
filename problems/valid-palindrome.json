@@ -1,0 +1,70 @@
+{
+ "id": "valid-palindrome",
+ "order": 10,
+ "title": "Valid Palindrome",
+ "category": "Two Pointers",
+ "difficulty": "Easy",
+ "description": "You are given a string `s`. Ignore every character that is not a letter or digit, and treat uppercase and lowercase letters as the same. Return `True` if what is left reads the same forwards and backwards.\n\nAn empty result counts as a palindrome.\n\n**Constraints**\n\n- `1 <= len(s) <= 2 * 10^5`\n- `s` contains printable ASCII characters.",
+ "function": "isPalindrome",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def isPalindrome(self, s: str) -> bool:\n        pass\n",
+ "hints": [
+  "Building a cleaned-up copy of the string and comparing it with its reverse works, but uses extra space.",
+  "Use two pointers, one at each end, and move them toward each other.",
+  "Skip characters where `ch.isalnum()` is `False`. Compare `s[l].lower()` with `s[r].lower()` and return `False` on the first mismatch."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "A man, a plan, a canal: Panama"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "race a car"
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "s": " "
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "0P"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "Was it a car or a cat I saw?"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "ab_a"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "a."
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "12321"
+   },
+   "expected": true
+  }
+ ]
+}

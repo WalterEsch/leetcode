@@ -1,0 +1,58 @@
+{
+ "id": "palindromic-substrings",
+ "order": 104,
+ "title": "Palindromic Substrings",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "You are given a string `s`. Return how many of its substrings are palindromes. Substrings at different positions count separately, even if they contain the same letters.\n\n**Constraints**\n\n- `1 <= len(s) <= 1000`, lowercase letters only.",
+ "function": "countSubstrings",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def countSubstrings(self, s: str) -> int:\n        pass\n",
+ "hints": [
+  "Every single character is a palindrome. How do longer ones grow from shorter ones?",
+  "Expand around each of the `2n - 1` centers, as in Longest Palindromic Substring.",
+  "Each successful expansion step from a center is one more palindrome, so add 1 to the count every time the two sides match."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "abc"
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "aaa"
+   },
+   "expected": 6,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "a"
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "s": "abba"
+   },
+   "expected": 6
+  },
+  {
+   "input": {
+    "s": "racecar"
+   },
+   "expected": 10
+  },
+  {
+   "input": {
+    "s": "aabaa"
+   },
+   "expected": 9
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "id": "longest-substring-without-repeating-characters",
+ "order": 16,
+ "title": "Longest Substring Without Repeating Characters",
+ "category": "Sliding Window",
+ "difficulty": "Medium",
+ "description": "You are given a string `s`. Return the length of the longest substring (a contiguous run of characters) in which no character appears more than once.\n\n**Constraints**\n\n- `0 <= len(s) <= 5 * 10^4`\n- `s` may contain letters, digits, symbols and spaces.",
+ "function": "lengthOfLongestSubstring",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        pass\n",
+ "hints": [
+  "Think of a window `s[l:r+1]` that never contains a repeat. Grow it to the right one character at a time.",
+  "When the new character is already in the window, shrink the window from the left until it is not.",
+  "Keep a dictionary of each character's last index. When you see a repeat at `r`, jump `l` to `max(l, last[ch] + 1)`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "abcabcbb"
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "bbbbb"
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "pwwkew"
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "s": ""
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "s": " "
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "s": "dvdf"
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "s": "abba"
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "s": "tmmzuxt"
+   },
+   "expected": 5
+  },
+  {
+   "input": {
+    "s": "abcdefghijklmnopqrstuvwxyz0123456789"
+   },
+   "expected": 36
+  }
+ ]
+}

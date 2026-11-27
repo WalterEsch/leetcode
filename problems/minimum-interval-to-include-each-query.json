@@ -1,0 +1,175 @@
+{
+ "id": "minimum-interval-to-include-each-query",
+ "order": 135,
+ "title": "Minimum Interval to Include Each Query",
+ "category": "Intervals",
+ "difficulty": "Hard",
+ "description": "You are given a list of `intervals`, where `[left, right]` includes every integer from `left` to `right`, so its size is `right - left + 1`. You are also given a list of integer `queries`.\n\nFor each query `q`, find the size of the smallest interval that contains `q`, or `-1` if no interval contains it. Return the answers in the same order as `queries`.\n\n**Constraints**\n\n- `1 <= len(intervals), len(queries) <= 10^5`",
+ "function": "minInterval",
+ "params": [
+  "intervals",
+  "queries"
+ ],
+ "starter": "class Solution:\n    def minInterval(self, intervals: List[List[int]], queries: List[int]) -> List[int]:\n        pass\n",
+ "hints": [
+  "Checking every interval for every query is O(n * q). Can you answer the queries in sorted order and reuse work?",
+  "Sort the queries (keeping their original positions) and the intervals by start. As queries increase, more intervals start, and some end.",
+  "Sweep queries in increasing order. Push every interval with `left <= q` into a min-heap keyed by size, as `(size, right)`. Pop from the top while `right < q`. The top's size is the answer, or `-1` if the heap is empty."
+ ],
+ "tests": [
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      4
+     ]
+    ],
+    "queries": [
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "expected": [
+    3,
+    3,
+    1,
+    4
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      2,
+      3
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      1,
+      8
+     ],
+     [
+      20,
+      25
+     ]
+    ],
+    "queries": [
+     2,
+     19,
+     5,
+     22
+    ]
+   },
+   "expected": [
+    2,
+    -1,
+    4,
+    6
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      1
+     ]
+    ],
+    "queries": [
+     1,
+     2
+    ]
+   },
+   "expected": [
+    1,
+    -1
+   ]
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      5,
+      10
+     ],
+     [
+      1,
+      20
+     ]
+    ],
+    "queries": [
+     7,
+     7,
+     0,
+     20
+    ]
+   },
+   "expected": [
+    6,
+    6,
+    -1,
+    20
+   ]
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      4,
+      5
+     ],
+     [
+      5,
+      8
+     ],
+     [
+      1,
+      9
+     ],
+     [
+      8,
+      10
+     ],
+     [
+      1,
+      6
+     ]
+    ],
+    "queries": [
+     7,
+     9,
+     3,
+     9,
+     3
+    ]
+   },
+   "expected": [
+    4,
+    3,
+    6,
+    3,
+    6
+   ]
+  }
+ ]
+}

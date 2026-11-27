@@ -1,0 +1,134 @@
+{
+ "id": "network-delay-time",
+ "order": 93,
+ "title": "Network Delay Time",
+ "category": "Advanced Graphs",
+ "difficulty": "Medium",
+ "description": "A network has `n` nodes labeled `1` to `n`. Each entry `times[i] = [u, v, w]` is a directed edge: a signal sent from `u` reaches `v` after `w` time units.\n\nA signal is sent from node `k`. Return how long it takes until every node has received it, or `-1` if some node never does.\n\n**Constraints**\n\n- `1 <= k <= n <= 100`\n- `1 <= len(times) <= 6000`, `0 <= w <= 100`",
+ "function": "networkDelayTime",
+ "params": [
+  "times",
+  "n",
+  "k"
+ ],
+ "starter": "class Solution:\n    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:\n        pass\n",
+ "hints": [
+  "The time for a node is its shortest-path distance from `k`. The answer is the largest of those distances.",
+  "Edge weights are non-negative, so Dijkstra's algorithm works.",
+  "Use a min-heap of `(time, node)` starting with `(0, k)`. Pop the closest node; if it's new, record its time and push its neighbors with `time + w`. If fewer than `n` nodes are reached, return `-1`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "times": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      3,
+      1
+     ],
+     [
+      3,
+      4,
+      1
+     ]
+    ],
+    "n": 4,
+    "k": 2
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "times": [
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "n": 2,
+    "k": 1
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "times": [
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "n": 2,
+    "k": 2
+   },
+   "expected": -1,
+   "example": true
+  },
+  {
+   "input": {
+    "times": [
+     [
+      1,
+      2,
+      1
+     ],
+     [
+      2,
+      3,
+      2
+     ],
+     [
+      1,
+      3,
+      4
+     ]
+    ],
+    "n": 3,
+    "k": 1
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "times": [
+     [
+      2,
+      1,
+      5
+     ]
+    ],
+    "n": 2,
+    "k": 2
+   },
+   "expected": 5
+  },
+  {
+   "input": {
+    "times": [
+     [
+      1,
+      2,
+      0
+     ],
+     [
+      2,
+      3,
+      0
+     ]
+    ],
+    "n": 3,
+    "k": 1
+   },
+   "expected": 0
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "id": "missing-number",
+ "order": 148,
+ "title": "Missing Number",
+ "category": "Bit Manipulation",
+ "difficulty": "Easy",
+ "description": "You are given a list `nums` of `n` distinct numbers taken from the range `0` to `n`. Exactly one number from that range is missing. Return it.\n\nUse O(1) extra space.\n\n**Constraints**\n\n- `1 <= n <= 10^4`",
+ "function": "missingNumber",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def missingNumber(self, nums: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "You know exactly which numbers should be there: `0` to `n`.",
+  "The sum of `0..n` is `n * (n + 1) // 2`. Subtract the actual sum.",
+  "Or with XOR: XOR all indices `0..n` together with all values. Everything cancels except the missing number."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     3,
+     0,
+     1
+    ]
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     1
+    ]
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     9,
+     6,
+     4,
+     2,
+     3,
+     5,
+     7,
+     0,
+     1
+    ]
+   },
+   "expected": 8,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     0
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "nums": [
+     1
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "nums": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "expected": 0
+  }
+ ]
+}

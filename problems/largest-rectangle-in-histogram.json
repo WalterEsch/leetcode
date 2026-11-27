@@ -1,0 +1,107 @@
+{
+ "id": "largest-rectangle-in-histogram",
+ "order": 27,
+ "title": "Largest Rectangle in Histogram",
+ "category": "Stack",
+ "difficulty": "Hard",
+ "description": "You are given a list `heights` describing a histogram where every bar is 1 unit wide. Return the area of the largest rectangle that fits entirely inside the histogram.\n\n**Constraints**\n\n- `1 <= len(heights) <= 10^5`\n- `0 <= heights[i] <= 10^4`",
+ "function": "largestRectangleArea",
+ "params": [
+  "heights"
+ ],
+ "starter": "class Solution:\n    def largestRectangleArea(self, heights: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "For each bar, the biggest rectangle using that bar's full height stretches left and right until it hits a shorter bar.",
+  "A stack of bars with increasing heights tells you, when a shorter bar arrives, exactly where each taller bar's rectangle has to stop.",
+  "Keep a stack of `(start_index, height)`. When a shorter bar comes, pop taller bars, compute `height * (i - start)` for each, and push the new bar with the start index of the last bar popped. Empty the stack at the end."
+ ],
+ "tests": [
+  {
+   "input": {
+    "heights": [
+     2,
+     1,
+     5,
+     6,
+     2,
+     3
+    ]
+   },
+   "expected": 10,
+   "example": true
+  },
+  {
+   "input": {
+    "heights": [
+     2,
+     4
+    ]
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "heights": [
+     1
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "heights": [
+     0
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "heights": [
+     2,
+     1,
+     2
+    ]
+   },
+   "expected": 3
+  },
+  {
+   "input": {
+    "heights": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "expected": 9
+  },
+  {
+   "input": {
+    "heights": [
+     6,
+     2,
+     5,
+     4,
+     5,
+     1,
+     6
+    ]
+   },
+   "expected": 12
+  },
+  {
+   "input": {
+    "heights": [
+     3,
+     3,
+     3,
+     3
+    ]
+   },
+   "expected": 12
+  }
+ ]
+}

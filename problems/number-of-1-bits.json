@@ -1,0 +1,59 @@
+{
+ "id": "number-of-1-bits",
+ "order": 145,
+ "title": "Number of 1 Bits",
+ "category": "Bit Manipulation",
+ "difficulty": "Easy",
+ "description": "Given a positive integer `n`, return how many `1` bits its binary representation has (its Hamming weight).\n\n**Constraints**\n\n- `1 <= n <= 2^31 - 1`",
+ "function": "hammingWeight",
+ "params": [
+  "n"
+ ],
+ "starter": "class Solution:\n    def hammingWeight(self, n: int) -> int:\n        pass\n",
+ "hints": [
+  "Check the lowest bit with `n & 1`, then shift right with `n >>= 1`.",
+  "Repeat until `n` becomes 0, counting the ones.",
+  "A neat trick: `n & (n - 1)` clears the lowest set bit. Count how many times you can do that before `n` is 0."
+ ],
+ "tests": [
+  {
+   "input": {
+    "n": 11
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "n": 128
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "n": 2147483645
+   },
+   "expected": 30,
+   "example": true
+  },
+  {
+   "input": {
+    "n": 1
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "n": 255
+   },
+   "expected": 8
+  },
+  {
+   "input": {
+    "n": 1047552
+   },
+   "expected": 10
+  }
+ ]
+}

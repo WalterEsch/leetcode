@@ -1,0 +1,115 @@
+{
+ "id": "plus-one",
+ "order": 140,
+ "title": "Plus One",
+ "category": "Math & Geometry",
+ "difficulty": "Easy",
+ "description": "A non-negative integer is given as a list of its digits, `digits`, most significant first, with no leading zeros (except for the number 0). Add one to the integer and return the resulting list of digits.\n\n**Constraints**\n\n- `1 <= len(digits) <= 100`",
+ "function": "plusOne",
+ "params": [
+  "digits"
+ ],
+ "starter": "class Solution:\n    def plusOne(self, digits: List[int]) -> List[int]:\n        pass\n",
+ "hints": [
+  "Work from the last digit, the way you'd add by hand.",
+  "A `9` becomes `0` and carries 1 to the left. Any other digit just goes up by one, and you're done.",
+  "If every digit was `9`, the answer is `[1]` followed by all zeros."
+ ],
+ "tests": [
+  {
+   "input": {
+    "digits": [
+     1,
+     2,
+     3
+    ]
+   },
+   "expected": [
+    1,
+    2,
+    4
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "digits": [
+     4,
+     3,
+     2,
+     1
+    ]
+   },
+   "expected": [
+    4,
+    3,
+    2,
+    2
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "digits": [
+     9
+    ]
+   },
+   "expected": [
+    1,
+    0
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "digits": [
+     0
+    ]
+   },
+   "expected": [
+    1
+   ]
+  },
+  {
+   "input": {
+    "digits": [
+     9,
+     9,
+     9
+    ]
+   },
+   "expected": [
+    1,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "input": {
+    "digits": [
+     1,
+     9,
+     9
+    ]
+   },
+   "expected": [
+    2,
+    0,
+    0
+   ]
+  },
+  {
+   "input": {
+    "digits": [
+     8,
+     9
+    ]
+   },
+   "expected": [
+    9,
+    0
+   ]
+  }
+ ]
+}

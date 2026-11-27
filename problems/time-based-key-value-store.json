@@ -1,0 +1,192 @@
+{
+ "id": "time-based-key-value-store",
+ "order": 33,
+ "title": "Time Based Key-Value Store",
+ "category": "Binary Search",
+ "difficulty": "Medium",
+ "description": "Design a key-value store that keeps every value a key has had, along with when it was set.\n\n- `TimeMap()` creates the store.\n- `set(key, value, timestamp)` stores `value` for `key` at time `timestamp`.\n- `get(key, timestamp)` returns the value that was set for `key` at the largest time `<= timestamp`. If there is none, return `\"\"`.\n\nTimestamps passed to `set` are strictly increasing.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class TimeMap:\n    def __init__(self):\n        pass\n\n    def set(self, key: str, value: str, timestamp: int) -> None:\n        pass\n\n    def get(self, key: str, timestamp: int) -> str:\n        pass\n",
+ "kind": "design",
+ "class": "TimeMap",
+ "hints": [
+  "Store, for each key, a list of `(timestamp, value)` pairs. Because timestamps only increase, the list stays sorted.",
+  "`get` needs the last pair with timestamp `<= t`. You can find that with binary search.",
+  "Binary search the key's list (by hand, or with `bisect.bisect_right` on the timestamps) and return the value just before the insertion point, or `\"\"` if there is none."
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "TimeMap",
+     "set",
+     "get",
+     "get",
+     "set",
+     "get",
+     "get"
+    ],
+    "arguments": [
+     [],
+     [
+      "foo",
+      "bar",
+      1
+     ],
+     [
+      "foo",
+      1
+     ],
+     [
+      "foo",
+      3
+     ],
+     [
+      "foo",
+      "bar2",
+      4
+     ],
+     [
+      "foo",
+      4
+     ],
+     [
+      "foo",
+      5
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    "bar",
+    "bar",
+    null,
+    "bar2",
+    "bar2"
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "TimeMap",
+     "get"
+    ],
+    "arguments": [
+     [],
+     [
+      "x",
+      10
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    ""
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "TimeMap",
+     "set",
+     "set",
+     "get",
+     "get",
+     "get",
+     "get",
+     "get"
+    ],
+    "arguments": [
+     [],
+     [
+      "love",
+      "high",
+      10
+     ],
+     [
+      "love",
+      "low",
+      20
+     ],
+     [
+      "love",
+      5
+     ],
+     [
+      "love",
+      10
+     ],
+     [
+      "love",
+      15
+     ],
+     [
+      "love",
+      20
+     ],
+     [
+      "love",
+      25
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    "",
+    "high",
+    "high",
+    "low",
+    "low"
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "TimeMap",
+     "set",
+     "set",
+     "get",
+     "get",
+     "get"
+    ],
+    "arguments": [
+     [],
+     [
+      "a",
+      "1",
+      1
+     ],
+     [
+      "b",
+      "2",
+      2
+     ],
+     [
+      "a",
+      2
+     ],
+     [
+      "b",
+      1
+     ],
+     [
+      "c",
+      3
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    "1",
+    "",
+    ""
+   ]
+  }
+ ]
+}

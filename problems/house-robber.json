@@ -1,0 +1,88 @@
+{
+ "id": "house-robber",
+ "order": 101,
+ "title": "House Robber",
+ "category": "1-D Dynamic Programming",
+ "difficulty": "Medium",
+ "description": "Houses along a street hold `nums[i]` money each. You can't rob two **adjacent** houses (the alarm would go off). Return the most money you can rob.\n\n**Constraints**\n\n- `1 <= len(nums) <= 100`\n- `0 <= nums[i] <= 400`",
+ "function": "rob",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def rob(self, nums: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "At each house you either rob it (and skip the previous one) or skip it.",
+  "`best(i) = max(best(i - 1), best(i - 2) + nums[i])`.",
+  "Iterate keeping two values, `prev2` and `prev1`: for each `x`, the new best is `max(prev1, prev2 + x)`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     1,
+     2,
+     3,
+     1
+    ]
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     7,
+     9,
+     3,
+     1
+    ]
+   },
+   "expected": 12,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     5
+    ]
+   },
+   "expected": 5
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     1,
+     1,
+     2
+    ]
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     0,
+     0
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "nums": [
+     10,
+     1,
+     1,
+     10,
+     1,
+     1,
+     10
+    ]
+   },
+   "expected": 30
+  }
+ ]
+}

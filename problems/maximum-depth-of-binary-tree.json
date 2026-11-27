@@ -1,0 +1,94 @@
+{
+ "id": "maximum-depth-of-binary-tree",
+ "order": 47,
+ "title": "Maximum Depth of Binary Tree",
+ "category": "Trees",
+ "difficulty": "Easy",
+ "description": "You are given the `root` of a binary tree. Return its maximum depth: the number of nodes on the longest path from the root down to a leaf. An empty tree has depth `0`.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- The tree has 0 to 10^4 nodes.",
+ "function": "maxDepth",
+ "params": [
+  "root"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def maxDepth(self, root: Optional[TreeNode]) -> int:\n        pass\n",
+ "arg_types": {
+  "root": "tree"
+ },
+ "hints": [
+  "How does the depth of a tree relate to the depths of its two subtrees?",
+  "`depth(root) = 1 + max(depth(left), depth(right))`, and an empty tree has depth 0.",
+  "Write that as a recursive function, or do a level-by-level BFS and count the levels."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     3,
+     9,
+     20,
+     null,
+     null,
+     15,
+     7
+    ]
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     null,
+     2
+    ]
+   },
+   "expected": 2,
+   "example": true
+  },
+  {
+   "input": {
+    "root": []
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     0
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3,
+     4,
+     null,
+     null,
+     5,
+     6
+    ]
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     null,
+     3,
+     null,
+     4,
+     null,
+     5
+    ]
+   },
+   "expected": 5
+  }
+ ]
+}

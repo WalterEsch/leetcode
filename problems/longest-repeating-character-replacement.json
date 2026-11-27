@@ -1,0 +1,79 @@
+{
+ "id": "longest-repeating-character-replacement",
+ "order": 17,
+ "title": "Longest Repeating Character Replacement",
+ "category": "Sliding Window",
+ "difficulty": "Medium",
+ "description": "You are given a string `s` of uppercase English letters and an integer `k`. You may change up to `k` characters of `s` into any other uppercase letter.\n\nReturn the length of the longest substring that can be made of a single repeated letter after those changes.\n\n**Constraints**\n\n- `1 <= len(s) <= 10^5`\n- `0 <= k <= len(s)`",
+ "function": "characterReplacement",
+ "params": [
+  "s",
+  "k"
+ ],
+ "starter": "class Solution:\n    def characterReplacement(self, s: str, k: int) -> int:\n        pass\n",
+ "hints": [
+  "A window can be made all one letter if `window length - (count of its most common letter) <= k`.",
+  "Slide a window over `s`, keeping letter counts. Shrink from the left whenever the window needs more than `k` changes.",
+  "You only need the largest most-common count seen so far (`maxf`). The window never needs to shrink below the best length found, so a slightly stale `maxf` still gives the right answer."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "ABAB",
+    "k": 2
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "AABABBA",
+    "k": 1
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "A",
+    "k": 0
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "s": "ABCDE",
+    "k": 1
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "s": "AAAA",
+    "k": 0
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "s": "ABBB",
+    "k": 2
+   },
+   "expected": 4
+  },
+  {
+   "input": {
+    "s": "BAAAB",
+    "k": 2
+   },
+   "expected": 5
+  },
+  {
+   "input": {
+    "s": "ABCABCABC",
+    "k": 2
+   },
+   "expected": 4
+  }
+ ]
+}

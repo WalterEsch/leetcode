@@ -1,0 +1,160 @@
+{
+ "id": "word-search",
+ "order": 76,
+ "title": "Word Search",
+ "category": "Backtracking",
+ "difficulty": "Medium",
+ "description": "You are given an `m x n` grid of characters `board` and a string `word`. Return `True` if `word` can be spelled by moving between horizontally or vertically adjacent cells, using each cell at most once.\n\n**Constraints**\n\n- `1 <= m, n <= 6`\n- `1 <= len(word) <= 15`",
+ "function": "exist",
+ "params": [
+  "board",
+  "word"
+ ],
+ "starter": "class Solution:\n    def exist(self, board: List[List[str]], word: str) -> bool:\n        pass\n",
+ "hints": [
+  "Try starting the word from every cell.",
+  "From a cell, explore the four neighbors recursively, but don't reuse a cell that's already in the current path.",
+  "`dfs(r, c, i)` returns `True` once `i == len(word)`. Otherwise, check the bounds and that `board[r][c] == word[i]`, temporarily mark the cell (for example set it to `'#'`), recurse into the neighbors with `i + 1`, then restore the cell."
+ ],
+ "tests": [
+  {
+   "input": {
+    "board": [
+     [
+      "A",
+      "B",
+      "C",
+      "E"
+     ],
+     [
+      "S",
+      "F",
+      "C",
+      "S"
+     ],
+     [
+      "A",
+      "D",
+      "E",
+      "E"
+     ]
+    ],
+    "word": "ABCCED"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "A",
+      "B",
+      "C",
+      "E"
+     ],
+     [
+      "S",
+      "F",
+      "C",
+      "S"
+     ],
+     [
+      "A",
+      "D",
+      "E",
+      "E"
+     ]
+    ],
+    "word": "SEE"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "A",
+      "B",
+      "C",
+      "E"
+     ],
+     [
+      "S",
+      "F",
+      "C",
+      "S"
+     ],
+     [
+      "A",
+      "D",
+      "E",
+      "E"
+     ]
+    ],
+    "word": "ABCB"
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "a"
+     ]
+    ],
+    "word": "a"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "a",
+      "b"
+     ]
+    ],
+    "word": "ba"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "a",
+      "a"
+     ]
+    ],
+    "word": "aaa"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "board": [
+     [
+      "C",
+      "A",
+      "A"
+     ],
+     [
+      "A",
+      "A",
+      "A"
+     ],
+     [
+      "B",
+      "C",
+      "D"
+     ]
+    ],
+    "word": "AAB"
+   },
+   "expected": true
+  }
+ ]
+}

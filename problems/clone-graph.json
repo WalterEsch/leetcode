@@ -1,0 +1,177 @@
+{
+ "id": "clone-graph",
+ "order": 82,
+ "title": "Clone Graph",
+ "category": "Graphs",
+ "difficulty": "Medium",
+ "description": "You are given a reference to a node in a connected, undirected graph. Return a **deep copy** of the graph: new nodes with the same values and the same connections. No node in the copy may be a node of the original graph.\n\nThe `Node` class is already defined:\n\n```\nclass Node:\n    def __init__(self, val=0, neighbors=None):\n        self.val = val\n        self.neighbors = neighbors if neighbors is not None else []\n```\n\nTests show the graph as an adjacency list: `adjList[i]` lists the neighbors of the node with value `i + 1`. You receive the node with value `1` (or `None` for an empty graph).\n\n**Constraints**\n\n- The graph has 0 to 100 nodes with values `1` to `n`, no repeated edges and no self-loops.",
+ "function": "cloneGraph",
+ "params": [
+  "node"
+ ],
+ "starter": "# Definition for a Node (already provided):\n# class Node:\n#     def __init__(self, val=0, neighbors=None):\n#         self.val = val\n#         self.neighbors = neighbors if neighbors is not None else []\n\nclass Solution:\n    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:\n        pass\n",
+ "harness": "\ndef call(problem, ns, inp):\n    Node = ns[\"Node\"]\n    adj = inp[\"adjList\"]\n    nodes = [Node(i + 1) for i in range(len(adj))]\n    for i, nbrs in enumerate(adj):\n        nodes[i].neighbors = [nodes[j - 1] for j in nbrs]\n    original = {id(n) for n in nodes}\n    start = ns[\"Solution\"]().cloneGraph(nodes[0] if nodes else None)\n    if start is None:\n        return []\n    seen = {}\n    stack = [start]\n    while stack:\n        n = stack.pop()\n        if id(n) in original:\n            raise ValueError(\"Your copy contains a node from the original graph. Every node must be new.\")\n        if n.val in seen:\n            if seen[n.val] is not n:\n                raise ValueError(f\"Your copy has two different nodes with value {n.val}\")\n            continue\n        seen[n.val] = n\n        stack.extend(n.neighbors)\n    return [[m.val for m in seen[v].neighbors] for v in sorted(seen)]\n",
+ "prelude": "\nclass Node:\n    def __init__(self, val=0, neighbors=None):\n        self.val = val\n        self.neighbors = neighbors if neighbors is not None else []\n",
+ "hints": [
+  "You need a copy of every node, and each copy's neighbors must be copies too. Watch out for cycles.",
+  "Keep a dictionary from original node to its copy. It tells you whether a node has already been copied and lets you reuse that copy.",
+  "DFS: if the node is in the dictionary, return its copy. Otherwise create the copy, store it in the dictionary **before** recursing, then set its neighbors to the clones of the original's neighbors."
+ ],
+ "tests": [
+  {
+   "input": {
+    "adjList": [
+     [
+      2,
+      4
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   },
+   "expected": [
+    [
+     2,
+     4
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "adjList": [
+     []
+    ]
+   },
+   "expected": [
+    []
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "adjList": []
+   },
+   "expected": [],
+   "example": true
+  },
+  {
+   "input": {
+    "adjList": [
+     [
+      2
+     ],
+     [
+      1
+     ]
+    ]
+   },
+   "expected": [
+    [
+     2
+    ],
+    [
+     1
+    ]
+   ]
+  },
+  {
+   "input": {
+    "adjList": [
+     [
+      2,
+      3
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      1,
+      2
+     ]
+    ]
+   },
+   "expected": [
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "input": {
+    "adjList": [
+     [
+      2,
+      3,
+      4,
+      5
+     ],
+     [
+      1
+     ],
+     [
+      1
+     ],
+     [
+      1
+     ],
+     [
+      1
+     ]
+    ]
+   },
+   "expected": [
+    [
+     2,
+     3,
+     4,
+     5
+    ],
+    [
+     1
+    ],
+    [
+     1
+    ],
+    [
+     1
+    ],
+    [
+     1
+    ]
+   ]
+  }
+ ]
+}

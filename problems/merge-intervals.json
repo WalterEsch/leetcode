@@ -1,0 +1,192 @@
+{
+ "id": "merge-intervals",
+ "order": 131,
+ "title": "Merge Intervals",
+ "category": "Intervals",
+ "difficulty": "Medium",
+ "description": "You are given a list of `intervals`, each `[start, end]`. Merge all overlapping intervals and return the non-overlapping intervals that cover the same ranges, in any order.\n\nIntervals that touch (`[1, 4]` and `[4, 5]`) count as overlapping.\n\n**Constraints**\n\n- `1 <= len(intervals) <= 10^4`",
+ "function": "merge",
+ "params": [
+  "intervals"
+ ],
+ "starter": "class Solution:\n    def merge(self, intervals: List[List[int]]) -> List[List[int]]:\n        pass\n",
+ "compare": "unordered",
+ "hints": [
+  "Sort the intervals by start. After that, which intervals can overlap?",
+  "After sorting, an interval can only overlap the merged interval just before it.",
+  "Walk the sorted list. If the interval starts at or before the end of the last merged interval, extend that end with `max`. Otherwise start a new merged interval."
+ ],
+ "tests": [
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      8,
+      10
+     ],
+     [
+      15,
+      18
+     ]
+    ]
+   },
+   "expected": [
+    [
+     1,
+     6
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     15,
+     18
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      4
+     ],
+     [
+      4,
+      5
+     ]
+    ]
+   },
+   "expected": [
+    [
+     1,
+     5
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      4,
+      7
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "expected": [
+    [
+     1,
+     7
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ]
+    ]
+   },
+   "expected": [
+    [
+     1,
+     4
+    ]
+   ]
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      5,
+      5
+     ]
+    ]
+   },
+   "expected": [
+    [
+     5,
+     5
+    ]
+   ]
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      1,
+      10
+     ]
+    ]
+   },
+   "expected": [
+    [
+     1,
+     10
+    ]
+   ]
+  },
+  {
+   "input": {
+    "intervals": [
+     [
+      1,
+      4
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   },
+   "expected": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     4
+    ]
+   ]
+  }
+ ]
+}

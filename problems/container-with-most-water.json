@@ -1,0 +1,103 @@
+{
+ "id": "container-with-most-water",
+ "order": 13,
+ "title": "Container With Most Water",
+ "category": "Two Pointers",
+ "difficulty": "Medium",
+ "description": "You are given a list `height` where `height[i]` is the height of a vertical line drawn at position `i`. Pick two lines. Together with the x-axis they form a container whose water level is limited by the shorter line.\n\nReturn the largest amount of water such a container can hold. That is `min(height[i], height[j]) * (j - i)` for the best pair.\n\n**Constraints**\n\n- `2 <= len(height) <= 10^5`\n- `0 <= height[i] <= 10^4`",
+ "function": "maxArea",
+ "params": [
+  "height"
+ ],
+ "starter": "class Solution:\n    def maxArea(self, height: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "Trying every pair is O(n^2). Start with the widest container: the first and last lines.",
+  "When you move a pointer inward, the width shrinks. Moving the taller line can never help, because the shorter line still limits the height.",
+  "Keep `l` and `r` at the ends. Record the area, then move whichever pointer has the shorter line. Repeat until they meet."
+ ],
+ "tests": [
+  {
+   "input": {
+    "height": [
+     1,
+     8,
+     6,
+     2,
+     5,
+     4,
+     8,
+     3,
+     7
+    ]
+   },
+   "expected": 49,
+   "example": true
+  },
+  {
+   "input": {
+    "height": [
+     1,
+     1
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "height": [
+     4,
+     3,
+     2,
+     1,
+     4
+    ]
+   },
+   "expected": 16
+  },
+  {
+   "input": {
+    "height": [
+     1,
+     2,
+     1
+    ]
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "height": [
+     0,
+     0
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "height": [
+     2,
+     3,
+     10,
+     5,
+     7,
+     8,
+     9
+    ]
+   },
+   "expected": 36
+  },
+  {
+   "input": {
+    "height": [
+     1,
+     2,
+     4,
+     3
+    ]
+   },
+   "expected": 4
+  }
+ ]
+}

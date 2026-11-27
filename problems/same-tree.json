@@ -1,0 +1,111 @@
+{
+ "id": "same-tree",
+ "order": 50,
+ "title": "Same Tree",
+ "category": "Trees",
+ "difficulty": "Easy",
+ "description": "You are given the roots of two binary trees, `p` and `q`. Return `True` if they have exactly the same shape and the same value at every node.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- Each tree has 0 to 100 nodes.",
+ "function": "isSameTree",
+ "params": [
+  "p",
+  "q"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:\n        pass\n",
+ "arg_types": {
+  "p": "tree",
+  "q": "tree"
+ },
+ "hints": [
+  "When are two empty trees the same? What about one empty and one not?",
+  "Two non-empty trees are the same when their roots have equal values and both pairs of subtrees are the same.",
+  "Recursively: return `True` if both are `None`, `False` if only one is, and otherwise compare values and recurse on the left children and the right children."
+ ],
+ "tests": [
+  {
+   "input": {
+    "p": [
+     1,
+     2,
+     3
+    ],
+    "q": [
+     1,
+     2,
+     3
+    ]
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "p": [
+     1,
+     2
+    ],
+    "q": [
+     1,
+     null,
+     2
+    ]
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "p": [
+     1,
+     2,
+     1
+    ],
+    "q": [
+     1,
+     1,
+     2
+    ]
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "p": [],
+    "q": []
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "p": [
+     1
+    ],
+    "q": []
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "p": [
+     5,
+     4,
+     8,
+     11,
+     null,
+     13,
+     4
+    ],
+    "q": [
+     5,
+     4,
+     8,
+     11,
+     null,
+     13,
+     4
+    ]
+   },
+   "expected": true
+  }
+ ]
+}

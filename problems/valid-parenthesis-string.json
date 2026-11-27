@@ -1,0 +1,71 @@
+{
+ "id": "valid-parenthesis-string",
+ "order": 129,
+ "title": "Valid Parenthesis String",
+ "category": "Greedy",
+ "difficulty": "Medium",
+ "description": "You are given a string `s` made of `(`, `)` and `*`. Each `*` can act as `(`, as `)`, or as nothing. Return `True` if some choice for the `*`s makes the string a balanced set of parentheses.\n\n**Constraints**\n\n- `1 <= len(s) <= 100`",
+ "function": "checkValidString",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def checkValidString(self, s: str) -> bool:\n        pass\n",
+ "hints": [
+  "Without `*`, you would track the number of open parentheses. With `*`, that number could be one of several values.",
+  "Track a range: `lo` is the fewest open parentheses possible so far, and `hi` is the most.",
+  "For `(`: both go up. For `)`: both go down. For `*`: `lo` goes down and `hi` goes up. If `hi < 0`, return `False`; keep `lo` at least 0. At the end, return `lo == 0`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "()"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "(*)"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "(*))"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "(("
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "*"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": ")*"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "(*()"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "((((()(()()()*()(((((*)()*(**(())))))(())()())(((())())())))))))(((((())*)))()))(()((*()*(*)))(*)()"
+   },
+   "expected": true
+  }
+ ]
+}

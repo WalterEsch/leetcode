@@ -1,0 +1,294 @@
+{
+ "id": "design-twitter",
+ "order": 69,
+ "title": "Design Twitter",
+ "category": "Heap / Priority Queue",
+ "difficulty": "Medium",
+ "description": "Design a simplified Twitter.\n\n- `Twitter()` creates the service.\n- `postTweet(userId, tweetId)` posts a new tweet with a unique `tweetId` by `userId`.\n- `getNewsFeed(userId)` returns the IDs of the 10 most recent tweets posted by the user or by anyone they follow, from most recent to least recent.\n- `follow(followerId, followeeId)` makes `followerId` follow `followeeId`.\n- `unfollow(followerId, followeeId)` stops that.\n\nFollowing someone you already follow, unfollowing someone you don't follow, and following yourself should not cause errors.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class Twitter:\n    def __init__(self):\n        pass\n\n    def postTweet(self, userId: int, tweetId: int) -> None:\n        pass\n\n    def getNewsFeed(self, userId: int) -> List[int]:\n        pass\n\n    def follow(self, followerId: int, followeeId: int) -> None:\n        pass\n\n    def unfollow(self, followerId: int, followeeId: int) -> None:\n        pass\n",
+ "kind": "design",
+ "class": "Twitter",
+ "hints": [
+  "Keep a global counter so you know the order in which tweets were posted, and store each user's tweets in a list.",
+  "A user's feed draws from their own tweets plus the tweets of everyone they follow. You only need the 10 most recent overall.",
+  "For `getNewsFeed`, put the newest tweet of each relevant user into a max-heap keyed by time. Pop the newest, then push that user's next-newest tweet, until you have 10 or the heap is empty."
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "Twitter",
+     "postTweet",
+     "getNewsFeed",
+     "follow",
+     "postTweet",
+     "getNewsFeed",
+     "unfollow",
+     "getNewsFeed"
+    ],
+    "arguments": [
+     [],
+     [
+      1,
+      5
+     ],
+     [
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      6
+     ],
+     [
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    [
+     5
+    ],
+    null,
+    null,
+    [
+     6,
+     5
+    ],
+    null,
+    [
+     5
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "Twitter",
+     "getNewsFeed",
+     "follow",
+     "follow",
+     "unfollow",
+     "getNewsFeed"
+    ],
+    "arguments": [
+     [],
+     [
+      7
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      1
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    [],
+    null,
+    null,
+    null,
+    []
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "Twitter",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "getNewsFeed"
+    ],
+    "arguments": [
+     [],
+     [
+      1,
+      100
+     ],
+     [
+      1,
+      101
+     ],
+     [
+      1,
+      102
+     ],
+     [
+      1,
+      103
+     ],
+     [
+      1,
+      104
+     ],
+     [
+      1,
+      105
+     ],
+     [
+      1,
+      106
+     ],
+     [
+      1,
+      107
+     ],
+     [
+      1,
+      108
+     ],
+     [
+      1,
+      109
+     ],
+     [
+      1,
+      110
+     ],
+     [
+      1,
+      111
+     ],
+     [
+      1
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    [
+     111,
+     110,
+     109,
+     108,
+     107,
+     106,
+     105,
+     104,
+     103,
+     102
+    ]
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "Twitter",
+     "postTweet",
+     "postTweet",
+     "postTweet",
+     "follow",
+     "follow",
+     "getNewsFeed",
+     "unfollow",
+     "getNewsFeed",
+     "getNewsFeed"
+    ],
+    "arguments": [
+     [],
+     [
+      1,
+      11
+     ],
+     [
+      2,
+      22
+     ],
+     [
+      3,
+      33
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      1
+     ],
+     [
+      3
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    [
+     33,
+     22,
+     11
+    ],
+    null,
+    [
+     22,
+     11
+    ],
+    [
+     33
+    ]
+   ]
+  }
+ ]
+}

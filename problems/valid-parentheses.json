@@ -1,83 +1,83 @@
 {
-  "id": "valid-parentheses",
-  "order": 20,
-  "title": "Valid Parentheses",
-  "category": "Stack",
-  "difficulty": "Easy",
-  "description": "You are given a string `s` made only of the characters `(`, `)`, `[`, `]`, `{` and `}`. Return `True` if the brackets are balanced, meaning:\n\n- every opening bracket is closed by a bracket of the same type,\n- brackets are closed in the right order (the most recently opened one closes first), and\n- every closing bracket has a matching opening bracket before it.\n\n**Constraints**\n\n- `1 <= len(s) <= 10^4`",
-  "function": "isValid",
-  "params": [
-    "s"
-  ],
-  "starter": "class Solution:\n    def isValid(self, s: str) -> bool:\n        pass\n",
-  "tests": [
-    {
-      "input": {
-        "s": "()"
-      },
-      "expected": true,
-      "example": true
-    },
-    {
-      "input": {
-        "s": "()[]{}"
-      },
-      "expected": true,
-      "example": true
-    },
-    {
-      "input": {
-        "s": "(]"
-      },
-      "expected": false,
-      "example": true
-    },
-    {
-      "input": {
-        "s": "([)]"
-      },
-      "expected": false
-    },
-    {
-      "input": {
-        "s": "{[]}"
-      },
-      "expected": true
-    },
-    {
-      "input": {
-        "s": "("
-      },
-      "expected": false
-    },
-    {
-      "input": {
-        "s": "]"
-      },
-      "expected": false
-    },
-    {
-      "input": {
-        "s": "((()))[{}]"
-      },
-      "expected": true
-    },
-    {
-      "input": {
-        "s": "(("
-      },
-      "expected": false
-    },
-    {
-      "input": {
-        "s": "){"
-      },
-      "expected": false
-    }
-  ],
-  "hints": [
-    "When you reach a closing bracket, which opening bracket must it match?",
-    "It must match the most recent opening bracket that has not been closed yet. Which data structure gives you the most recently added item?",
-    "Push opening brackets onto a stack. On a closing bracket, the stack must be non-empty and its top must be the matching opener; pop it. At the end the stack must be empty."
-  ]
+ "id": "valid-parentheses",
+ "order": 21,
+ "title": "Valid Parentheses",
+ "category": "Stack",
+ "difficulty": "Easy",
+ "description": "You are given a string `s` made only of the characters `(`, `)`, `[`, `]`, `{` and `}`. Return `True` if the brackets are balanced, meaning:\n\n- every opening bracket is closed by a bracket of the same type,\n- brackets are closed in the right order (the most recently opened one closes first), and\n- every closing bracket has a matching opening bracket before it.\n\n**Constraints**\n\n- `1 <= len(s) <= 10^4`",
+ "function": "isValid",
+ "params": [
+  "s"
+ ],
+ "starter": "class Solution:\n    def isValid(self, s: str) -> bool:\n        pass\n",
+ "hints": [
+  "When you reach a closing bracket, which opening bracket must it match?",
+  "It must match the most recent opening bracket that has not been closed yet. Which data structure gives you the most recently added item?",
+  "Push opening brackets onto a stack. On a closing bracket, the stack must be non-empty and its top must be the matching opener; pop it. At the end the stack must be empty."
+ ],
+ "tests": [
+  {
+   "input": {
+    "s": "()"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "()[]{}"
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "(]"
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "s": "([)]"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "{[]}"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "("
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "]"
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "((()))[{}]"
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "s": "(("
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "s": "){"
+   },
+   "expected": false
+  }
+ ]
 }

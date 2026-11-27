@@ -1,0 +1,98 @@
+{
+ "id": "binary-tree-right-side-view",
+ "order": 54,
+ "title": "Binary Tree Right Side View",
+ "category": "Trees",
+ "difficulty": "Medium",
+ "description": "You are given the `root` of a binary tree. Imagine standing to the right of the tree. Return the values you can see, from top to bottom (the rightmost node on each level).\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- The tree has 0 to 100 nodes.",
+ "function": "rightSideView",
+ "params": [
+  "root"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:\n        pass\n",
+ "arg_types": {
+  "root": "tree"
+ },
+ "hints": [
+  "The visible node on each level is the last one in that level from left to right. It is not always in the right subtree.",
+  "Do a level-order traversal and keep the last value of each level.",
+  "Alternatively, do a DFS that visits right children first, and record a node's value the first time you reach a new depth."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3,
+     null,
+     5,
+     null,
+     4
+    ]
+   },
+   "expected": [
+    1,
+    3,
+    4
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     null,
+     3
+    ]
+   },
+   "expected": [
+    1,
+    3
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "root": []
+   },
+   "expected": [],
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "expected": [
+    1,
+    3,
+    4
+   ]
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3,
+     null,
+     5,
+     null,
+     null,
+     6
+    ]
+   },
+   "expected": [
+    1,
+    3,
+    5,
+    6
+   ]
+  }
+ ]
+}

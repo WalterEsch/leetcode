@@ -1,0 +1,179 @@
+{
+ "id": "combination-sum",
+ "order": 72,
+ "title": "Combination Sum",
+ "category": "Backtracking",
+ "difficulty": "Medium",
+ "description": "You are given a list of distinct positive integers `candidates` and a positive integer `target`. Return every distinct combination of candidates that adds up to `target`. The **same number can be used any number of times**.\n\nTwo combinations are the same if they use each number the same number of times. The combinations, and the numbers inside them, can be in any order.\n\n**Constraints**\n\n- `1 <= len(candidates) <= 30`, `2 <= candidates[i] <= 40`\n- `1 <= target <= 40`",
+ "function": "combinationSum",
+ "params": [
+  "candidates",
+  "target"
+ ],
+ "starter": "class Solution:\n    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:\n        pass\n",
+ "compare": "unordered_nested",
+ "hints": [
+  "Build combinations with backtracking, subtracting from the remaining target as you go.",
+  "To avoid producing `[2, 3]` and `[3, 2]` separately, only allow choosing candidates at or after the index of the last one you chose.",
+  "`dfs(i, remaining, path)`: if `remaining == 0`, record `path`; if it is negative or `i` is past the end, stop. Otherwise either use `candidates[i]` again (stay at `i`) or move on to `i + 1`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "candidates": [
+     2,
+     3,
+     6,
+     7
+    ],
+    "target": 7
+   },
+   "expected": [
+    [
+     2,
+     2,
+     3
+    ],
+    [
+     7
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "candidates": [
+     2,
+     3,
+     5
+    ],
+    "target": 8
+   },
+   "expected": [
+    [
+     2,
+     2,
+     2,
+     2
+    ],
+    [
+     2,
+     3,
+     3
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "candidates": [
+     2
+    ],
+    "target": 1
+   },
+   "expected": [],
+   "example": true
+  },
+  {
+   "input": {
+    "candidates": [
+     7,
+     3,
+     2
+    ],
+    "target": 18
+   },
+   "expected": [
+    [
+     7,
+     7,
+     2,
+     2
+    ],
+    [
+     7,
+     3,
+     3,
+     3,
+     2
+    ],
+    [
+     7,
+     3,
+     2,
+     2,
+     2,
+     2
+    ],
+    [
+     3,
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    [
+     3,
+     3,
+     3,
+     3,
+     2,
+     2,
+     2
+    ],
+    [
+     3,
+     3,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    [
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2
+    ]
+   ]
+  },
+  {
+   "input": {
+    "candidates": [
+     8,
+     7,
+     4,
+     3
+    ],
+    "target": 11
+   },
+   "expected": [
+    [
+     8,
+     3
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     4,
+     4,
+     3
+    ]
+   ]
+  }
+ ]
+}

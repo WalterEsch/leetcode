@@ -1,0 +1,240 @@
+{
+ "id": "detect-squares",
+ "order": 143,
+ "title": "Detect Squares",
+ "category": "Math & Geometry",
+ "difficulty": "Medium",
+ "description": "Design a structure for points on a plane.\n\n- `DetectSquares()` creates an empty structure.\n- `add(point)` adds `point = [x, y]`. The same point can be added more than once, and each copy counts separately.\n- `count(point)` returns how many ways you can pick three stored points that, together with `point`, form a square with **positive area** whose sides are parallel to the axes.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class DetectSquares:\n    def __init__(self):\n        pass\n\n    def add(self, point: List[int]) -> None:\n        pass\n\n    def count(self, point: List[int]) -> int:\n        pass\n",
+ "kind": "design",
+ "class": "DetectSquares",
+ "hints": [
+  "Store how many times each point has been added, in a dictionary keyed by `(x, y)`.",
+  "Given the query point, pick a candidate for the opposite (diagonal) corner. The other two corners are then fixed.",
+  "Loop over the stored points `(px, py)` that form a diagonal with `(x, y)`: `abs(px - x) == abs(py - y)` and `px != x`. Add `count[(px, py)] * count[(x, py)] * count[(px, y)]`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "DetectSquares",
+     "add",
+     "add",
+     "add",
+     "count",
+     "count",
+     "add",
+     "count"
+    ],
+    "arguments": [
+     [],
+     [
+      [
+       3,
+       10
+      ]
+     ],
+     [
+      [
+       11,
+       2
+      ]
+     ],
+     [
+      [
+       3,
+       2
+      ]
+     ],
+     [
+      [
+       11,
+       10
+      ]
+     ],
+     [
+      [
+       14,
+       8
+      ]
+     ],
+     [
+      [
+       11,
+       2
+      ]
+     ],
+     [
+      [
+       11,
+       10
+      ]
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    1,
+    0,
+    null,
+    2
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "DetectSquares",
+     "count"
+    ],
+    "arguments": [
+     [],
+     [
+      [
+       0,
+       0
+      ]
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    0
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "DetectSquares",
+     "add",
+     "add",
+     "add",
+     "add",
+     "count",
+     "count"
+    ],
+    "arguments": [
+     [],
+     [
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      [
+       0,
+       1
+      ]
+     ],
+     [
+      [
+       1,
+       0
+      ]
+     ],
+     [
+      [
+       1,
+       1
+      ]
+     ],
+     [
+      [
+       0,
+       0
+      ]
+     ],
+     [
+      [
+       1,
+       1
+      ]
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    1,
+    1
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "DetectSquares",
+     "add",
+     "add",
+     "add",
+     "add",
+     "add",
+     "count",
+     "count"
+    ],
+    "arguments": [
+     [],
+     [
+      [
+       5,
+       5
+      ]
+     ],
+     [
+      [
+       5,
+       7
+      ]
+     ],
+     [
+      [
+       7,
+       5
+      ]
+     ],
+     [
+      [
+       3,
+       5
+      ]
+     ],
+     [
+      [
+       3,
+       7
+      ]
+     ],
+     [
+      [
+       5,
+       5
+      ]
+     ],
+     [
+      [
+       5,
+       6
+      ]
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    1,
+    0
+   ]
+  }
+ ]
+}

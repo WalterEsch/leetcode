@@ -1,0 +1,58 @@
+{
+ "id": "reverse-bits",
+ "order": 147,
+ "title": "Reverse Bits",
+ "category": "Bit Manipulation",
+ "difficulty": "Easy",
+ "description": "You are given a 32-bit unsigned integer `n`. Reverse the order of its 32 bits (so bit 0 swaps with bit 31, bit 1 with bit 30, and so on) and return the result as an unsigned integer.\n\n**Constraints**\n\n- `0 <= n < 2^32`",
+ "function": "reverseBits",
+ "params": [
+  "n"
+ ],
+ "starter": "class Solution:\n    def reverseBits(self, n: int) -> int:\n        pass\n",
+ "hints": [
+  "Build the answer one bit at a time, taking bits from the low end of `n`.",
+  "Each step, shift the result left by one and add `n & 1`, then shift `n` right by one.",
+  "Do that exactly 32 times, even if `n` becomes 0 early, so the bits end up in the right positions."
+ ],
+ "tests": [
+  {
+   "input": {
+    "n": 43261596
+   },
+   "expected": 964176192,
+   "example": true
+  },
+  {
+   "input": {
+    "n": 4294967293
+   },
+   "expected": 3221225471,
+   "example": true
+  },
+  {
+   "input": {
+    "n": 0
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "n": 1
+   },
+   "expected": 2147483648
+  },
+  {
+   "input": {
+    "n": 2147483648
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "n": 4294967295
+   },
+   "expected": 4294967295
+  }
+ ]
+}

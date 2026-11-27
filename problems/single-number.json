@@ -1,0 +1,85 @@
+{
+ "id": "single-number",
+ "order": 144,
+ "title": "Single Number",
+ "category": "Bit Manipulation",
+ "difficulty": "Easy",
+ "description": "You are given a non-empty list of integers `nums`. Every value appears exactly twice, except one value that appears once. Return that value.\n\nUse O(n) time and O(1) extra space.\n\n**Constraints**\n\n- `1 <= len(nums) <= 3 * 10^4`",
+ "function": "singleNumber",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def singleNumber(self, nums: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "A set or dictionary works, but uses O(n) space. Is there an operation where pairs cancel out?",
+  "XOR has `a ^ a == 0` and `a ^ 0 == a`, and the order of the operations doesn't matter.",
+  "XOR all the numbers together. Every pair cancels to 0, leaving the single number."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     2,
+     2,
+     1
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     4,
+     1,
+     2,
+     1,
+     2
+    ]
+   },
+   "expected": 4,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     1
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     -3,
+     7,
+     7
+    ]
+   },
+   "expected": -3
+  },
+  {
+   "input": {
+    "nums": [
+     0,
+     5,
+     5,
+     9,
+     9
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "nums": [
+     30000,
+     -30000,
+     30000
+    ]
+   },
+   "expected": -30000
+  }
+ ]
+}

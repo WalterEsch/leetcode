@@ -1,0 +1,177 @@
+{
+ "id": "implement-trie-prefix-tree",
+ "order": 61,
+ "title": "Implement Trie (Prefix Tree)",
+ "category": "Tries",
+ "difficulty": "Medium",
+ "description": "Build a trie (prefix tree), a tree for storing strings that makes prefix lookups fast.\n\n- `Trie()` creates an empty trie.\n- `insert(word)` adds `word`.\n- `search(word)` returns `True` if `word` was inserted before.\n- `startsWith(prefix)` returns `True` if any inserted word starts with `prefix`.\n\nAll strings contain only lowercase English letters.\n\nEach test is a list of `operations` with matching `arguments`. The first operation creates the object, and the expected output lists what each call returns (`None` for calls that return nothing).",
+ "starter": "class Trie:\n    def __init__(self):\n        pass\n\n    def insert(self, word: str) -> None:\n        pass\n\n    def search(self, word: str) -> bool:\n        pass\n\n    def startsWith(self, prefix: str) -> bool:\n        pass\n",
+ "kind": "design",
+ "class": "Trie",
+ "hints": [
+  "Each node represents a prefix and has up to 26 children, one per next letter.",
+  "Mark the nodes where a complete word ends. `search` and `startsWith` walk down the same way; only the final check differs.",
+  "Give each node a dictionary `children` and a boolean `end`. `insert` creates missing children as it walks. `search` needs the last node to have `end == True`; `startsWith` only needs the walk to succeed."
+ ],
+ "tests": [
+  {
+   "input": {
+    "operations": [
+     "Trie",
+     "insert",
+     "search",
+     "search",
+     "startsWith",
+     "insert",
+     "search"
+    ],
+    "arguments": [
+     [],
+     [
+      "apple"
+     ],
+     [
+      "apple"
+     ],
+     [
+      "app"
+     ],
+     [
+      "app"
+     ],
+     [
+      "app"
+     ],
+     [
+      "app"
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    true,
+    false,
+    true,
+    null,
+    true
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "Trie",
+     "search",
+     "startsWith"
+    ],
+    "arguments": [
+     [],
+     [
+      "a"
+     ],
+     [
+      "a"
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    false,
+    false
+   ],
+   "example": true
+  },
+  {
+   "input": {
+    "operations": [
+     "Trie",
+     "insert",
+     "insert",
+     "search",
+     "search",
+     "startsWith",
+     "startsWith",
+     "search"
+    ],
+    "arguments": [
+     [],
+     [
+      "car"
+     ],
+     [
+      "cart"
+     ],
+     [
+      "car"
+     ],
+     [
+      "ca"
+     ],
+     [
+      "cart"
+     ],
+     [
+      "carts"
+     ],
+     [
+      "cart"
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    null,
+    true,
+    false,
+    true,
+    false,
+    true
+   ]
+  },
+  {
+   "input": {
+    "operations": [
+     "Trie",
+     "insert",
+     "startsWith",
+     "search",
+     "insert",
+     "search",
+     "startsWith"
+    ],
+    "arguments": [
+     [],
+     [
+      "z"
+     ],
+     [
+      "z"
+     ],
+     [
+      "zz"
+     ],
+     [
+      "zz"
+     ],
+     [
+      "zz"
+     ],
+     [
+      "zzz"
+     ]
+    ]
+   },
+   "expected": [
+    null,
+    null,
+    true,
+    false,
+    null,
+    true,
+    false
+   ]
+  }
+ ]
+}

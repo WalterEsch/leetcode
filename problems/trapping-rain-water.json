@@ -1,0 +1,105 @@
+{
+ "id": "trapping-rain-water",
+ "order": 14,
+ "title": "Trapping Rain Water",
+ "category": "Two Pointers",
+ "difficulty": "Hard",
+ "description": "You are given a list `height` of non-negative integers describing an elevation map where each bar is 1 unit wide. Return how many units of rain water are trapped between the bars after it rains.\n\n**Constraints**\n\n- `1 <= len(height) <= 2 * 10^4`\n- `0 <= height[i] <= 10^5`",
+ "function": "trap",
+ "params": [
+  "height"
+ ],
+ "starter": "class Solution:\n    def trap(self, height: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "The water above bar `i` is `min(tallest bar on its left, tallest bar on its right) - height[i]`, if that is positive.",
+  "You could precompute the max to the left and max to the right of every position with two passes. Can you do it with O(1) space?",
+  "Use two pointers with `left_max` and `right_max`. Move the side with the smaller max inward: the water at that position is decided by its own max, because the other side is at least as tall."
+ ],
+ "tests": [
+  {
+   "input": {
+    "height": [
+     0,
+     1,
+     0,
+     2,
+     1,
+     0,
+     1,
+     3,
+     2,
+     1,
+     2,
+     1
+    ]
+   },
+   "expected": 6,
+   "example": true
+  },
+  {
+   "input": {
+    "height": [
+     4,
+     2,
+     0,
+     3,
+     2,
+     5
+    ]
+   },
+   "expected": 9,
+   "example": true
+  },
+  {
+   "input": {
+    "height": [
+     1
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "height": [
+     3,
+     2,
+     1
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "height": [
+     2,
+     0,
+     2
+    ]
+   },
+   "expected": 2
+  },
+  {
+   "input": {
+    "height": [
+     5,
+     4,
+     1,
+     2
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "height": [
+     0,
+     7,
+     1,
+     4,
+     6
+    ]
+   },
+   "expected": 7
+  }
+ ]
+}

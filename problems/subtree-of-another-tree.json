@@ -1,0 +1,132 @@
+{
+ "id": "subtree-of-another-tree",
+ "order": 51,
+ "title": "Subtree of Another Tree",
+ "category": "Trees",
+ "difficulty": "Easy",
+ "description": "You are given the roots of two binary trees, `root` and `subRoot`. Return `True` if `root` contains a subtree that has exactly the same shape and values as `subRoot`. A subtree is a node together with **all** of its descendants.\n\nTests show trees in level order, left to right, with `None` for a missing child. For example `[3, 9, 20, None, None, 15, 7]` is a root `3` with children `9` and `20`, where `20` has children `15` and `7`.\n\n**Constraints**\n\n- `root` has 1 to 2000 nodes, `subRoot` has 1 to 1000 nodes.",
+ "function": "isSubtree",
+ "params": [
+  "root",
+  "subRoot"
+ ],
+ "starter": "# Definition for a binary tree node (already provided):\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\nclass Solution:\n    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:\n        pass\n",
+ "arg_types": {
+  "root": "tree",
+  "subRoot": "tree"
+ },
+ "hints": [
+  "You already know how to check whether two trees are identical (Same Tree).",
+  "Try every node of `root` as a possible starting point for a match.",
+  "`isSubtree(root, sub)` is `True` if `sameTree(root, sub)`, or `isSubtree(root.left, sub)`, or `isSubtree(root.right, sub)`. An empty `root` can't contain a non-empty `subRoot`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "root": [
+     3,
+     4,
+     5,
+     1,
+     2
+    ],
+    "subRoot": [
+     4,
+     1,
+     2
+    ]
+   },
+   "expected": true,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     3,
+     4,
+     5,
+     1,
+     2,
+     null,
+     null,
+     null,
+     null,
+     0
+    ],
+    "subRoot": [
+     4,
+     1,
+     2
+    ]
+   },
+   "expected": false,
+   "example": true
+  },
+  {
+   "input": {
+    "root": [
+     1
+    ],
+    "subRoot": [
+     1
+    ]
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     1
+    ],
+    "subRoot": [
+     1
+    ]
+   },
+   "expected": true
+  },
+  {
+   "input": {
+    "root": [
+     12
+    ],
+    "subRoot": [
+     2
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "root": [
+     1,
+     2,
+     3
+    ],
+    "subRoot": [
+     1,
+     2
+    ]
+   },
+   "expected": false
+  },
+  {
+   "input": {
+    "root": [
+     3,
+     4,
+     5,
+     1,
+     null,
+     2
+    ],
+    "subRoot": [
+     3,
+     1,
+     2
+    ]
+   },
+   "expected": false
+  }
+ ]
+}

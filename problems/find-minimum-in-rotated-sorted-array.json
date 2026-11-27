@@ -1,0 +1,100 @@
+{
+ "id": "find-minimum-in-rotated-sorted-array",
+ "order": 31,
+ "title": "Find Minimum in Rotated Sorted Array",
+ "category": "Binary Search",
+ "difficulty": "Medium",
+ "description": "A list of distinct integers was sorted in increasing order and then rotated some number of times. For example `[0, 1, 2, 4, 5, 6, 7]` rotated 4 times is `[4, 5, 6, 7, 0, 1, 2]`. Given the rotated list `nums`, return its smallest element.\n\nYour solution must run in O(log n) time.\n\n**Constraints**\n\n- `1 <= len(nums) <= 5000`",
+ "function": "findMin",
+ "params": [
+  "nums"
+ ],
+ "starter": "class Solution:\n    def findMin(self, nums: List[int]) -> int:\n        pass\n",
+ "hints": [
+  "Compare the middle element with the last element. What does that tell you about where the minimum is?",
+  "If `nums[mid] > nums[r]`, the rotation point (and the minimum) is to the right of `mid`. Otherwise it is at `mid` or to its left.",
+  "Loop while `l < r`: set `l = mid + 1` when `nums[mid] > nums[r]`, else `r = mid`. Return `nums[l]`."
+ ],
+ "tests": [
+  {
+   "input": {
+    "nums": [
+     3,
+     4,
+     5,
+     1,
+     2
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     4,
+     5,
+     6,
+     7,
+     0,
+     1,
+     2
+    ]
+   },
+   "expected": 0,
+   "example": true
+  },
+  {
+   "input": {
+    "nums": [
+     11,
+     13,
+     15,
+     17
+    ]
+   },
+   "expected": 11
+  },
+  {
+   "input": {
+    "nums": [
+     1
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     1
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "nums": [
+     5,
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "nums": [
+     2,
+     3,
+     4,
+     5,
+     1
+    ]
+   },
+   "expected": 1
+  }
+ ]
+}

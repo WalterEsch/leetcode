@@ -1,0 +1,156 @@
+{
+ "id": "number-of-islands",
+ "order": 80,
+ "title": "Number of Islands",
+ "category": "Graphs",
+ "difficulty": "Medium",
+ "description": "You are given an `m x n` grid where `\"1\"` is land and `\"0\"` is water. An island is a group of land cells connected horizontally or vertically. Everything outside the grid is water. Return the number of islands.\n\n**Constraints**\n\n- `1 <= m, n <= 300`",
+ "function": "numIslands",
+ "params": [
+  "grid"
+ ],
+ "starter": "class Solution:\n    def numIslands(self, grid: List[List[str]]) -> int:\n        pass\n",
+ "hints": [
+  "When you find a land cell you haven't seen, you have found a new island. How do you avoid counting its other cells again?",
+  "Explore the whole island from that cell (DFS or BFS) and mark every cell you visit.",
+  "Loop over all cells. When a cell is `\"1\"`, add one to the count and flood-fill from it, changing connected land to `\"0\"` (or adding it to a visited set)."
+ ],
+ "tests": [
+  {
+   "input": {
+    "grid": [
+     [
+      "1",
+      "1",
+      "1",
+      "1",
+      "0"
+     ],
+     [
+      "1",
+      "1",
+      "0",
+      "1",
+      "0"
+     ],
+     [
+      "1",
+      "1",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+     ]
+    ]
+   },
+   "expected": 1,
+   "example": true
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      "1",
+      "1",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "1",
+      "1",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "1",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "1",
+      "1"
+     ]
+    ]
+   },
+   "expected": 3,
+   "example": true
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      "0"
+     ]
+    ]
+   },
+   "expected": 0
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      "1"
+     ]
+    ]
+   },
+   "expected": 1
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      "1",
+      "0",
+      "1"
+     ],
+     [
+      "0",
+      "1",
+      "0"
+     ],
+     [
+      "1",
+      "0",
+      "1"
+     ]
+    ]
+   },
+   "expected": 5
+  },
+  {
+   "input": {
+    "grid": [
+     [
+      "1",
+      "1",
+      "1"
+     ],
+     [
+      "0",
+      "1",
+      "0"
+     ],
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ]
+   },
+   "expected": 1
+  }
+ ]
+}
