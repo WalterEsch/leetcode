@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeetCode Practice</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside id="sidebar">
+    <header class="brand">NeetCode Practice</header>
+    <input id="search" type="search" placeholder="Search problems" autocomplete="off">
+    <nav id="problem-list"></nav>
+  </aside>
+
+  <main id="main">
+    <section id="empty" class="empty">Pick a problem from the list to get started.</section>
+
+    <section id="workspace" hidden>
+      <div id="left-pane" class="pane">
+        <div class="title-row">
+          <h1 id="title"></h1>
+          <span id="difficulty" class="badge"></span>
+        </div>
+        <div id="category" class="muted"></div>
+        <article id="description"></article>
+        <div id="examples"></div>
+        <div id="hints">
+          <h2>Hints</h2>
+          <ol id="hint-list"></ol>
+          <button id="hint-btn" class="secondary"></button>
+        </div>
+      </div>
+
+      <div id="right-pane" class="pane">
+        <div class="toolbar">
+          <span id="save-status" class="muted"></span>
+          <span class="spacer"></span>
+          <button id="reset-btn" class="secondary" title="Replace your code with the starter code">Reset</button>
+          <button id="run-btn" title="Ctrl+Enter">Run tests</button>
+        </div>
+        <div class="editor-wrap">
+          <pre id="gutter" aria-hidden="true"></pre>
+          <textarea id="editor" spellcheck="false" wrap="off" autocapitalize="off" autocomplete="off"></textarea>
+        </div>
+        <div id="results"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
